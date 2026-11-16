@@ -1,11 +1,15 @@
 // Browser checks that hds renders at the sizes its docs promise, with only the
 // hds reset (the sandbox adds none), and that the cascade layers behave.
-// Runs the sandbox's dev server and renders snippets through the UI generator.
+// Runs the sandbox's dev server and renders snippets through the UI generator,
+// then checks a production build, which bundles CSS differently from dev.
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import { after, before, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
-import { createServer } from 'vite';
+import { build, createServer, preview } from 'vite';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 let server;
@@ -141,4 +145,34 @@ export default function App() {
   }));
   await page.close();
   assert.ok(settled, `app CSS outside a layer should win: got ${JSON.stringify(overridden)}`);
+});
+
+test('a production build loads the reset and variables on every page', async () => {
+  // Pages that import named components let the bundler skip @hds/ui's entry
+  // file; its CSS must still ship (package.json "sideEffects" keeps it).
+  const outDir = fs.mkdtempSync(path.join(os.tmpdir(), 'hds-sandbox-'));
+  await build({ root, logLevel: 'error', build: { outDir, emptyOutDir: true } });
+  const server = await preview({ root, logLevel: 'error', build: { outDir }, preview: { port: 4391, strictPort: false } });
+  const url = server.resolvedUrls.local[0];
+  const problems = [];
+  try {
+    for (const page of ['', 'generator/']) {
+      const tab = await browser.newPage();
+      await tab.goto(url + page);
+      await tab.waitForLoadState('networkidle');
+      const got = await tab.evaluate(() => ({
+        primary: getComputedStyle(document.documentElement).getPropertyValue('--hds-color-primary').trim(),
+        boxSizing: getComputedStyle(document.body).boxSizing,
+        margin: getComputedStyle(document.body).marginTop,
+      }));
+      await tab.close();
+      if (got.primary !== '#18181b') problems.push(`/${page}: --hds-color-primary is '${got.primary}'`);
+      if (got.boxSizing !== 'border-box') problems.push(`/${page}: body box-sizing is ${got.boxSizing}`);
+      if (got.margin !== '0px') problems.push(`/${page}: body margin is ${got.margin}`);
+    }
+  } finally {
+    await new Promise((resolve) => server.httpServer.close(resolve));
+    fs.rmSync(outDir, { recursive: true, force: true });
+  }
+  assert.deepEqual(problems, []);
 });
