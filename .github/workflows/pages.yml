@@ -1,5 +1,5 @@
-# Builds the sandbox (component playgrounds and the UI generator) and
-# publishes it to GitHub Pages on every push to main.
+# Tests hds, then builds the sandbox (component playgrounds and the UI
+# generator) and publishes it to GitHub Pages on every push to main.
 name: Deploy sandbox to GitHub Pages
 
 on:
@@ -21,24 +21,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # The sandbox's browser tests check component sizes and the reset.
+      - run: pnpm --filter sandbox exec playwright install --with-deps chromium
       - run: pnpm test
       - run: pnpm lint:hds
       # Pages reports the path it serves the site from (e.g. /hds), so renames,
       # re-runs and custom domains all get the right base path.
       - id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: Build the sandbox
         run: pnpm --filter sandbox build
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}/
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: apps/sandbox/dist
 
@@ -50,4 +52,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

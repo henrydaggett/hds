@@ -2,6 +2,8 @@
 
 A small React design system built on [Base UI](https://base-ui.com), plus a Vite sandbox with [DialKit](https://www.dialkit.dev) for tweaking components live.
 
+**Live sandbox:** https://henrydaggett.github.io/hds/ (playgrounds) and https://henrydaggett.github.io/hds/generator/ (UI generator). It redeploys on every push to `main` once the tests and `hds-lint` pass; see [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
+
 Agent skills in `.cursor/skills` prototype, build, lint and answer questions about UI built from these components. They all read one knowledge base, the docs in [`packages/ui/docs`](packages/ui/docs/README.md), which ship with the package. See [.cursor/skills/README.md](.cursor/skills/README.md).
 
 ## Layout
@@ -9,7 +11,7 @@ Agent skills in `.cursor/skills` prototype, build, lint and answer questions abo
 ```
 packages/ui        @hds/ui: variables, icons, components
   docs/            the design system docs every skill reads (catalog, assets, guidelines)
-  src/*.css        one file per concept: color, spacing, typography, radius, focus, motion (in cascade layers)
+  src/styles/      the reset, and one CSS file per concept: color, spacing, typography, radius, focus, motion
   src/components/  one folder per component (tsx, CSS module, README)
 packages/lint      @hds/lint: the hds-lint command (technical and usage rules)
 apps/sandbox       Vite + React app for testing components with DialKit
@@ -31,7 +33,7 @@ Other scripts:
 pnpm typecheck    # typecheck every package
 pnpm build        # typecheck the UI package and build the sandbox
 pnpm lint:hds     # check apps/ against the design system (see packages/lint)
-pnpm test         # run the linter's tests
+pnpm test         # linter tests, and browser tests for component sizes and the reset
 ```
 
 ## Components
@@ -59,7 +61,7 @@ pnpm test         # run the linter's tests
 
 ## Using the package
 
-The sandbox consumes `@hds/ui` from source through the pnpm workspace. The CSS loads with any import, so there's no stylesheet to add. Put your app's global resets in `@layer reset { … }` so hds styles win over them (see [Cascade layers](packages/ui/docs/README.md#cascade-layers)):
+The sandbox consumes `@hds/ui` from source through the pnpm workspace. The CSS, including a modern reset, loads with any import, so there's no stylesheet to add and no reset to write (see [Reset and cascade layers](packages/ui/docs/README.md#reset-and-cascade-layers)):
 
 ```tsx
 import { HdsButton } from '@hds/ui';
@@ -70,8 +72,8 @@ import { HdsButton } from '@hds/ui';
 ## Adding a component
 
 1. Create `packages/ui/src/components/<Name>/` with `<Name>.tsx`, `<Name>.module.css`, `index.ts`, and `README.md`.
-2. Build on the matching Base UI primitive when there is one, and style it with the variables in `packages/ui/src/*.css`.
+2. Build on the matching Base UI primitive when there is one, and style it with the variables in `packages/ui/src/styles/`. It can rely on the reset (border-box sizing, no browser margins, unstyled buttons).
 3. Export it from `packages/ui/src/index.ts`.
-4. Add a playground page in `apps/sandbox/src/pages/` that uses `useDialKit` for its props, and list it in `apps/sandbox/src/App.tsx`.
+4. Add a playground page in `apps/sandbox/src/pages/` that uses `useDialKit` for its props, and list it in `apps/sandbox/src/App.tsx`. If it has sizes, add them to `apps/sandbox/tests/layout.test.js`.
 5. Run the `create-asset` skill to write its asset, then fill in its guideline and its row in `packages/ui/docs/components.md`.
 6. If it has structural rules (a required parent or child), add them to `packages/lint/src/rules.js` with a test fixture.
