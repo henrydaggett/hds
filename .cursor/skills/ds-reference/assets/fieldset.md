@@ -117,7 +117,7 @@ A section with a visible border, card or background is still a DsFieldset; repor
 The DsFieldset can't do any of the following. Don't approximate them. Build the closest supported version (or leave it out) and report it under "Differences" or "Not available":
 
 - Borders, cards, backgrounds or dividers around the section.
-- Collapsible or accordion sections.
+- Collapsible sections. A [`DsAccordion`](accordion.md) can't hold form fields inside a `DsForm`; report it.
 - Multi-column field layouts (e.g. first and last name side by side). Stack the fields and report it.
 - Headings other than the legend (no separate titles inside).
 - Step indicators or numbering.

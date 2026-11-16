@@ -141,14 +141,14 @@ If unclear, use medium (omit `size`).
 | small, compact / large, big                                     | `size="small"` / `size="large"` |
 | disabled, greyed out                                            | `disabled`                     |
 
-Navigation tabs that switch page content are not a DsToggleGroup; see "Not supported".
+Navigation tabs that switch page content are not a DsToggleGroup; use [`DsTabs`](tabs.md).
 
 ## Not supported
 
 The DsToggleGroup can't do any of the following. Don't approximate them. Build the closest supported group (or leave it out) and report it under "Differences" or "Not available":
 
-- Tabs with panels (content that changes below). Leave the tabs out and report them under "Not available".
-- Radio buttons (round inputs with a dot). Leave them out and report them under "Not available".
+- Tabs with panels (content that changes below). Use [`DsTabs`](tabs.md).
+- Radio buttons (round inputs with a dot). Use a [`DsRadioGroup`](radio-group.md).
 - Children other than `DsToggle` (no Buttons, separators or dropdowns inside).
 - A visible label or legend for the group. Report it; `aria-label` names the group invisibly.
 - Coloured tracks or a coloured selected segment.

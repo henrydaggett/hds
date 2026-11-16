@@ -35,8 +35,8 @@ Never import from sub-paths. No CSS import is needed.
 
 - [`DsField`](field.md)s, each with a `name`
 - [`DsFieldset`](fieldset.md)s for titled sections (their Fields also get a `name`)
-- [`DsCheckboxGroup`](checkbox-group.md)s with a `name`
-- Standalone [`DsCheckbox`](checkbox.md)es with a `name`
+- [`DsCheckboxGroup`](checkbox-group.md)s and [`DsRadioGroup`](radio-group.md)s with a `name`
+- Standalone [`DsCheckbox`](checkbox.md)es and [`DsSwitch`](switch.md)es with a `name`
 - One `DsFormActions`, always last, containing [`DsButton`](button.md)s
 
 ```tsx
@@ -82,7 +82,7 @@ Start from the minimal form:
 Then:
 
 1. Add each field, section, group and checkbox in the order shown.
-2. Give every `DsField`, `DsCheckboxGroup` and standalone `DsCheckbox` a `name`: a short lowercase id from its label (`"Email address"` → `"email"`, `"Company name"` → `"company"`). Names are unique.
+2. Give every `DsField`, `DsCheckboxGroup`, `DsRadioGroup` and standalone `DsCheckbox` or `DsSwitch` a `name`: a short lowercase id from its label (`"Email address"` → `"email"`, `"Company name"` → `"company"`). Names are unique.
 3. Mark mandatory controls `required` and give their DsField an `error` message (see [field.md](field.md)).
 4. Put the buttons in one `DsFormActions` at the end, primary action first. Give the submitting button `type="submit"`.
 5. Add `align="end"` to `DsFormActions` if the buttons sit on the right.
@@ -106,7 +106,7 @@ Use this to match forms in an image.
 | Buttons right-aligned                                             | `<DsFormActions align="end">` |
 | Section titles splitting the fields                               | `DsFieldset`s                 |
 
-A form inside a card, modal or page with a heading: build only the form and report the card/modal/heading under "Not available" if no asset covers it.
+A form inside a modal goes in the body (children) of a [`DsDialog`](dialog.md), keeping its own `DsFormActions`; leave the dialog's `footer` out. A form inside a card or page with a heading: build only the form and report the card/heading under "Not available" if no asset covers it.
 
 ## Input-to-prop mapping
 

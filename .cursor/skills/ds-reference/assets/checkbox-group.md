@@ -142,7 +142,7 @@ Two or more checkboxes with no heading and no shared meaning are separate `DsChe
 
 The DsCheckboxGroup can't do any of the following. Don't approximate them. Build the closest supported group (or leave it out) and report it under "Differences" or "Not available":
 
-- Radio groups (pick exactly one, round inputs). Leave them out and report them under "Not available".
+- Radio groups (pick exactly one, round inputs). Use a [`DsRadioGroup`](radio-group.md).
 - A "select all" parent that controls the others (it can't be wired up statically). Build it as a separate `DsCheckbox` with `indeterminate` above the group only if the user asks, and report that it isn't connected.
 - Nested groups or indented sub-options.
 - Columns or grid layouts beyond the wrapping row.

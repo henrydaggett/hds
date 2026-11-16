@@ -26,7 +26,7 @@ Never import from sub-paths. No CSS import is needed.
 
 ## Structure
 
-Exactly one child, which must be a `DsTextInput`, `DsSelect` or `DsCheckbox`. Put control props (`type`, `placeholder`, `required`, `items`…) on the child, as documented in [text-input.md](text-input.md), [select.md](select.md) and [checkbox.md](checkbox.md).
+Exactly one child, which must be a `DsTextInput`, `DsSelect`, `DsCheckbox` or `DsSwitch`. Put control props (`type`, `placeholder`, `required`, `items`…) on the child, as documented in [text-input.md](text-input.md), [select.md](select.md) and [checkbox.md](checkbox.md).
 
 ```tsx
 <DsField label="Email" description="We'll never share it." error="Enter a valid email.">
@@ -36,7 +36,7 @@ Exactly one child, which must be a `DsTextInput`, `DsSelect` or `DsCheckbox`. Pu
 
 Order on screen: label, control, description, error.
 
-With a `DsCheckbox`, the DsField takes no `label`: the text stays on the checkbox, and the DsField only adds `description` and/or `error`. Only use a DsField around a checkbox when one of those is needed.
+With a `DsCheckbox` or [`DsSwitch`](switch.md), the DsField takes no `label`: the text stays on the checkbox or switch, and the DsField only adds `description` and/or `error`. Only use a DsField around a checkbox when one of those is needed.
 
 ```tsx
 <DsField error="You must accept the terms.">
@@ -48,7 +48,7 @@ With a `DsCheckbox`, the DsField takes no `label`: the text stays on the checkbo
 
 | Prop          | Write as                                 | Default (omit) | Notes                                                       |
 | ------------- | ---------------------------------------- | -------------- | ----------------------------------------------------------- |
-| `label`       | `label="Email"`                          | –              | Text above the control. Never with a `DsCheckbox` child.      |
+| `label`       | `label="Email"`                          | –              | Text above the control. Never with a `DsCheckbox` or `DsSwitch` child. |
 | `description` | `description="We'll never share it."`    | –              | Grey helper text under the control.                         |
 | `error`       | `error="Enter a valid email address."`   | –              | Red text under the description. See composing rules.        |
 | `invalid`     | `invalid`                                | off            | Red control border and shows `error` immediately.           |
@@ -69,7 +69,7 @@ Start from the minimal field:
 
 Then add only the props the input needs, in this order:
 
-1. `label="…"` (skip for a `DsCheckbox` child)
+1. `label="…"` (skip for a `DsCheckbox` or `DsSwitch` child)
 2. `name="…"` if it's inside a `DsForm`
 3. `description="…"` if there's helper text
 4. `invalid` if the field is shown in an error state
@@ -98,7 +98,7 @@ Every compatible prop at once, for reference only:
 - `invalid` without `error` gives a red border and no message. Only use it when the input shows a red field with no text.
 - Prefer `disabled` on the DsField over `disabled` on the control: it greys out the label too.
 - `required` goes on the control, not the DsField. There is no required asterisk.
-- One control per DsField. Several checkboxes under one heading are a [`DsCheckboxGroup`](checkbox-group.md), which never goes in a DsField.
+- One control per DsField. Several checkboxes under one heading are a [`DsCheckboxGroup`](checkbox-group.md), and radio buttons are a [`DsRadioGroup`](radio-group.md). Neither ever goes in a DsField.
 - Fields stack with even spacing inside a `DsForm` or `DsFieldset`. Outside them, place Fields one after another without wrappers unless the layout needs one.
 - Open tag on one line if it fits in ~100 characters, otherwise one attribute per line.
 
@@ -146,9 +146,9 @@ The DsField can't do any of the following. Don't approximate them with other pro
 - Required asterisks or "(optional)" markers. Put `required` on the control and report the marker.
 - Labels beside the control (horizontal layout). Use the default stacked layout and report it.
 - Success or warning states (green/amber text or borders).
-- Icons in the label, tooltips or info buttons next to the label.
+- Icons in the label, tooltips or info buttons next to the label. [`DsTooltip`](tooltip.md) only wraps buttons.
 - Character counts or links in the description.
-- Controls other than `DsTextInput`, `DsSelect` and `DsCheckbox`, or more than one control.
+- Controls other than `DsTextInput`, `DsSelect`, `DsCheckbox` and `DsSwitch`, or more than one control.
 - Any custom `className` or `style`.
 
 ## label

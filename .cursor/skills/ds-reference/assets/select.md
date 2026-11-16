@@ -173,7 +173,7 @@ The DsSelect can't do any of the following. Don't approximate them with other pr
 - Option groups or headings, separators, descriptions under options.
 - Icons, avatars or flags in the trigger or options.
 - Showing the dropdown open in the snippet.
-- Action menus (a button that opens commands like Edit / Delete). Leave it out and report it under "Not available".
+- Action menus (a button that opens commands like Edit / Delete). Use a [`DsMenu`](menu.md).
 - Fixed or custom widths. It always fills its container.
 - Sizes other than small, medium and large.
 - Any custom `className` or `style`.

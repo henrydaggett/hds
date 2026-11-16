@@ -1,6 +1,6 @@
 # Asset template
 
-Section order for `.cursor/skills/ds-build/assets/<name>.md`. Replace `<...>` placeholders. Drop sections that don't apply. See [../ds-build/assets/button.md](../ds-build/assets/button.md) for a complete example.
+Section order for `.cursor/skills/ds-reference/assets/<name>.md`. Replace `<...>` placeholders. Drop sections that don't apply. See [../ds-reference/assets/button.md](../ds-reference/assets/button.md) for a complete example.
 
 ````markdown
 # <Name>

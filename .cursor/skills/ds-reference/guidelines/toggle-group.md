@@ -5,7 +5,7 @@
 - Use a single-choice DsToggleGroup to switch between a few views or modes, like List / Board.
 - Use a multiple DsToggleGroup for a toolbar of independent settings, like Bold / Italic / Underline.
 - Use a DsSelect instead when there are more than five options.
-- Don't use a DsToggleGroup for tabs that change page content.
+- Don't use a DsToggleGroup for tabs that change page content; use DsTabs.
 
 ## Content
 

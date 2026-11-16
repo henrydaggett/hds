@@ -1,17 +1,22 @@
 ---
-name: ds-build
-description: Generates a single static React snippet built only from the ds-build design system components documented in this skill's assets and guidelines folders. Use when the user asks to build, generate, recreate or mock up UI from a text prompt, an image/screenshot, or a code snippet using the design system, or invokes /ds-build.
+name: ds-prototype
+description: Generates a single static, single-page React snippet built only from the ds-build design system components documented in ../ds-reference. Use when the user asks to prototype, mock up or recreate UI from a text prompt, an image/screenshot, or a code snippet using the design system, or invokes /ds-prototype.
 disable-model-invocation: true
 ---
 
-# ds-build UI Generator
+# ds-prototype
 
-Turns a user prompt (text, an image, or a code snippet) into one copy/paste-ready React snippet built only from design system components.
+Turns a user prompt (text, an image, or a code snippet) into one copy/paste-ready, single-page React snippet built only from design system components. Static only: no state or handlers. For interactive or production code, this isn't the right skill.
 
 ## Folders
 
-- `assets/` - one file per component (e.g. `assets/button.md`). The source of truth for imports, props, allowed values, states and usage examples.
-- `guidelines/` - one file per component (e.g. `guidelines/button.md`), plus any global guidelines. When and how to use each component, layout patterns, spacing, and dos/don'ts.
+The design system docs are shared with the other ds-build skills and live in [../ds-reference](../ds-reference/README.md):
+
+- `../ds-reference/components.md` - the catalog of every component. Use it to find the right component for each element.
+- `../ds-reference/assets/` - one file per component (e.g. `assets/button.md`). The source of truth for imports, props, allowed values, states and usage examples.
+- `../ds-reference/guidelines/` - one file per component (e.g. `guidelines/button.md`), plus any global guidelines. When and how to use each component, layout patterns, spacing, and dos/don'ts.
+
+Below, `assets/` and `guidelines/` mean those folders in `../ds-reference`.
 
 File names are the lowercase component name without the `Ds` prefix: `DsButton` → `button.md`, `DsCheckboxGroup` → `checkbox-group.md`. Every component and icon is exported with the `Ds` prefix.
 
@@ -26,6 +31,7 @@ File names are the lowercase component name without the `Ds` prefix: `DsButton` 
 ### Additional rules
 
 - **Static only**: no state, effects, handlers, data fetching or props on the exported component. Hardcode the content shown or described by the user.
+- **Open overlays**: when the input shows a dialog, menu or tooltip open, use its documented `defaultOpen` prop. Never fake an overlay with layout.
 - **Imports come from the asset file**: use the exact import path and named exports documented there. Never invent an import path.
 - **Props come from the asset file**: only use prop names and values the asset documents. Don't pass undocumented props, even if they'd probably work.
 - **Missing or empty docs**: if an element has no asset file, or its asset file is empty, don't approximate it with another component or raw HTML. Leave it out and list it under "Not available" in the response.
@@ -60,7 +66,7 @@ Write the list down (element → likely component → props/state) before moving
 
 Before writing any code read the relevent component files in assets and guidelines for every element that you plan to use. Match each element to it's corresponding asset file and use the documented setup exactly.
 
-- Use the Glob tool on `assets/*.md` and `guidelines/*.md` (relative to this skill folder) to see what's available. Don't rely on memory.
+- Read `../ds-reference/components.md` and use the Glob tool on `../ds-reference/assets/*.md` and `../ds-reference/guidelines/*.md` (relative to this skill folder) to see what's available. Don't rely on memory.
 - Read any global guideline files (anything in `guidelines/` that isn't named after a component) before the component files.
 - Read both `assets/<component>.md` and `guidelines/<component>.md` for every component on your list.
 - Read `assets/typography.md` and `guidelines/typography.md` if the UI has any headings or text, and `assets/spacing.md` and `guidelines/spacing.md` if it has any gaps, padding or margins.

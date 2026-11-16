@@ -1,14 +1,14 @@
 ---
 name: create-asset
-description: Creates or updates a component asset file for the ds-build UI generator skill (.cursor/skills/ds-build/assets/<component>.md) from the component's source in packages/ui. Use when the user asks to create, add, document, or update an asset for a design system component, or invokes /create-asset.
+description: Creates or updates a component asset file in the shared ds-build reference (.cursor/skills/ds-reference/assets/<component>.md) from the component's source in packages/ui. Use when the user asks to create, add, document, or update an asset for a design system component, or invokes /create-asset.
 disable-model-invocation: true
 ---
 
 # Create Asset
 
-Writes `.cursor/skills/ds-build/assets/<component>.md` for one design system component, so the `ds-build` skill can build with it from text, image or code input without guessing.
+Writes `.cursor/skills/ds-reference/assets/<component>.md` for one design system component, so the ds-build skills (prototype now; build, lint and ask later) can use it without guessing.
 
-The finished DsButton asset is the reference example: [../ds-build/assets/button.md](../ds-build/assets/button.md). The section template is in [template.md](template.md).
+The finished DsButton asset is the reference example: [../ds-reference/assets/button.md](../ds-reference/assets/button.md). The section template is in [template.md](template.md).
 
 ## Rules
 
@@ -67,7 +67,7 @@ For image input, resolve the CSS through `tokens.css` to concrete values for eac
 
 ### 4. Write the asset
 
-Write `.cursor/skills/ds-build/assets/<name>.md` (lowercase file name) using [template.md](template.md). Drop sections that don't apply (e.g. no "Icon" table if there are no icons); don't leave empty headings.
+Write `.cursor/skills/ds-reference/assets/<name>.md` (lowercase file name) using [template.md](template.md). Drop sections that don't apply (e.g. no "Icon" table if there are no icons); don't leave empty headings.
 
 Key requirements:
 
@@ -90,6 +90,8 @@ Key requirements:
 
 ### 6. Hand off
 
-- If `.cursor/skills/ds-build/guidelines/<name>.md` doesn't exist, create it empty.
+- If `.cursor/skills/ds-reference/guidelines/<name>.md` doesn't exist, create it empty.
+- Add or update the component's row in `.cursor/skills/ds-reference/components.md` (exports, use for, what it replaces, Base UI part, links).
+- Search the other assets for the component's name and for what it does (e.g. "switch", "radio"). Update any "Not supported", mapping or translation entry that sends users elsewhere for it.
 - In your response, list usage rules you found (e.g. in the README) that belong in the guideline, and any source inconsistencies (README vs `.tsx`). Don't silently pick one.
-- No change to `ds-build/SKILL.md` is needed; it discovers assets by globbing `assets/*.md`.
+- No change to any skill's `SKILL.md` is needed; they discover assets by globbing `ds-reference/assets/*.md`.

@@ -100,7 +100,7 @@ Each works in every size and can be disabled.
 
 ## Visual identification
 
-Use this to match checkboxes in an image. A round control is a radio button, which isn't supported.
+Use this to match checkboxes in an image. A round control is a radio button: use a [`DsRadioGroup`](radio-group.md). A pill with a sliding knob is a [`DsSwitch`](switch.md).
 
 | Looks like                                                       | Means             |
 | ---------------------------------------------------------------- | ----------------- |
@@ -134,14 +134,15 @@ If unclear, use medium (omit `size`).
 | disabled, greyed out                              | `disabled`                   |
 | small, compact / large, big                       | `size="small"` / `size="large"` |
 | list of checkboxes, "choose any", multiple options under a heading | `DsCheckboxGroup`, see [checkbox-group.md](checkbox-group.md) |
-| switch, on/off slider                             | Not supported (see below)    |
+| switch, on/off slider                             | [`DsSwitch`](switch.md)      |
+| radio buttons, choose one                         | [`DsRadioGroup`](radio-group.md) |
 
 ## Not supported
 
 The DsCheckbox can't do any of the following. Don't approximate them with other props, wrappers, raw HTML or styles. Build the closest supported checkbox (or leave it out) and report it under "Differences" or "Not available":
 
-- Radio buttons (single choice, round). Leave them out and report them under "Not available". Don't substitute checkboxes.
-- Switches. Leave them out and report them under "Not available".
+- Radio buttons (single choice, round). Use a [`DsRadioGroup`](radio-group.md); don't substitute checkboxes.
+- Switches. Use a [`DsSwitch`](switch.md).
 - DsCheckbox cards or tiles (a bordered box around the checkbox and text).
 - A description line under the label. Wrap in a `DsField` with `description` if the user asks for helper text.
 - Links or bold text inside the label. Use plain text and report it.
@@ -226,5 +227,5 @@ import { DsCheckbox } from '@ds-build/ui';
 
 - Each `form-check` becomes one `DsCheckbox`; the `<label>` text moves to `label`; `checked` → `defaultChecked`.
 - The link is flattened to text: **Differences:** "terms" is plain text, not a link.
-- The radio button is left out: **Not available:** "Free" radio button.
+- The radio button belongs in a [`DsRadioGroup`](radio-group.md) with the other plan options. On its own here it has no group label or siblings, so it's left out: **Not available:** "Free" radio button (needs its group).
 - `id`, `for` and classes are dropped.

@@ -2,7 +2,7 @@
 
 A small React design system built on [Base UI](https://base-ui.com), plus a Vite sandbox with [DialKit](https://www.dialkit.dev) for tweaking components live.
 
-The longer-term goal is an agent skill that generates UI from these components. Each component ships a `README.md` with its props, rules, and examples so that skill can read it.
+Agent skills in `.cursor/skills` generate and check UI built from these components. `ds-prototype` turns text, images or code into a static single-page snippet; `ds-build`, `ds-lint` and `ds-ask` are planned. They all read the shared docs in `.cursor/skills/ds-reference`. See [.cursor/skills/README.md](.cursor/skills/README.md).
 
 ## Layout
 
@@ -11,6 +11,7 @@ packages/ui        @ds-build/ui: tokens, icons, components
   src/tokens.css   CSS variables (color, radius, spacing, type, motion)
   src/components/  one folder per component (tsx, CSS module, README)
 apps/sandbox       Vite + React app for testing components with DialKit
+.cursor/skills     agent skills; ds-reference holds the docs they share
 ```
 
 ## Run locally
@@ -43,6 +44,14 @@ pnpm build        # typecheck the UI package and build the sandbox
 | DsField | [packages/ui/src/components/Field/README.md](packages/ui/src/components/Field/README.md) |
 | DsFieldset | [packages/ui/src/components/Fieldset/README.md](packages/ui/src/components/Fieldset/README.md) |
 | DsForm | [packages/ui/src/components/Form/README.md](packages/ui/src/components/Form/README.md) |
+| DsRadioGroup, DsRadio | [packages/ui/src/components/RadioGroup/README.md](packages/ui/src/components/RadioGroup/README.md) |
+| DsSwitch | [packages/ui/src/components/Switch/README.md](packages/ui/src/components/Switch/README.md) |
+| DsTabs, DsTab | [packages/ui/src/components/Tabs/README.md](packages/ui/src/components/Tabs/README.md) |
+| DsAccordion, DsAccordionItem | [packages/ui/src/components/Accordion/README.md](packages/ui/src/components/Accordion/README.md) |
+| DsDialog, DsDialogClose | [packages/ui/src/components/Dialog/README.md](packages/ui/src/components/Dialog/README.md) |
+| DsMenu, DsMenuItem, DsMenuSeparator | [packages/ui/src/components/Menu/README.md](packages/ui/src/components/Menu/README.md) |
+| DsTooltip | [packages/ui/src/components/Tooltip/README.md](packages/ui/src/components/Tooltip/README.md) |
+| DsSeparator | [packages/ui/src/components/Separator/README.md](packages/ui/src/components/Separator/README.md) |
 
 ## Using the package
 
@@ -60,4 +69,5 @@ import { DsButton } from '@ds-build/ui';
 1. Create `packages/ui/src/components/<Name>/` with `<Name>.tsx`, `<Name>.module.css`, `index.ts`, and `README.md`.
 2. Build on the matching Base UI primitive when there is one, and style it with tokens from `tokens.css`.
 3. Export it from `packages/ui/src/index.ts`.
-4. Add a playground page in `apps/sandbox/src/pages/` that uses `useDialKit` for its props.
+4. Add a playground page in `apps/sandbox/src/pages/` that uses `useDialKit` for its props, and list it in `apps/sandbox/src/App.tsx`.
+5. Run the `create-asset` skill to write its asset, then fill in its guideline and its row in `.cursor/skills/ds-reference/components.md`.

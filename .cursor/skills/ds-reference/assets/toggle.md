@@ -125,6 +125,9 @@ Icon-only toggles are square (width = height). Text is medium weight (500). If u
 | Lines aligned right         | `iconNode={<DsAlignRightIcon />}` |
 | Plus `+`                    | `iconNode={<DsPlusIcon />}`       |
 | Tick / check mark           | `iconNode={<DsCheckIcon />}`      |
+| Three dots `⋯`              | `iconNode={<DsMoreIcon />}`       |
+| Pencil                      | `iconNode={<DsEditIcon />}`       |
+| Cross `✕`                   | `iconNode={<DsCloseIcon />}`      |
 | Any other icon              | Leave the icon out (keep the label; for icon-only, leave the toggle out) and report it |
 
 ## Input-to-prop mapping
@@ -140,13 +143,13 @@ Icon-only toggles are square (width = height). Text is medium weight (500). If u
 | disabled, greyed out, unavailable                   | `disabled`                  |
 | segmented control, button group with one selected, toolbar of toggles | `DsToggleGroup`, see [toggle-group.md](toggle-group.md) |
 
-A switch (sliding pill with a knob) isn't a DsToggle; see "Not supported".
+A switch (sliding pill with a knob) isn't a DsToggle; use a [`DsSwitch`](switch.md).
 
 ## Not supported
 
 The DsToggle can't do any of the following. Don't approximate them with other props, wrappers, raw HTML or styles. Build the closest supported toggle (or leave it out) and report it under "Differences" or "Not available":
 
-- Switches (sliding pill with a knob). Leave it out and report it under "Not available". Don't substitute a DsToggle or DsCheckbox.
+- Switches (sliding pill with a knob). Use a [`DsSwitch`](switch.md); don't substitute a DsToggle or DsCheckbox.
 - Colours (blue, red) or a coloured pressed state. Pressed is always light grey.
 - Trailing icons. Use a leading icon and report it.
 - Icons other than those listed above.
@@ -209,13 +212,14 @@ Input:
 Output:
 
 ```tsx
-import { DsToggle, DsBoldIcon, DsItalicIcon } from '@ds-build/ui';
+import { DsToggle, DsSwitch, DsBoldIcon, DsItalicIcon } from '@ds-build/ui';
 
 <DsToggle iconNode={<DsBoldIcon />} defaultPressed>Bold</DsToggle>
 <DsToggle size="small" iconNode={<DsItalicIcon />} aria-label="Italic" />
+<DsSwitch label="Dark mode" />
 ```
 
 - `aria-pressed="true"` / `active` → `defaultPressed`; `btn-sm` → `size="small"`.
 - The `<i>` icons become `iconNode`. The icon-only button's `title` becomes `aria-label`.
 - `onclick` and classes are dropped (static output).
-- The switch is left out and reported: **Not available:** "Dark mode" switch.
+- The `form-switch` is a [`DsSwitch`](switch.md), not a toggle.
