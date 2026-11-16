@@ -1,0 +1,8 @@
+.panel {
+  padding: 16px 12px;
+  margin-top: 10px;
+  color: #18181b;
+  background: rgb(0 0 0 / 0.5);
+  border-color: var(--hds-color-bordr);
+  gap: var(--hds-space-2);
+}

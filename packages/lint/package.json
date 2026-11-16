@@ -1,0 +1,24 @@
+{
+  "name": "@hds/lint",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Checks code against the hds design system: technical rules and usage rules.",
+  "bin": {
+    "hds-lint": "./bin/hds-lint.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@hds/ui": "workspace:*",
+    "typescript": "~6.0.2"
+  }
+}

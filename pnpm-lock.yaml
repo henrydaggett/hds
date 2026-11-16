@@ -6,7 +6,11 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      '@hds/lint':
+        specifier: workspace:*
+        version: link:packages/lint
 
   apps/sandbox:
     dependencies:
@@ -68,6 +72,15 @@ importers:
       vite:
         specifier: ^8.3.0
         version: 8.3.2(@types/node@24.19.1)
+
+  packages/lint:
+    dependencies:
+      '@hds/ui':
+        specifier: workspace:*
+        version: link:../ui
+      typescript:
+        specifier: ~6.0.2
+        version: 6.0.3
 
   packages/ui:
     dependencies:

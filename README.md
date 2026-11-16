@@ -2,16 +2,18 @@
 
 A small React design system built on [Base UI](https://base-ui.com), plus a Vite sandbox with [DialKit](https://www.dialkit.dev) for tweaking components live.
 
-Agent skills in `.cursor/skills` generate and check UI built from these components. `hds-prototype` turns text, images or code into a static single-page snippet; `hds-build`, `hds-lint` and `hds-ask` are planned. They all read the shared docs in `.cursor/skills/hds-reference`. See [.cursor/skills/README.md](.cursor/skills/README.md).
+Agent skills in `.cursor/skills` prototype, build, lint and answer questions about UI built from these components. They all read one knowledge base, the docs in [`packages/ui/docs`](packages/ui/docs/README.md), which ship with the package. See [.cursor/skills/README.md](.cursor/skills/README.md).
 
 ## Layout
 
 ```
 packages/ui        @hds/ui: tokens, icons, components
+  docs/            the design system docs every skill reads (catalog, assets, guidelines)
   src/tokens.css   CSS variables (color, radius, spacing, type, motion)
   src/components/  one folder per component (tsx, CSS module, README)
+packages/lint      @hds/lint: the hds-lint command (technical and usage rules)
 apps/sandbox       Vite + React app for testing components with DialKit
-.cursor/skills     agent skills; hds-reference holds the docs they share
+.cursor/skills     agent skills: hds-prototype, hds-build, hds-lint, hds-ask, create-asset
 ```
 
 ## Run locally
@@ -28,6 +30,8 @@ Other scripts:
 ```bash
 pnpm typecheck    # typecheck every package
 pnpm build        # typecheck the UI package and build the sandbox
+pnpm lint:hds     # check apps/ against the design system (see packages/lint)
+pnpm test         # run the linter's tests
 ```
 
 ## Components
@@ -70,4 +74,5 @@ import { HdsButton } from '@hds/ui';
 2. Build on the matching Base UI primitive when there is one, and style it with tokens from `tokens.css`.
 3. Export it from `packages/ui/src/index.ts`.
 4. Add a playground page in `apps/sandbox/src/pages/` that uses `useDialKit` for its props, and list it in `apps/sandbox/src/App.tsx`.
-5. Run the `create-asset` skill to write its asset, then fill in its guideline and its row in `.cursor/skills/hds-reference/components.md`.
+5. Run the `create-asset` skill to write its asset, then fill in its guideline and its row in `packages/ui/docs/components.md`.
+6. If it has structural rules (a required parent or child), add them to `packages/lint/src/rules.js` with a test fixture.

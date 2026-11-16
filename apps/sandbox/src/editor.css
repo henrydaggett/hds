@@ -1,3 +1,4 @@
+/* hds-lint-disable hardcoded-color hardcoded-spacing -- the code editor uses the One Dark theme, not hds. */
 /* Shared by the generator editor and the sandbox snippet viewers. */
 
 .toolbar {

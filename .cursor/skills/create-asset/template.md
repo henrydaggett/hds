@@ -1,6 +1,6 @@
 # Asset template
 
-Section order for `.cursor/skills/hds-reference/assets/<name>.md`. Replace `<...>` placeholders. Drop sections that don't apply. See [../hds-reference/assets/button.md](../hds-reference/assets/button.md) for a complete example.
+Section order for `packages/ui/docs/assets/<name>.md`. Replace `<...>` placeholders. Drop sections that don't apply. See [packages/ui/docs/assets/button.md](../../../packages/ui/docs/assets/button.md) for a complete example.
 
 ````markdown
 # <Name>

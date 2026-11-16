@@ -53,6 +53,7 @@ export function GeneratorApp() {
           <a className="toolbar-button" href="/">
             Back to components
           </a>
+          {/* hds-lint-disable-next-line raw-element -- part of the dark code editor chrome */}
           <button type="button" className="toolbar-button" onClick={reset}>
             Reset
           </button>

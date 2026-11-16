@@ -1,6 +1,6 @@
 ---
 name: hds-prototype
-description: Generates a single static, single-page React snippet built only from the hds design system components documented in ../hds-reference. Use when the user asks to prototype, mock up or recreate UI from a text prompt, an image/screenshot, or a code snippet using the design system, or invokes /hds-prototype.
+description: Generates a single static, single-page React snippet built only from the hds design system components documented in the hds docs (packages/ui/docs). Use when the user asks to prototype, mock up or recreate UI from a text prompt, an image/screenshot, or a code snippet using the design system, or invokes /hds-prototype.
 disable-model-invocation: true
 ---
 
@@ -10,13 +10,13 @@ Turns a user prompt (text, an image, or a code snippet) into one copy/paste-read
 
 ## Folders
 
-The design system docs are shared with the other hds skills and live in [../hds-reference](../hds-reference/README.md):
+The design system docs are shared by every hds skill. They live in the docs root: `packages/ui/docs/` in this repo, or `node_modules/@hds/ui/docs/` in a project that installs the package. See [its README](../../../packages/ui/docs/README.md).
 
-- `../hds-reference/components.md` - the catalog of every component. Use it to find the right component for each element.
-- `../hds-reference/assets/` - one file per component (e.g. `assets/button.md`). The source of truth for imports, props, allowed values, states and usage examples.
-- `../hds-reference/guidelines/` - one file per component (e.g. `guidelines/button.md`), plus any global guidelines. When and how to use each component, layout patterns, spacing, and dos/don'ts.
+- `components.md` - the catalog of every component. Use it to find the right component for each element.
+- `assets/` - one file per component (e.g. `assets/button.md`). The source of truth for imports, props, allowed values, states and usage examples.
+- `guidelines/` - one file per component (e.g. `guidelines/button.md`), plus any global guidelines. When and how to use each component, layout patterns, spacing, and dos/don'ts.
 
-Below, `assets/` and `guidelines/` mean those folders in `../hds-reference`.
+Below, `components.md`, `assets/` and `guidelines/` mean those paths in the docs root.
 
 File names are the lowercase component name without the `Ds` prefix: `HdsButton` → `button.md`, `HdsCheckboxGroup` → `checkbox-group.md`. Every component and icon is exported with the `Ds` prefix.
 
@@ -66,7 +66,7 @@ Write the list down (element → likely component → props/state) before moving
 
 Before writing any code read the relevent component files in assets and guidelines for every element that you plan to use. Match each element to it's corresponding asset file and use the documented setup exactly.
 
-- Read `../hds-reference/components.md` and use the Glob tool on `../hds-reference/assets/*.md` and `../hds-reference/guidelines/*.md` (relative to this skill folder) to see what's available. Don't rely on memory.
+- Read `components.md` and use the Glob tool on `assets/*.md` and `guidelines/*.md` in the docs root to see what's available. Don't rely on memory.
 - Read any global guideline files (anything in `guidelines/` that isn't named after a component) before the component files.
 - Read both `assets/<component>.md` and `guidelines/<component>.md` for every component on your list.
 - Read `assets/typography.md` and `guidelines/typography.md` if the UI has any headings or text, and `assets/spacing.md` and `guidelines/spacing.md` if it has any gaps, padding or margins.

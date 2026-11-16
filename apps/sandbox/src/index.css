@@ -85,6 +85,7 @@ p {
 .stage-footer {
   position: relative;
   border-top: 1px solid var(--hds-color-border);
+  /* hds-lint-disable-next-line hardcoded-color -- matches the One Dark code editor */
   background: #282c34;
   color-scheme: dark;
 }
@@ -94,6 +95,7 @@ p {
   top: 20px;
   right: 20px;
   z-index: 2;
+  /* hds-lint-disable-next-line hardcoded-color -- matches the One Dark code editor */
   background: #282c34;
 }
 
@@ -118,7 +120,7 @@ p {
   }
 
   .content {
-    padding: 24px var(--hds-space-4) 64px;
+    padding: var(--hds-space-6) var(--hds-space-4) 64px;
   }
 
   .stage {

@@ -26,6 +26,7 @@ export function Stage({
       </div>
       <div className="stage-footer">
         <SnippetView value={snippet} />
+        {/* hds-lint-disable-next-line raw-element -- part of the dark code editor chrome */}
         <button
           type="button"
           className="toolbar-button snippet-copy"

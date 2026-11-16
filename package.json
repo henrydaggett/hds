@@ -6,6 +6,11 @@
   "scripts": {
     "dev": "pnpm --filter sandbox dev",
     "build": "pnpm -r build",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "lint:hds": "hds-lint apps",
+    "test": "pnpm -r test"
+  },
+  "devDependencies": {
+    "@hds/lint": "workspace:*"
   }
 }
