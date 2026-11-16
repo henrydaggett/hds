@@ -50,7 +50,7 @@ export function GeneratorApp() {
     <div className="generator">
       <div className="editor-panel">
         <div className="toolbar">
-          <a className="toolbar-button" href="/">
+          <a className="toolbar-button" href={import.meta.env.BASE_URL}>
             Back to components
           </a>
           {/* hds-lint-disable-next-line raw-element -- part of the dark code editor chrome */}

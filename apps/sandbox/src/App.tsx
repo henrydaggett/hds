@@ -70,7 +70,7 @@ export default function App() {
           </a>
         ))}
         <div className="tab-external-row">
-          <a className="tab tab-external" href="/generator/">
+          <a className="tab tab-external" href={`${import.meta.env.BASE_URL}generator/`}>
             UI generator
             <HdsArrowRightIcon />
           </a>
