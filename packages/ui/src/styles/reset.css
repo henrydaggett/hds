@@ -1,0 +1,215 @@
+/*
+ * The hds reset. It loads with the package, in the lowest cascade layer, so
+ * anything an app writes overrides it. Components rely on it: every size in
+ * the docs assumes border-box sizing and no browser margins.
+ *
+ * Built from modern-normalize, Tailwind's Preflight, and Josh Comeau's and
+ * Andy Bell's modern resets. It's lighter than Preflight: content lists,
+ * links and native inputs keep their browser look, so plain content still
+ * reads well. Buttons are stripped because hds components draw their own.
+ */
+
+@layer reset, hds.variables, hds.components, hds.typography, hds.spacing;
+
+@layer reset {
+  /* Sizes include padding and border. Every hds size depends on this. */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  ::backdrop {
+    box-sizing: border-box;
+  }
+
+  /* No browser margins: space content with the spacing classes. */
+  * {
+    margin: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    tab-size: 4;
+    line-height: 1.5;
+    font-family: var(--hds-font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--hds-color-surface);
+    color: var(--hds-color-text);
+  }
+
+  /* Text: the typography classes set size and weight, so headings start plain. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: inherit;
+    font-weight: inherit;
+    text-wrap: balance;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    overflow-wrap: break-word;
+  }
+
+  p,
+  li,
+  figcaption {
+    text-wrap: pretty;
+  }
+
+  b,
+  strong {
+    font-weight: bolder;
+  }
+
+  small {
+    font-size: 80%;
+  }
+
+  sub,
+  sup {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  abbr[title] {
+    text-decoration: underline dotted;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+    font-size: 1em;
+  }
+
+  /* Links without a class keep their underline but follow the text colour. */
+  a:not([class]) {
+    color: currentColor;
+    text-decoration-skip-ink: auto;
+  }
+
+  /* Lists used for layout (role="list") lose their bullets; content lists keep them. */
+  :where(ul, ol)[role='list'] {
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Media fits its container and doesn't sit on the text baseline. */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  img,
+  video {
+    height: auto;
+  }
+
+  /* Form controls use the page's font and colour, not the browser's. */
+  button,
+  input,
+  select,
+  optgroup,
+  textarea {
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+
+  /* Buttons start unstyled: hds components draw their own. */
+  button {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  ::placeholder {
+    opacity: 1;
+    color: var(--hds-color-text-muted);
+  }
+
+  fieldset {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  legend {
+    padding: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-color: inherit;
+    text-indent: 0;
+  }
+
+  hr {
+    height: 0;
+    border: 0;
+    border-top: 1px solid;
+    color: inherit;
+  }
+
+  summary {
+    display: list-item;
+  }
+
+  /* `hidden` always hides, even on elements whose display a stylesheet sets. */
+  [hidden]:where(:not([hidden='until-found'])) {
+    display: none !important;
+  }
+
+  /* Anchored headings don't end up flush against the top of the viewport. */
+  :target {
+    scroll-margin-block: 5ex;
+  }
+
+  /* Respect reduced motion everywhere, including hds components. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

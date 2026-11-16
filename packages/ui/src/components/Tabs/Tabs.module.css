@@ -34,13 +34,8 @@
     display: inline-flex;
     align-items: center;
     height: var(--tabs-height);
-    margin: 0;
-    padding: 0;
-    border: 0;
     border-radius: var(--hds-radius-sm);
-    background: none;
     color: var(--hds-color-text-muted);
-    font-family: inherit;
     font-size: var(--tabs-font-size);
     font-weight: var(--hds-font-weight-medium);
     line-height: 1;

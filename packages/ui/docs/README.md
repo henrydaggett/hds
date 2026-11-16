@@ -15,7 +15,7 @@ It ships inside the `@hds/ui` package, so the docs always match the code next to
 | `assets/<name>.md` | The static API: exact JSX, allowed props and values, visual identification, input-to-prop mapping, what's not supported. Written for generating code without state or handlers. | How to write a component. |
 | `guidelines/<name>.md` | Usage rules: when to use it, content, layout. | Whether a usage is right. |
 | [`../src/components/<Name>/README.md`](../src/components) | The full runtime API, including controlled props and event handlers. | Interactive code. |
-| [`../src/color.css`](../src/color.css), [`spacing.css`](../src/spacing.css), [`typography.css`](../src/typography.css), [`radius.css`](../src/radius.css), [`focus.css`](../src/focus.css), [`motion.css`](../src/motion.css) | One file per concept: its `--hds-*` variables, plus the classes for typography and spacing. | Raw values. |
+| [`reset.css`](../src/styles/reset.css), [`color.css`](../src/styles/color.css), [`spacing.css`](../src/styles/spacing.css), [`typography.css`](../src/styles/typography.css), [`radius.css`](../src/styles/radius.css), [`focus.css`](../src/styles/focus.css), [`motion.css`](../src/styles/motion.css) in `../src/styles/` | The reset, and one file per concept: its `--hds-*` variables, plus the classes for typography and spacing. | Raw values. |
 
 File names are the lowercase component name without the `Ds` prefix: `HdsCheckboxGroup` → `checkbox-group.md`. Typography and spacing are documented as `typography.md` and `spacing.md` but aren't components.
 
@@ -33,27 +33,29 @@ The skills live in `.cursor/skills/`. Each reads from here and keeps no copy of 
 
 The `@hds/lint` package (`packages/lint`) is the script behind `hds-lint`. It reads exports, variables, classes and prop defaults from this package, so it stays in sync on its own.
 
-## Cascade layers
+## Reset and cascade layers
 
-All hds CSS sits in cascade layers, declared once at the top of every concept file:
+hds ships a reset ([`reset.css`](../src/styles/reset.css)) that loads with the package. It sets border-box sizing everywhere, removes browser margins, makes form controls use the page font, fits media to its container, strips button chrome, sets the body font and colours, and respects reduced motion. Content lists, links and native inputs keep their browser look. Every component size in these docs assumes it.
+
+All hds CSS sits in cascade layers, declared at the top of every file in `src/styles/`:
 
 ```css
 @layer reset, hds.variables, hds.components, hds.typography, hds.spacing;
 ```
 
-Later layers win, whatever order the files load in. So spacing classes beat the typography classes' margin reset, and both beat component styles.
+Later layers win, whatever order the files load in: the reset is lowest, spacing classes beat the typography classes' margin reset, and both beat component styles.
 
 For apps this means:
 
-- **Resets go in `@layer reset { … }`.** It's below every hds layer, so hds styles win over it. A reset outside a layer (`p { margin: 0 }`, `* { … }`) overrides every hds style; `hds-lint` warns about it (`unlayered-reset`).
-- **App CSS outside a layer overrides hds.** That's the way to theme, e.g. `:root { --hds-color-primary: #6d28d9; }`. Don't use it to restyle components; see the rules below.
+- **Don't add your own reset.** hds already has one. An app reset outside a layer (`p { margin: 0 }`, `* { … }`) overrides every hds style, including the spacing classes; `hds-lint` warns about it (`unlayered-reset`). If you need extra base rules, put them in `@layer reset { … }`.
+- **App CSS outside a layer overrides hds.** That's the way to change base styles and theme, e.g. `body { background: var(--hds-color-neutral-50); }` or `:root { --hds-color-primary: #6d28d9; }`. Don't use it to restyle components; see the rules below.
 
 ## Rules for every skill
 
 - Only the components in [components.md](components.md) exist. Never invent a component, prop, class or import path.
 - Import everything from the package root, `@hds/ui`. Never from sub-paths.
 - Style text with the typography classes and space with the spacing classes. Never hardcode colours, sizes or spacing that a variable or class covers.
-- Put global resets in `@layer reset { … }`.
+- Don't add a reset: hds ships one. Extra base rules go in `@layer reset { … }`.
 - When the input asks for something the system can't do, say so instead of approximating it.
 
 ## Keeping it in sync
@@ -66,3 +68,4 @@ When a component is added or changed, update in this order (the `create-asset` s
 4. Its row in [components.md](components.md)
 5. Any other asset that listed it under "Not supported" or pointed elsewhere for it
 6. Lint rules in `packages/lint/src/rules.js`, if it has a structural rule (a required parent or child, an invalid combination)
+7. Size cases in `apps/sandbox/tests/layout.test.js`, if it has sizes

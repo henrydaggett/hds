@@ -1,11 +1,12 @@
 // The CSS loads with any import from @hds/ui. Each file declares the cascade
 // layer order itself, so the import order doesn't matter.
-import './color.css';
-import './focus.css';
-import './radius.css';
-import './motion.css';
-import './typography.css';
-import './spacing.css';
+import './styles/reset.css';
+import './styles/color.css';
+import './styles/focus.css';
+import './styles/radius.css';
+import './styles/motion.css';
+import './styles/typography.css';
+import './styles/spacing.css';
 
 export * from './components/Button';
 export * from './components/Toggle';

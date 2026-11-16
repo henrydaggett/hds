@@ -38,7 +38,7 @@ Read all that exist for the component (`<Name>` = the PascalCase folder name wit
 - `packages/ui/src/components/<Name>/index.ts` and `packages/ui/src/index.ts`: public exports and import path
 - `packages/ui/src/components/<Name>/<Name>.module.css`: sizes, colours, states (via `data-*` attributes)
 - `packages/ui/src/components/<Name>/README.md`: documented usage, rules, examples
-- `packages/ui/src/*.css` (`color.css`, `spacing.css`, `typography.css`, `radius.css`, `focus.css`, `motion.css`): resolve every `var(--hds-*)` to a real value
+- `packages/ui/src/styles/*.css` (`color.css`, `spacing.css`, `typography.css`, `radius.css`, `focus.css`, `motion.css`): resolve every `var(--hds-*)` to a real value. `reset.css` is the baseline every component sits on (border-box sizing, no browser margins)
 - `packages/ui/src/icons/index.tsx`: if the component accepts icons
 - `apps/sandbox/src/pages/<Name>Playground.tsx`: how the team composes and serialises it
 - `packages/ui/package.json`: package name and `exports`

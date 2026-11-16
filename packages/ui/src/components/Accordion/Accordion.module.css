@@ -11,7 +11,6 @@
   }
 
   .header {
-    margin: 0;
   }
 
   .trigger {
@@ -20,13 +19,9 @@
     justify-content: space-between;
     gap: var(--hds-space-4);
     width: 100%;
-    margin: 0;
     padding: var(--hds-space-3) 0;
-    border: 0;
     border-radius: var(--hds-radius-sm);
-    background: none;
     color: var(--hds-color-text);
-    font-family: inherit;
     font-size: var(--hds-font-size-md);
     font-weight: var(--hds-font-weight-medium);
     line-height: 1.4;

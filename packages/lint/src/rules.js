@@ -170,7 +170,7 @@ export const rules = [
     category: 'technical',
     severity: 'warning',
     summary: 'A raw colour where a colour variable should be used.',
-    docs: '../src/color.css',
+    docs: '../src/styles/color.css',
     check({ parsed, system, report }) {
       for (const el of parsed.elements) {
         for (const p of styleProps(el)) {
@@ -235,7 +235,7 @@ export const rules = [
     id: 'unlayered-reset',
     category: 'technical',
     severity: 'warning',
-    summary: 'A global reset outside `@layer reset`, which would override hds styles.',
+    summary: 'An unlayered element rule that sets margins, padding, fonts, borders or box sizing, which would override hds styles (hds ships its own reset).',
     docs: 'README.md',
     cssOnly: true,
     check() {}, // runs in css.js

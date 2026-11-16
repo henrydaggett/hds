@@ -69,8 +69,8 @@ test('css checks', () => {
     'hardcoded-color: Use var(--hds-color-neutral-900) instead of #18181b.',
     "hardcoded-color: rgb(0 0 0 / 0.5) isn't a design system colour. Use a --hds-color-* variable.",
     "unknown-variable: '--hds-color-bordr' isn't an hds variable.",
-    "unlayered-reset: Put 'p, h1' in @layer reset { … }. Outside a layer it overrides every hds style.",
-    "unlayered-reset: Put '*, *::before' in @layer reset { … }. Outside a layer it overrides every hds style.",
+    "unlayered-reset: 'p, h1' outside a layer overrides every hds style. hds ships a reset; remove this or move it into @layer reset { … }.",
+    "unlayered-reset: '*, *::before' outside a layer overrides every hds style. hds ships a reset; remove this or move it into @layer reset { … }.",
   ]) {
     assert.ok(messages.includes(text), `missing: ${text}\n${messages.join('\n')}`);
   }

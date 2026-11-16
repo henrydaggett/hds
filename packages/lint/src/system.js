@@ -96,9 +96,10 @@ function readDefaults(componentsDir) {
   return result;
 }
 
-/** The CSS files at the top of src/: one per concept (color.css, spacing.css…). */
-function conceptFiles(src) {
-  return fs.readdirSync(src).filter((f) => f.endsWith('.css')).map((f) => path.join(src, f));
+/** The global CSS in src/styles/: the reset and one file per concept (color.css, spacing.css…). */
+function styleFiles(src) {
+  const dir = path.join(src, 'styles');
+  return fs.readdirSync(dir).filter((f) => f.endsWith('.css')).map((f) => path.join(dir, f));
 }
 
 /** `--hds-*` variables and their raw values. */
@@ -125,7 +126,7 @@ export function loadSystem(cwd) {
   const root = resolveUiRoot(cwd);
   const src = path.join(root, 'src');
   const docs = path.join(root, 'docs');
-  const files = conceptFiles(src);
+  const files = styleFiles(src);
   const variables = readVariables(files);
 
   // Raw colour value → variable names, so a hardcoded colour can suggest its variable.

@@ -1,23 +1,6 @@
-/* Resets go in the reset layer, which hds declares below its own layers, so hds styles win over them. */
-@layer reset {
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-  html,
-  body {
-    margin: 0;
-    background: var(--hds-color-neutral-50);
-    color: var(--hds-color-text);
-    font-family: var(--hds-font-sans);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  p {
-    margin: 0;
-  }
+/* hds ships the reset. This only changes the sandbox's page background. */
+body {
+  background: var(--hds-color-neutral-50);
 }
 
 .tabs {

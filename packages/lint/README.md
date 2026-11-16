@@ -49,7 +49,7 @@ With no rule ids, a comment turns off every rule.
 | `hardcoded-spacing` | warning | Inline margin, padding or gap where a spacing class should be used. |
 | `hardcoded-typography` | warning | Inline font styles where a typography class should be used. |
 | `raw-element` | warning | A native element that a design system component replaces. |
-| `unlayered-reset` | warning | A global reset outside `@layer reset`, which would override hds styles. |
+| `unlayered-reset` | warning | An unlayered element rule that sets margins, padding, fonts, borders or box sizing, which would override hds styles (hds ships its own reset). Other base styles, like a body background, are fine. |
 | `no-custom-styling` | warning | `className` or `style` on a design system component. |
 
 ### Usage

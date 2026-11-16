@@ -26,3 +26,8 @@ p, h1 {
     margin: 0;
   }
 }
+
+/* A base style that isn't a reset: allowed outside a layer. */
+body {
+  background: var(--hds-color-surface);
+}

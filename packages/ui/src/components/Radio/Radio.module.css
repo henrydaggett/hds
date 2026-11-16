@@ -46,8 +46,6 @@
     justify-content: center;
     width: var(--radio-circle);
     height: var(--radio-circle);
-    margin: 0;
-    padding: 0;
     border: 1px solid var(--hds-color-border-strong);
     border-radius: 50%;
     background: var(--hds-color-surface);

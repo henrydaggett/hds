@@ -17,7 +17,6 @@
     top: 50%;
     left: 50%;
     z-index: 20;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: var(--hds-space-2);
@@ -64,7 +63,6 @@
   }
 
   .title {
-    margin: 0;
     font-size: 18px;
     font-weight: var(--hds-font-weight-semibold);
     line-height: 26px;
@@ -78,10 +76,7 @@
     width: 28px;
     height: 28px;
     margin: -2px -6px 0 0;
-    padding: 0;
-    border: 0;
     border-radius: var(--hds-radius-sm);
-    background: none;
     color: var(--hds-color-text-muted);
     font-size: 16px;
     cursor: pointer;
@@ -101,7 +96,6 @@
   }
 
   .description {
-    margin: 0;
     color: var(--hds-color-text-muted);
     font-size: var(--hds-font-size-md);
     line-height: 20px;

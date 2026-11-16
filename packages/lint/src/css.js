@@ -1,6 +1,10 @@
 // Checks plain CSS (including CSS modules) for raw values that a variable covers,
 // and for resets that would override hds because they're outside a cascade layer.
 
+// Properties the hds reset and components rely on. An unlayered element rule setting one of
+// these overrides hds; one that only sets, say, a background is a normal app base style.
+const RESET_PROPS = /^(margin|padding|box-sizing|font|line-height|letter-spacing|border|list-style)/;
+
 // Selectors made only of elements, `*` and pseudo-elements: `p`, `*::before`, `html, body`.
 const ELEMENT_ONLY = /^(?:[a-z][a-z0-9-]*|\*)(?:::?[a-z-]+(?:\([^)]*\))?)*$/i;
 
@@ -18,11 +22,19 @@ function findUnlayeredResets(clean, report) {
       const prelude = raw.trim();
       const inLayer = stack.some((p) => p.startsWith('@layer'));
       const selectors = prelude.split(',').map((s) => s.trim());
-      if (!prelude.startsWith('@') && !inLayer && !stack.some((p) => !p.startsWith('@')) && selectors.every((s) => ELEMENT_ONLY.test(s))) {
+      const end = clean.indexOf('}', i);
+      const props = [...clean.slice(i + 1, end === -1 ? undefined : end).matchAll(/([\w-]+)\s*:/g)].map((m) => m[1]);
+      if (
+        !prelude.startsWith('@') &&
+        !inLayer &&
+        !stack.some((p) => !p.startsWith('@')) &&
+        selectors.every((s) => ELEMENT_ONLY.test(s)) &&
+        props.some((p) => RESET_PROPS.test(p))
+      ) {
         const offset = start + raw.indexOf(prelude);
         const line = clean.slice(0, offset).split('\n').length;
         const column = offset - clean.lastIndexOf('\n', offset - 1);
-        report('unlayered-reset', { line, column }, `Put '${selectors.join(', ')}' in @layer reset { … }. Outside a layer it overrides every hds style.`);
+        report('unlayered-reset', { line, column }, `'${selectors.join(', ')}' outside a layer overrides every hds style. hds ships a reset; remove this or move it into @layer reset { … }.`);
       }
       stack.push(prelude);
       start = i + 1;

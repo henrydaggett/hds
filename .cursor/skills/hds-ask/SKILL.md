@@ -20,7 +20,8 @@ Where to look, in order:
 | Props, values, variants, what it can't do | `assets/<name>.md` |
 | When and how to use it, content and layout | `guidelines/<name>.md` |
 | State, events, controlled props | `../src/components/<Name>/README.md` |
-| Colour, spacing, type, radius, focus and motion values | `../src/<concept>.css` (`color.css`, `spacing.css`…), `assets/typography.md`, `assets/spacing.md` |
+| Colour, spacing, type, radius, focus and motion values | `../src/styles/<concept>.css` (`color.css`, `spacing.css`…), `assets/typography.md`, `assets/spacing.md` |
+| The reset and cascade layers | "Reset and cascade layers" in `README.md`, then `../src/styles/reset.css` |
 | What the linter checks | `packages/lint/README.md` (or `node_modules/@hds/lint/README.md`) |
 
 Always start with `components.md`, and read the files rather than answering from memory.
