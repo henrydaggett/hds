@@ -2,10 +2,11 @@ import { forwardRef, isValidElement, type ReactNode } from 'react';
 import { Field as BaseField } from '@base-ui/react/field';
 import { DsCheckbox } from '../Checkbox/Checkbox';
 import { DsSelect } from '../Select/Select';
+import { DsSwitch } from '../Switch/Switch';
 import styles from './Field.module.css';
 
 export type FieldProps = {
-  /** Not rendered for a `DsCheckbox`, which is named by its own `label`. */
+  /** Not rendered for a `DsCheckbox` or `DsSwitch`, which are named by their own `label`. */
   label?: ReactNode;
   /** Helper text shown under the control. */
   description?: ReactNode;
@@ -16,7 +17,7 @@ export type FieldProps = {
   /** Form field name. Takes precedence over the control's own `name`. */
   name?: string;
   className?: string;
-  /** One control: `DsTextInput`, `DsSelect` or `DsCheckbox`. */
+  /** One control: `DsTextInput`, `DsSelect`, `DsCheckbox` or `DsSwitch`. */
   children: ReactNode;
 };
 
@@ -26,8 +27,10 @@ export const DsField = forwardRef<HTMLDivElement, FieldProps>(function DsField(
 ) {
   // A native <label> would open the DsSelect popup on click, so label buttons with a <div>.
   const labelsButton = isValidElement(children) && children.type === DsSelect;
-  // A Field.Label would replace the checkbox's own label as its accessible name.
-  const showLabel = label != null && !(isValidElement(children) && children.type === DsCheckbox);
+  // A Field.Label would replace the checkbox's or switch's own label as its accessible name.
+  const labelsItself =
+    isValidElement(children) && (children.type === DsCheckbox || children.type === DsSwitch);
+  const showLabel = label != null && !labelsItself;
 
   return (
     <BaseField.Root

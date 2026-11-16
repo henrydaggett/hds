@@ -117,3 +117,27 @@ export function DsAlignRightIcon(props: IconProps) {
     </BaseIcon>
   );
 }
+
+export function DsCloseIcon(props: IconProps) {
+  return (
+    <BaseIcon {...props}>
+      <path d="M6 6l12 12M18 6L6 18" />
+    </BaseIcon>
+  );
+}
+
+export function DsMoreIcon(props: IconProps) {
+  return (
+    <BaseIcon {...props}>
+      <path d="M5 12h.01M12 12h.01M19 12h.01" />
+    </BaseIcon>
+  );
+}
+
+export function DsEditIcon(props: IconProps) {
+  return (
+    <BaseIcon {...props}>
+      <path d="M4 20h4L19 9l-4-4L4 16zM13 7l4 4" />
+    </BaseIcon>
+  );
+}

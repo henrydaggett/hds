@@ -1,0 +1,24 @@
+.positioner {
+  z-index: 30;
+}
+
+.popup {
+  max-width: 240px;
+  padding: var(--ds-space-1) var(--ds-space-2);
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-color-neutral-900);
+  color: var(--ds-color-neutral-0);
+  font-family: var(--ds-font-sans);
+  font-size: var(--ds-font-size-sm);
+  line-height: 1.4;
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity var(--ds-duration-fast) var(--ds-ease-standard),
+    transform var(--ds-duration-fast) var(--ds-ease-standard);
+}
+
+.popup[data-starting-style],
+.popup[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.96);
+}
