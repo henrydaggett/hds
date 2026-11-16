@@ -1,6 +1,6 @@
 ---
 name: hds-ask
-description: Answers questions about the hds design system - which component to use, what props and variants exist, usage rules, tokens and classes - using only the hds docs. Read-only. Use when the user asks how the design system works, what it supports, or which component fits a need, or invokes /hds-ask.
+description: Answers questions about the hds design system - which component to use, what props and variants exist, usage rules, variables and classes - using only the hds docs. Read-only. Use when the user asks how the design system works, what it supports, or which component fits a need, or invokes /hds-ask.
 disable-model-invocation: true
 ---
 
@@ -20,7 +20,7 @@ Where to look, in order:
 | Props, values, variants, what it can't do | `assets/<name>.md` |
 | When and how to use it, content and layout | `guidelines/<name>.md` |
 | State, events, controlled props | `../src/components/<Name>/README.md` |
-| Colours, spacing, type, radius, motion values | `../src/tokens.css`, `assets/typography.md`, `assets/spacing.md` |
+| Colour, spacing, type, radius, focus and motion values | `../src/<concept>.css` (`color.css`, `spacing.css`…), `assets/typography.md`, `assets/spacing.md` |
 | What the linter checks | `packages/lint/README.md` (or `node_modules/@hds/lint/README.md`) |
 
 Always start with `components.md`, and read the files rather than answering from memory.

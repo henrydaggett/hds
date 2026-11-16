@@ -11,8 +11,7 @@
   ],
   "exports": {
     ".": "./src/index.ts",
-    "./tokens.css": "./src/tokens.css",
-    "./utilities.css": "./src/utilities.css",
+    "./*.css": "./src/*.css",
     "./docs/*": "./docs/*",
     "./package.json": "./package.json"
   },

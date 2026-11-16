@@ -38,7 +38,7 @@ Read all that exist for the component (`<Name>` = the PascalCase folder name wit
 - `packages/ui/src/components/<Name>/index.ts` and `packages/ui/src/index.ts`: public exports and import path
 - `packages/ui/src/components/<Name>/<Name>.module.css`: sizes, colours, states (via `data-*` attributes)
 - `packages/ui/src/components/<Name>/README.md`: documented usage, rules, examples
-- `packages/ui/src/tokens.css`: resolve every `var(--hds-*)` to a real value
+- `packages/ui/src/*.css` (`color.css`, `spacing.css`, `typography.css`, `radius.css`, `focus.css`, `motion.css`): resolve every `var(--hds-*)` to a real value
 - `packages/ui/src/icons/index.tsx`: if the component accepts icons
 - `apps/sandbox/src/pages/<Name>Playground.tsx`: how the team composes and serialises it
 - `packages/ui/package.json`: package name and `exports`
@@ -58,7 +58,7 @@ From the `.tsx`, record for each prop: name, allowed values, default, and constr
 
 ### 3. Extract visual values
 
-For image input, resolve the CSS through `tokens.css` to concrete values for each variant and state:
+For image input, resolve the CSS through the variable files to concrete values for each variant and state:
 
 - Fill, text and border colour as hex
 - Size scale: height, font size, corner radius, padding
@@ -81,7 +81,7 @@ Key requirements:
 ### 5. Verify
 
 - [ ] Every prop, value and default matches the `.tsx`
-- [ ] Every hex/px value traces to `tokens.css` or the module CSS
+- [ ] Every hex/px value traces to a variable file in `packages/ui/src/` or the module CSS
 - [ ] Import path and export names match `packages/ui/src/index.ts`
 - [ ] No example sets a prop to its default or uses an invalid combination
 - [ ] No handlers, `className`, `style` or pass-through props in examples

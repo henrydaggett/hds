@@ -15,7 +15,7 @@ It ships inside the `@hds/ui` package, so the docs always match the code next to
 | `assets/<name>.md` | The static API: exact JSX, allowed props and values, visual identification, input-to-prop mapping, what's not supported. Written for generating code without state or handlers. | How to write a component. |
 | `guidelines/<name>.md` | Usage rules: when to use it, content, layout. | Whether a usage is right. |
 | [`../src/components/<Name>/README.md`](../src/components) | The full runtime API, including controlled props and event handlers. | Interactive code. |
-| [`../src/tokens.css`](../src/tokens.css) and [`../src/utilities.css`](../src/utilities.css) | Design tokens (`--hds-*`) and the typography and spacing classes. | Raw values. |
+| [`../src/color.css`](../src/color.css), [`spacing.css`](../src/spacing.css), [`typography.css`](../src/typography.css), [`radius.css`](../src/radius.css), [`focus.css`](../src/focus.css), [`motion.css`](../src/motion.css) | One file per concept: its `--hds-*` variables, plus the classes for typography and spacing. | Raw values. |
 
 File names are the lowercase component name without the `Ds` prefix: `HdsCheckboxGroup` → `checkbox-group.md`. Typography and spacing are documented as `typography.md` and `spacing.md` but aren't components.
 
@@ -31,13 +31,13 @@ The skills live in `.cursor/skills/`. Each reads from here and keeps no copy of 
 | `hds-ask` | Answers questions from these docs only. | `components.md` first, then whichever file answers the question. |
 | `create-asset` | Writes a component's asset from its source. | The component source; writes to `assets/`. |
 
-The `@hds/lint` package (`packages/lint`) is the script behind `hds-lint`. It reads exports, tokens, classes and prop defaults from this package, so it stays in sync on its own.
+The `@hds/lint` package (`packages/lint`) is the script behind `hds-lint`. It reads exports, variables, classes and prop defaults from this package, so it stays in sync on its own.
 
 ## Rules for every skill
 
 - Only the components in [components.md](components.md) exist. Never invent a component, prop, class or import path.
 - Import everything from the package root, `@hds/ui`. Never from sub-paths.
-- Style text with the typography classes and space with the spacing classes. Never hardcode colours, sizes or spacing that a token or class covers.
+- Style text with the typography classes and space with the spacing classes. Never hardcode colours, sizes or spacing that a variable or class covers.
 - When the input asks for something the system can't do, say so instead of approximating it.
 
 ## Keeping it in sync

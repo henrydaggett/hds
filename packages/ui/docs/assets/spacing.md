@@ -1,6 +1,6 @@
 # Spacing
 
-CSS utility classes for gap, padding and margin on an 8px-based scale. Apply them with `className` on layout wrappers and text elements.
+CSS classes for gap, padding and margin on an 8px-based scale. Apply them with `className` on layout wrappers and text elements.
 
 ## Quick reference
 
@@ -21,7 +21,7 @@ No import is needed. The classes load with any import from `@hds/ui`. If the sni
 
 The number in each class is the value in pixels: `hds-mb-4` is a 4px bottom margin. This is not the Tailwind scale, where `mb-4` means 16px.
 
-| Class value | Pixels | Token |
+| Class value | Pixels | Variable |
 |---|---|---|
 | `0` | 0px | (padding and margin only) |
 | `4` | 4px | `--hds-space-1` |

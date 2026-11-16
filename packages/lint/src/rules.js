@@ -1,6 +1,6 @@
 // Every rule the linter runs on scripts (JS/TS/JSX/TSX). CSS checks live in css.js.
 //
-// category: 'technical' — the code is wrong or breaks the system's API and tokens.
+// category: 'technical' — the code is wrong or breaks the system's API and variables.
 //           'usage'     — the code works but uses a component in a way the docs advise against.
 // severity: 'error' fails the run; 'warning' and 'info' don't.
 import ts from 'typescript';
@@ -108,8 +108,8 @@ export const rules = [
     severity: 'error',
     summary: 'Import from the package root, `@hds/ui`, not its internal files.',
     docs: 'README.md',
-    check({ parsed, report }) {
-      const allowed = new Set(['@hds/ui/tokens.css', '@hds/ui/utilities.css']);
+    check({ parsed, system, report }) {
+      const allowed = new Set(system.cssFiles.map((f) => `@hds/ui/${f}`));
       for (const imp of parsed.imports) {
         if (imp.source.startsWith('@hds/ui/') && !allowed.has(imp.source)) {
           report(imp.node, `Import from '@hds/ui', not '${imp.source}'.`);
@@ -136,7 +136,7 @@ export const rules = [
     id: 'unknown-class',
     category: 'technical',
     severity: 'error',
-    summary: 'An `hds-*` class that utilities.css doesn\'t define.',
+    summary: 'An `hds-*` class that @hds/ui doesn\'t define.',
     docs: 'assets/spacing.md',
     check({ parsed, system, report }) {
       for (const el of parsed.elements) {
@@ -152,15 +152,15 @@ export const rules = [
     },
   },
   {
-    id: 'unknown-token',
+    id: 'unknown-variable',
     category: 'technical',
     severity: 'error',
-    summary: 'A `--hds-*` custom property that tokens.css doesn\'t define.',
-    docs: '../src/tokens.css',
+    summary: 'A `--hds-*` variable that @hds/ui doesn\'t define.',
+    docs: 'README.md',
     check({ parsed, system, report }) {
       for (const node of parsed.strings) {
         for (const m of node.getText(parsed.sf).matchAll(/--hds-[\w-]+/g)) {
-          if (!system.tokens.has(m[0])) report(node, `'${m[0]}' isn't an hds token.`);
+          if (!system.variables.has(m[0])) report(node, `'${m[0]}' isn't an hds variable.`);
         }
       }
     },
@@ -169,19 +169,19 @@ export const rules = [
     id: 'hardcoded-color',
     category: 'technical',
     severity: 'warning',
-    summary: 'A raw colour where a token should be used.',
-    docs: '../src/tokens.css',
+    summary: 'A raw colour where a colour variable should be used.',
+    docs: '../src/color.css',
     check({ parsed, system, report }) {
       for (const el of parsed.elements) {
         for (const p of styleProps(el)) {
           if (typeof p.value !== 'string' || !COLOR.test(p.value)) continue;
           const hex = p.value.trim().toLowerCase();
-          const tokens = system.colorTokens.get(hex);
+          const variables = system.colorVariables.get(hex);
           report(
             p.node,
-            tokens
-              ? `Use var(${tokens[0]}) instead of ${p.value}.`
-              : `${p.value} isn't a design system colour. Use a --hds-color-* token.`,
+            variables
+              ? `Use var(${variables[0]}) instead of ${p.value}.`
+              : `${p.value} isn't a design system colour. Use a --hds-color-* variable.`,
           );
         }
       }

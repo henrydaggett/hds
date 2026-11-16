@@ -1,6 +1,6 @@
 // Loads what the linter knows about the design system from the installed
-// @hds/ui package itself: its exports, tokens, utility classes, prop
-// defaults and docs. Nothing here is hand-maintained, so it can't drift.
+// @hds/ui package itself: its exports, variables, classes, prop defaults
+// and docs. Nothing here is hand-maintained, so it can't drift.
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
@@ -96,19 +96,28 @@ function readDefaults(componentsDir) {
   return result;
 }
 
-/** `--hds-*` custom properties and their raw values. */
-function readTokens(file) {
-  const tokens = new Map();
-  for (const m of fs.readFileSync(file, 'utf8').matchAll(/(--hds-[\w-]+)\s*:\s*([^;]+);/g)) {
-    tokens.set(m[1], m[2].trim());
-  }
-  return tokens;
+/** The CSS files at the top of src/: one per concept (color.css, spacing.css…). */
+function conceptFiles(src) {
+  return fs.readdirSync(src).filter((f) => f.endsWith('.css')).map((f) => path.join(src, f));
 }
 
-/** `hds-*` utility class names. */
-function readClasses(file) {
+/** `--hds-*` variables and their raw values. */
+function readVariables(files) {
+  const variables = new Map();
+  for (const file of files) {
+    for (const m of fs.readFileSync(file, 'utf8').matchAll(/(--hds-[\w-]+)\s*:\s*([^;]+);/g)) {
+      variables.set(m[1], m[2].trim());
+    }
+  }
+  return variables;
+}
+
+/** `hds-*` class names (typography and spacing). */
+function readClasses(files) {
   const classes = new Set();
-  for (const m of fs.readFileSync(file, 'utf8').matchAll(/\.(hds-[\w-]+)/g)) classes.add(m[1]);
+  for (const file of files) {
+    for (const m of fs.readFileSync(file, 'utf8').matchAll(/\.(hds-[\w-]+)/g)) classes.add(m[1]);
+  }
   return classes;
 }
 
@@ -116,18 +125,19 @@ export function loadSystem(cwd) {
   const root = resolveUiRoot(cwd);
   const src = path.join(root, 'src');
   const docs = path.join(root, 'docs');
-  const tokens = readTokens(path.join(src, 'tokens.css'));
+  const files = conceptFiles(src);
+  const variables = readVariables(files);
 
-  // Raw colour value → token names, so a hardcoded colour can suggest its token.
-  const colorTokens = new Map();
-  for (const [name, value] of tokens) {
+  // Raw colour value → variable names, so a hardcoded colour can suggest its variable.
+  const colorVariables = new Map();
+  for (const [name, value] of variables) {
     const v = value.toLowerCase();
-    if (/^#[0-9a-f]{3,8}$/.test(v)) colorTokens.set(v, [...(colorTokens.get(v) ?? []), name]);
+    if (/^#[0-9a-f]{3,8}$/.test(v)) colorVariables.set(v, [...(colorVariables.get(v) ?? []), name]);
   }
 
-  // Pixel value → spacing step, e.g. 16 → '16' (class hds-gap-16, token --hds-space-4).
+  // Pixel value → spacing variable, e.g. 16 → '--hds-space-4'.
   const spacing = new Map();
-  for (const [name, value] of tokens) {
+  for (const [name, value] of variables) {
     const m = name.match(/^--hds-space-(\d+)$/);
     const px = value.match(/^(\d+)px$/);
     if (m && px) spacing.set(Number(px[1]), name);
@@ -144,10 +154,11 @@ export function loadSystem(cwd) {
     docs,
     exports: readExports(src),
     defaults: readDefaults(path.join(src, 'components')),
-    tokens,
-    colorTokens,
+    cssFiles: files.map((f) => path.basename(f)),
+    variables,
+    colorVariables,
     spacing,
-    classes: readClasses(path.join(src, 'utilities.css')),
+    classes: readClasses(files),
     assets,
   };
 }

@@ -1,3 +1,4 @@
+/* Colour variables. Components use the semantic ones (surface, border, text…). */
 :root {
   /* Neutrals */
   --hds-color-neutral-0: #ffffff;
@@ -37,35 +38,4 @@
   --hds-color-text-muted: var(--hds-color-neutral-500);
   --hds-color-disabled-bg: var(--hds-color-neutral-100);
   --hds-color-disabled-text: var(--hds-color-neutral-500);
-
-  /* Focus */
-  --hds-focus-ring: 0 0 0 2px var(--hds-color-neutral-0), 0 0 0 4px var(--hds-color-blue);
-
-  /* Radius */
-  --hds-radius-sm: 6px;
-  --hds-radius-md: 8px;
-  --hds-radius-lg: 10px;
-
-  /* Spacing */
-  --hds-space-1: 4px;
-  --hds-space-2: 8px;
-  --hds-space-3: 12px;
-  --hds-space-4: 16px;
-  --hds-space-5: 20px;
-  --hds-space-6: 24px;
-  --hds-space-8: 32px;
-  --hds-space-12: 48px;
-
-  /* Typography */
-  --hds-font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --hds-font-size-sm: 13px;
-  --hds-font-size-md: 14px;
-  --hds-font-size-lg: 16px;
-  --hds-font-weight-regular: 400;
-  --hds-font-weight-medium: 500;
-  --hds-font-weight-semibold: 600;
-
-  /* Motion */
-  --hds-duration-fast: 120ms;
-  --hds-ease-standard: cubic-bezier(0.2, 0, 0, 1);
 }

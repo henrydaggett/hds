@@ -25,7 +25,7 @@ Use one import line from `@hds/ui`. Include `<Name>` and only the <icons/subcomp
 import { <Name>, <...> } from '@hds/ui';
 ```
 
-Never import from sub-paths. No CSS import is needed: the design tokens load with the package.
+Never import from sub-paths. No CSS import is needed: the variables and classes load with the package.
 
 ## Structure
 

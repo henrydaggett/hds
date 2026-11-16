@@ -1,45 +1,19 @@
-/* Typography */
-.hds-h1,
-.hds-h2,
-.hds-h3,
-.hds-h4,
-.hds-h5,
-.hds-h6,
-.hds-text-large,
-.hds-text-medium,
-.hds-text-small {
-  margin: 0;
-  font-family: var(--hds-font-sans);
-  color: var(--hds-color-text);
+/*
+ * Spacing variables, and the spacing classes: hds-gap-*, hds-p-*, hds-px-*, hds-py-*,
+ * hds-m-*, hds-mt-*, hds-mb-*. The number in a class is pixels (hds-gap-16 is 16px).
+ * Load after typography.css so the margin classes override its margin reset.
+ */
+:root {
+  --hds-space-1: 4px;
+  --hds-space-2: 8px;
+  --hds-space-3: 12px;
+  --hds-space-4: 16px;
+  --hds-space-5: 20px;
+  --hds-space-6: 24px;
+  --hds-space-8: 32px;
+  --hds-space-12: 48px;
 }
 
-.hds-h1,
-.hds-h2,
-.hds-h3,
-.hds-h4,
-.hds-h5,
-.hds-h6 {
-  font-weight: var(--hds-font-weight-semibold);
-}
-
-.hds-h1 { font-size: 32px; line-height: 40px; letter-spacing: -0.02em; }
-.hds-h2 { font-size: 28px; line-height: 36px; letter-spacing: -0.015em; }
-.hds-h3 { font-size: 24px; line-height: 32px; letter-spacing: -0.01em; }
-.hds-h4 { font-size: 20px; line-height: 28px; }
-.hds-h5 { font-size: 18px; line-height: 26px; }
-.hds-h6 { font-size: var(--hds-font-size-lg); line-height: 24px; }
-
-.hds-text-large,
-.hds-text-medium,
-.hds-text-small {
-  font-weight: var(--hds-font-weight-regular);
-}
-
-.hds-text-large { font-size: var(--hds-font-size-lg); line-height: 24px; }
-.hds-text-medium { font-size: var(--hds-font-size-md); line-height: 20px; }
-.hds-text-small { font-size: var(--hds-font-size-sm); line-height: 18px; }
-
-/* Spacing: kept after typography so margin utilities override the typography reset */
 .hds-gap-4 { gap: var(--hds-space-1); }
 .hds-gap-8 { gap: var(--hds-space-2); }
 .hds-gap-12 { gap: var(--hds-space-3); }

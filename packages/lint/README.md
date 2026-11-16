@@ -2,10 +2,10 @@
 
 Checks code against the hds design system. Each rule is either:
 
-- **technical**: the code breaks the system's API or bypasses its tokens (unknown exports and classes, sub-path imports, raw colours, raw `<button>`s).
+- **technical**: the code breaks the system's API or bypasses its variables (unknown exports and classes, sub-path imports, raw colours, raw `<button>`s).
 - **usage**: the code works, but uses a component the way the docs advise against (a radio outside its group, a group inside a field, two primary buttons side by side).
 
-What it knows about the system (exports, tokens, utility classes, prop defaults) is read from the installed `@hds/ui` package, not kept here, so it can't drift from the components. Every finding links to the doc in `@hds/ui/docs` that it enforces.
+What it knows about the system (exports, variables, classes, prop defaults) is read from the installed `@hds/ui` package, not kept here, so it can't drift from the components. Every finding links to the doc in `@hds/ui/docs` that it enforces.
 
 ## Run it
 
@@ -43,9 +43,9 @@ With no rule ids, a comment turns off every rule.
 | ---- | -------- | ------ |
 | `no-subpath-import` | error | Import from the package root, `@hds/ui`, not its internal files. |
 | `unknown-export` | error | `@hds/ui` has no export with this name. |
-| `unknown-class` | error | An `hds-*` class that utilities.css doesn't define. |
-| `unknown-token` | error | A `--hds-*` custom property that tokens.css doesn't define. |
-| `hardcoded-color` | warning | A raw colour where a token should be used. |
+| `unknown-class` | error | An `hds-*` class that @hds/ui doesn't define. |
+| `unknown-variable` | error | A `--hds-*` variable that @hds/ui doesn't define. |
+| `hardcoded-color` | warning | A raw colour where a colour variable should be used. |
 | `hardcoded-spacing` | warning | Inline margin, padding or gap where a spacing class should be used. |
 | `hardcoded-typography` | warning | Inline font styles where a typography class should be used. |
 | `raw-element` | warning | A native element that a design system component replaces. |
@@ -71,7 +71,7 @@ With no rule ids, a comment turns off every rule.
 | `redundant-default` | info | A prop set to its default value. |
 | `button-label-case` | info | A button label in Title Case. |
 
-`unknown-token`, `hardcoded-color` and `hardcoded-spacing` also run on CSS files.
+`unknown-variable`, `hardcoded-color` and `hardcoded-spacing` also run on CSS files.
 
 ## What it can't check
 

@@ -1,5 +1,11 @@
-import './tokens.css';
-import './utilities.css';
+// The CSS loads with any import from @hds/ui. Order matters only for
+// spacing.css, which must come after typography.css.
+import './color.css';
+import './focus.css';
+import './radius.css';
+import './motion.css';
+import './typography.css';
+import './spacing.css';
 
 export * from './components/Button';
 export * from './components/Toggle';

@@ -1,6 +1,6 @@
 # Typography
 
-CSS utility classes for headings and body text. Apply them with `className` on plain text elements (`h1`–`h6`, `p`, `span`). They set the font family, size, line height, weight and text colour, and reset the element's margin to `0`.
+CSS classes for headings and body text. Apply them with `className` on plain text elements (`h1`–`h6`, `p`, `span`). They set the font family, size, line height, weight and text colour, and reset the element's margin to `0`.
 
 ## Quick reference
 
@@ -39,7 +39,7 @@ All classes use the Inter font stack and text colour `#18181b`.
 
 - Match the heading class to the element: `<h2 className="hds-h2">`. Don't put `hds-h1` on a `<p>` or `hds-text-small` on an `<h3>`.
 - One typography class per element.
-- Typography classes reset margins to `0`. Add space with the spacing utilities in [spacing.md](spacing.md), e.g. `className="hds-h2 hds-mb-8"`.
+- Typography classes reset margins to `0`. Add space with the spacing classes in [spacing.md](spacing.md), e.g. `className="hds-h2 hds-mb-8"`.
 - Component text (HdsButton labels, HdsField labels, HdsFieldset legends) is already styled. Never add typography classes to components or their props.
 - Don't add `style` for font size, weight, colour or line height.
 

@@ -1,0 +1,5 @@
+/* Transition durations and easing. */
+:root {
+  --hds-duration-fast: 120ms;
+  --hds-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}

@@ -1,0 +1,4 @@
+/* The focus ring every interactive component shows on keyboard focus. */
+:root {
+  --hds-focus-ring: 0 0 0 2px var(--hds-color-neutral-0), 0 0 0 4px var(--hds-color-blue);
+}

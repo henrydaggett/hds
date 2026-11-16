@@ -1,4 +1,5 @@
 import { HdsButton, HdsField, HdsForm, HdsFormActions, HdsRadio, HdsRadioGroup, HdsSwitch, HdsTextInput, HdsTooltip } from '@hds/ui';
+import '@hds/ui/color.css';
 
 export default function Settings() {
   return (

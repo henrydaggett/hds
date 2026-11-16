@@ -7,9 +7,9 @@ Agent skills in `.cursor/skills` prototype, build, lint and answer questions abo
 ## Layout
 
 ```
-packages/ui        @hds/ui: tokens, icons, components
+packages/ui        @hds/ui: variables, icons, components
   docs/            the design system docs every skill reads (catalog, assets, guidelines)
-  src/tokens.css   CSS variables (color, radius, spacing, type, motion)
+  src/*.css        one file per concept: color, spacing, typography, radius, focus, motion
   src/components/  one folder per component (tsx, CSS module, README)
 packages/lint      @hds/lint: the hds-lint command (technical and usage rules)
 apps/sandbox       Vite + React app for testing components with DialKit
@@ -59,10 +59,9 @@ pnpm test         # run the linter's tests
 
 ## Using the package
 
-The sandbox consumes `@hds/ui` from source through the pnpm workspace. Import the tokens once at the app root:
+The sandbox consumes `@hds/ui` from source through the pnpm workspace. The CSS loads with any import, so there's no stylesheet to add:
 
 ```tsx
-import '@hds/ui/tokens.css';
 import { HdsButton } from '@hds/ui';
 
 <HdsButton color="blue" icon>New project</HdsButton>
@@ -71,7 +70,7 @@ import { HdsButton } from '@hds/ui';
 ## Adding a component
 
 1. Create `packages/ui/src/components/<Name>/` with `<Name>.tsx`, `<Name>.module.css`, `index.ts`, and `README.md`.
-2. Build on the matching Base UI primitive when there is one, and style it with tokens from `tokens.css`.
+2. Build on the matching Base UI primitive when there is one, and style it with the variables in `packages/ui/src/*.css`.
 3. Export it from `packages/ui/src/index.ts`.
 4. Add a playground page in `apps/sandbox/src/pages/` that uses `useDialKit` for its props, and list it in `apps/sandbox/src/App.tsx`.
 5. Run the `create-asset` skill to write its asset, then fill in its guideline and its row in `packages/ui/docs/components.md`.

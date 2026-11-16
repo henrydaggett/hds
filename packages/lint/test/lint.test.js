@@ -45,7 +45,7 @@ test('specific findings', () => {
   expect('submit-outside-form', 'type="submit"');
   expect('redundant-default', 'size="medium"');
   expect('button-label-case', '"Create New Project"');
-  expect('unknown-token', '--hds-color-txt');
+  expect('unknown-variable', '--hds-color-txt');
   expect('form-actions-last', 'last');
   expect('hardcoded-typography', 'fontSize');
 });
@@ -67,8 +67,8 @@ test('css checks', () => {
     'hardcoded-spacing: Use var(--hds-space-4) instead of 16px.',
     'hardcoded-spacing: Use var(--hds-space-3) instead of 12px.',
     'hardcoded-color: Use var(--hds-color-neutral-900) instead of #18181b.',
-    "hardcoded-color: rgb(0 0 0 / 0.5) isn't a design system colour. Use a --hds-color-* token.",
-    "unknown-token: '--hds-color-bordr' isn't an hds token.",
+    "hardcoded-color: rgb(0 0 0 / 0.5) isn't a design system colour. Use a --hds-color-* variable.",
+    "unknown-variable: '--hds-color-bordr' isn't an hds variable.",
   ]) {
     assert.ok(messages.includes(text), `missing: ${text}\n${messages.join('\n')}`);
   }

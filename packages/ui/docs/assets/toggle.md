@@ -20,7 +20,7 @@ Use one import line from `@hds/ui`, shared with the other components in the snip
 import { HdsToggle, HdsBoldIcon, HdsItalicIcon } from '@hds/ui';
 ```
 
-Never import from sub-paths. No CSS import is needed: the design tokens load with the package.
+Never import from sub-paths. No CSS import is needed: the variables and classes load with the package.
 
 ## Props
 

@@ -14,7 +14,7 @@ Builds real, working UI with the hds design system: whatever the task needs, in 
 | --- | --- | --- |
 | Output | One static snippet | Any code: new files, edits, several files |
 | State and handlers | Never | Yes, using each component's runtime API |
-| Something the system doesn't have | Left out and reported | Built from plain elements with hds tokens and classes, and reported |
+| Something the system doesn't have | Left out and reported | Built from plain elements with hds variables and classes, and reported |
 | Checked with | Its own review checklist | `tsc` and `hds-lint` |
 
 ## The docs
@@ -29,10 +29,10 @@ Everything about the system is in the docs root: `packages/ui/docs/` in this rep
 ## Rules
 
 1. **Use the system for everything it covers.** If `components.md` has a component for an element, use it. Never rebuild one with raw HTML.
-2. **Import from `@hds/ui` only**, never from sub-paths. The app must import `@hds/ui/tokens.css` once at its root; add it if it's missing.
+2. **Import from `@hds/ui` only**, never from sub-paths. The CSS (variables and classes) loads with any import from `@hds/ui`, so there's no stylesheet to add.
 3. **Only documented props.** Check the asset and the runtime README. Don't pass `className` or `style` to `Hds*` components; wrap them in a layout element instead.
 4. **Follow the guidelines**, not just the API: one primary button per section, red only for destructive actions, the right component for the number of options, sentence-case labels.
-5. **Gaps get built, not faked.** For UI the system doesn't have (see "Not in the system" in `components.md`), build it from plain elements styled only with `var(--hds-*)` tokens and `hds-*` classes, and list it in your report. Never approximate a missing component by misusing another (e.g. a toggle group as tabs).
+5. **Gaps get built, not faked.** For UI the system doesn't have (see "Not in the system" in `components.md`), build it from plain elements styled only with `var(--hds-*)` variables and `hds-*` classes, and list it in your report. Never approximate a missing component by misusing another (e.g. a toggle group as tabs).
 6. **Fit the codebase.** Match its file layout, naming, state management, data fetching and tests. Read neighbouring code before writing.
 7. **Prefer uncontrolled props** (`defaultValue`, `defaultChecked`, `defaultOpen`) unless the code needs to read or set the value. Then use the controlled pair from the runtime README.
 
@@ -51,7 +51,7 @@ Copy this checklist and track progress:
 
 ### 1. Understand the task and the codebase
 
-Find where the change belongs, how similar features are built, and how the project runs, typechecks and tests. Check that `@hds/ui` is a dependency and `tokens.css` is imported.
+Find where the change belongs, how similar features are built, and how the project runs, typechecks and tests. Check that `@hds/ui` is a dependency.
 
 ### 2. Map the UI to components
 
