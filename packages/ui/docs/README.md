@@ -33,11 +33,27 @@ The skills live in `.cursor/skills/`. Each reads from here and keeps no copy of 
 
 The `@hds/lint` package (`packages/lint`) is the script behind `hds-lint`. It reads exports, variables, classes and prop defaults from this package, so it stays in sync on its own.
 
+## Cascade layers
+
+All hds CSS sits in cascade layers, declared once at the top of every concept file:
+
+```css
+@layer reset, hds.variables, hds.components, hds.typography, hds.spacing;
+```
+
+Later layers win, whatever order the files load in. So spacing classes beat the typography classes' margin reset, and both beat component styles.
+
+For apps this means:
+
+- **Resets go in `@layer reset { … }`.** It's below every hds layer, so hds styles win over it. A reset outside a layer (`p { margin: 0 }`, `* { … }`) overrides every hds style; `hds-lint` warns about it (`unlayered-reset`).
+- **App CSS outside a layer overrides hds.** That's the way to theme, e.g. `:root { --hds-color-primary: #6d28d9; }`. Don't use it to restyle components; see the rules below.
+
 ## Rules for every skill
 
 - Only the components in [components.md](components.md) exist. Never invent a component, prop, class or import path.
 - Import everything from the package root, `@hds/ui`. Never from sub-paths.
 - Style text with the typography classes and space with the spacing classes. Never hardcode colours, sizes or spacing that a variable or class covers.
+- Put global resets in `@layer reset { … }`.
 - When the input asks for something the system can't do, say so instead of approximating it.
 
 ## Keeping it in sync

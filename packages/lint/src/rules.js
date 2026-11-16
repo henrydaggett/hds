@@ -232,6 +232,15 @@ export const rules = [
     },
   },
   {
+    id: 'unlayered-reset',
+    category: 'technical',
+    severity: 'warning',
+    summary: 'A global reset outside `@layer reset`, which would override hds styles.',
+    docs: 'README.md',
+    cssOnly: true,
+    check() {}, // runs in css.js
+  },
+  {
     id: 'raw-element',
     category: 'technical',
     severity: 'warning',

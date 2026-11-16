@@ -1,96 +1,98 @@
-/*
- * A HdsToggleGroup restyles its toggles through these custom properties:
- * --toggle-border, --toggle-off-bg, --toggle-off-bg-hover, --toggle-on-bg,
- * --toggle-on-shadow, --toggle-inset, --toggle-radius-inset.
- */
-.toggle {
-  --_height: calc(var(--toggle-height) - var(--toggle-inset, 0px));
+@layer hds.components {
+  /*
+   * A HdsToggleGroup restyles its toggles through these custom properties:
+   * --toggle-border, --toggle-off-bg, --toggle-off-bg-hover, --toggle-on-bg,
+   * --toggle-on-shadow, --toggle-inset, --toggle-radius-inset.
+   */
+  .toggle {
+    --_height: calc(var(--toggle-height) - var(--toggle-inset, 0px));
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--toggle-gap);
-  height: var(--_height);
-  padding: 0 var(--toggle-padding-x);
-  border: 1px solid var(--toggle-border, var(--hds-color-border-strong));
-  border-radius: calc(var(--toggle-radius) - var(--toggle-radius-inset, 0px));
-  background: var(--toggle-off-bg, var(--hds-color-surface));
-  color: var(--hds-color-neutral-700);
-  font-family: var(--hds-font-sans);
-  font-size: var(--toggle-font-size);
-  font-weight: var(--hds-font-weight-medium);
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  user-select: none;
-  transition:
-    background-color var(--hds-duration-fast) var(--hds-ease-standard),
-    color var(--hds-duration-fast) var(--hds-ease-standard),
-    box-shadow var(--hds-duration-fast) var(--hds-ease-standard);
-}
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--toggle-gap);
+    height: var(--_height);
+    padding: 0 var(--toggle-padding-x);
+    border: 1px solid var(--toggle-border, var(--hds-color-border-strong));
+    border-radius: calc(var(--toggle-radius) - var(--toggle-radius-inset, 0px));
+    background: var(--toggle-off-bg, var(--hds-color-surface));
+    color: var(--hds-color-neutral-700);
+    font-family: var(--hds-font-sans);
+    font-size: var(--toggle-font-size);
+    font-weight: var(--hds-font-weight-medium);
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      background-color var(--hds-duration-fast) var(--hds-ease-standard),
+      color var(--hds-duration-fast) var(--hds-ease-standard),
+      box-shadow var(--hds-duration-fast) var(--hds-ease-standard);
+  }
 
-/* Sizes (match HdsButton) */
-.toggle[data-size='small'] {
-  --toggle-height: 28px;
-  --toggle-padding-x: var(--hds-space-3);
-  --toggle-gap: 6px;
-  --toggle-radius: var(--hds-radius-sm);
-  --toggle-font-size: var(--hds-font-size-sm);
-  --toggle-icon-size: 14px;
-}
+  /* Sizes (match HdsButton) */
+  .toggle[data-size='small'] {
+    --toggle-height: 28px;
+    --toggle-padding-x: var(--hds-space-3);
+    --toggle-gap: 6px;
+    --toggle-radius: var(--hds-radius-sm);
+    --toggle-font-size: var(--hds-font-size-sm);
+    --toggle-icon-size: 14px;
+  }
 
-.toggle[data-size='medium'] {
-  --toggle-height: 36px;
-  --toggle-padding-x: var(--hds-space-4);
-  --toggle-gap: var(--hds-space-2);
-  --toggle-radius: var(--hds-radius-md);
-  --toggle-font-size: var(--hds-font-size-md);
-  --toggle-icon-size: 16px;
-}
+  .toggle[data-size='medium'] {
+    --toggle-height: 36px;
+    --toggle-padding-x: var(--hds-space-4);
+    --toggle-gap: var(--hds-space-2);
+    --toggle-radius: var(--hds-radius-md);
+    --toggle-font-size: var(--hds-font-size-md);
+    --toggle-icon-size: 16px;
+  }
 
-.toggle[data-size='large'] {
-  --toggle-height: 44px;
-  --toggle-padding-x: var(--hds-space-5);
-  --toggle-gap: var(--hds-space-2);
-  --toggle-radius: var(--hds-radius-lg);
-  --toggle-font-size: var(--hds-font-size-lg);
-  --toggle-icon-size: 18px;
-}
+  .toggle[data-size='large'] {
+    --toggle-height: 44px;
+    --toggle-padding-x: var(--hds-space-5);
+    --toggle-gap: var(--hds-space-2);
+    --toggle-radius: var(--hds-radius-lg);
+    --toggle-font-size: var(--hds-font-size-lg);
+    --toggle-icon-size: 18px;
+  }
 
-.toggle[data-icon-only] {
-  width: var(--_height);
-  padding: 0;
-}
+  .toggle[data-icon-only] {
+    width: var(--_height);
+    padding: 0;
+  }
 
-/* States */
-.toggle:hover:not([data-disabled], [data-pressed]) {
-  background: var(--toggle-off-bg-hover, var(--hds-color-surface-hover));
-  color: var(--hds-color-text);
-}
+  /* States */
+  .toggle:hover:not([data-disabled], [data-pressed]) {
+    background: var(--toggle-off-bg-hover, var(--hds-color-surface-hover));
+    color: var(--hds-color-text);
+  }
 
-.toggle[data-pressed] {
-  background: var(--toggle-on-bg, var(--hds-color-surface-active));
-  box-shadow: var(--toggle-on-shadow, none);
-  color: var(--hds-color-text);
-}
+  .toggle[data-pressed] {
+    background: var(--toggle-on-bg, var(--hds-color-surface-active));
+    box-shadow: var(--toggle-on-shadow, none);
+    color: var(--hds-color-text);
+  }
 
-.toggle:focus-visible {
-  outline: none;
-  box-shadow: var(--hds-focus-ring);
-}
+  .toggle:focus-visible {
+    outline: none;
+    box-shadow: var(--hds-focus-ring);
+  }
 
-.toggle[data-disabled] {
-  border-color: var(--toggle-border, var(--hds-color-border));
-  color: var(--hds-color-disabled-text);
-  cursor: not-allowed;
-}
+  .toggle[data-disabled] {
+    border-color: var(--toggle-border, var(--hds-color-border));
+    color: var(--hds-color-disabled-text);
+    cursor: not-allowed;
+  }
 
-.icon {
-  display: inline-flex;
-  flex-shrink: 0;
-  font-size: var(--toggle-icon-size);
-}
+  .icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: var(--toggle-icon-size);
+  }
 
-.label {
-  display: inline-flex;
+  .label {
+    display: inline-flex;
+  }
 }

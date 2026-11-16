@@ -68,7 +68,7 @@ export function lint(targets, options = {}) {
       (!options.rules || options.rules.includes(r.id)),
   );
   const byId = new Map(rules.map((r) => [r.id, r]));
-  const cssRules = new Set(['unknown-variable', 'hardcoded-color', 'hardcoded-spacing'].filter((id) => active.some((r) => r.id === id)));
+  const cssRules = new Set(['unknown-variable', 'hardcoded-color', 'hardcoded-spacing', 'unlayered-reset'].filter((id) => active.some((r) => r.id === id)));
 
   const files = [];
   for (const t of targets) collect(path.resolve(cwd, t), ignore, files);

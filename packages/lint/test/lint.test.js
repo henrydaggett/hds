@@ -15,7 +15,7 @@ test('a file that follows the system has no findings', () => {
 
 test('every script rule fires on the bad fixture', () => {
   const found = ids(run('bad.tsx'));
-  for (const id of rules.map((r) => r.id)) assert.ok(found.has(id), `expected rule ${id} to fire`);
+  for (const id of rules.filter((r) => !r.cssOnly).map((r) => r.id)) assert.ok(found.has(id), `expected rule ${id} to fire`);
 });
 
 test('specific findings', () => {
@@ -69,10 +69,12 @@ test('css checks', () => {
     'hardcoded-color: Use var(--hds-color-neutral-900) instead of #18181b.',
     "hardcoded-color: rgb(0 0 0 / 0.5) isn't a design system colour. Use a --hds-color-* variable.",
     "unknown-variable: '--hds-color-bordr' isn't an hds variable.",
+    "unlayered-reset: Put 'p, h1' in @layer reset { … }. Outside a layer it overrides every hds style.",
+    "unlayered-reset: Put '*, *::before' in @layer reset { … }. Outside a layer it overrides every hds style.",
   ]) {
     assert.ok(messages.includes(text), `missing: ${text}\n${messages.join('\n')}`);
   }
-  assert.equal(messages.length, 5);
+  assert.equal(messages.length, 7);
 });
 
 test('categories filter rules', () => {

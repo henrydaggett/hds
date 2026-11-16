@@ -1,37 +1,39 @@
-/*
- * Segmented-control look: a grey track with borderless toggles.
- * The pressed toggle becomes a raised white segment.
- * Inset = 2 × (1px border + 3px padding), so the group matches HdsButton heights.
- */
-.group {
-  --toggle-border: transparent;
-  --toggle-off-bg: transparent;
-  --toggle-off-bg-hover: transparent;
-  --toggle-on-bg: var(--hds-color-surface);
-  --toggle-on-shadow: 0 1px 2px rgb(24 24 27 / 0.12);
-  --toggle-inset: 8px;
-  --toggle-radius-inset: 4px;
+@layer hds.components {
+  /*
+   * Segmented-control look: a grey track with borderless toggles.
+   * The pressed toggle becomes a raised white segment.
+   * Inset = 2 × (1px border + 3px padding), so the group matches HdsButton heights.
+   */
+  .group {
+    --toggle-border: transparent;
+    --toggle-off-bg: transparent;
+    --toggle-off-bg-hover: transparent;
+    --toggle-on-bg: var(--hds-color-surface);
+    --toggle-on-shadow: 0 1px 2px rgb(24 24 27 / 0.12);
+    --toggle-inset: 8px;
+    --toggle-radius-inset: 4px;
 
-  display: inline-flex;
-  gap: 2px;
-  padding: 3px;
-  border: 1px solid var(--hds-color-border);
-  border-radius: var(--group-radius);
-  background: var(--hds-color-surface-active);
-}
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid var(--hds-color-border);
+    border-radius: var(--group-radius);
+    background: var(--hds-color-surface-active);
+  }
 
-.group[data-size='small'] {
-  --group-radius: var(--hds-radius-sm);
-}
+  .group[data-size='small'] {
+    --group-radius: var(--hds-radius-sm);
+  }
 
-.group[data-size='medium'] {
-  --group-radius: var(--hds-radius-md);
-}
+  .group[data-size='medium'] {
+    --group-radius: var(--hds-radius-md);
+  }
 
-.group[data-size='large'] {
-  --group-radius: var(--hds-radius-lg);
-}
+  .group[data-size='large'] {
+    --group-radius: var(--hds-radius-lg);
+  }
 
-.group[data-orientation='vertical'] {
-  flex-direction: column;
+  .group[data-orientation='vertical'] {
+    flex-direction: column;
+  }
 }

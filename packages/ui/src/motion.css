@@ -1,5 +1,10 @@
 /* Transition durations and easing. */
-:root {
-  --hds-duration-fast: 120ms;
-  --hds-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+@layer reset, hds.variables, hds.components, hds.typography, hds.spacing;
+
+@layer hds.variables {
+  :root {
+    --hds-duration-fast: 120ms;
+    --hds-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  }
 }

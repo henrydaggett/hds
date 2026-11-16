@@ -9,7 +9,7 @@ Agent skills in `.cursor/skills` prototype, build, lint and answer questions abo
 ```
 packages/ui        @hds/ui: variables, icons, components
   docs/            the design system docs every skill reads (catalog, assets, guidelines)
-  src/*.css        one file per concept: color, spacing, typography, radius, focus, motion
+  src/*.css        one file per concept: color, spacing, typography, radius, focus, motion (in cascade layers)
   src/components/  one folder per component (tsx, CSS module, README)
 packages/lint      @hds/lint: the hds-lint command (technical and usage rules)
 apps/sandbox       Vite + React app for testing components with DialKit
@@ -59,7 +59,7 @@ pnpm test         # run the linter's tests
 
 ## Using the package
 
-The sandbox consumes `@hds/ui` from source through the pnpm workspace. The CSS loads with any import, so there's no stylesheet to add:
+The sandbox consumes `@hds/ui` from source through the pnpm workspace. The CSS loads with any import, so there's no stylesheet to add. Put your app's global resets in `@layer reset { … }` so hds styles win over them (see [Cascade layers](packages/ui/docs/README.md#cascade-layers)):
 
 ```tsx
 import { HdsButton } from '@hds/ui';

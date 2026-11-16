@@ -1,5 +1,5 @@
-// The CSS loads with any import from @hds/ui. Order matters only for
-// spacing.css, which must come after typography.css.
+// The CSS loads with any import from @hds/ui. Each file declares the cascade
+// layer order itself, so the import order doesn't matter.
 import './color.css';
 import './focus.css';
 import './radius.css';

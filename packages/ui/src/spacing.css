@@ -1,80 +1,88 @@
 /*
  * Spacing variables, and the spacing classes: hds-gap-*, hds-p-*, hds-px-*, hds-py-*,
  * hds-m-*, hds-mt-*, hds-mb-*. The number in a class is pixels (hds-gap-16 is 16px).
- * Load after typography.css so the margin classes override its margin reset.
+ * The hds.spacing layer comes after hds.typography, so these margins override
+ * the typography classes' margin reset whatever order the files load in.
  */
-:root {
-  --hds-space-1: 4px;
-  --hds-space-2: 8px;
-  --hds-space-3: 12px;
-  --hds-space-4: 16px;
-  --hds-space-5: 20px;
-  --hds-space-6: 24px;
-  --hds-space-8: 32px;
-  --hds-space-12: 48px;
+
+@layer reset, hds.variables, hds.components, hds.typography, hds.spacing;
+
+@layer hds.variables {
+  :root {
+    --hds-space-1: 4px;
+    --hds-space-2: 8px;
+    --hds-space-3: 12px;
+    --hds-space-4: 16px;
+    --hds-space-5: 20px;
+    --hds-space-6: 24px;
+    --hds-space-8: 32px;
+    --hds-space-12: 48px;
+  }
 }
 
-.hds-gap-4 { gap: var(--hds-space-1); }
-.hds-gap-8 { gap: var(--hds-space-2); }
-.hds-gap-12 { gap: var(--hds-space-3); }
-.hds-gap-16 { gap: var(--hds-space-4); }
-.hds-gap-20 { gap: var(--hds-space-5); }
-.hds-gap-24 { gap: var(--hds-space-6); }
-.hds-gap-32 { gap: var(--hds-space-8); }
-.hds-gap-48 { gap: var(--hds-space-12); }
+@layer hds.spacing {
+  .hds-gap-4 { gap: var(--hds-space-1); }
+  .hds-gap-8 { gap: var(--hds-space-2); }
+  .hds-gap-12 { gap: var(--hds-space-3); }
+  .hds-gap-16 { gap: var(--hds-space-4); }
+  .hds-gap-20 { gap: var(--hds-space-5); }
+  .hds-gap-24 { gap: var(--hds-space-6); }
+  .hds-gap-32 { gap: var(--hds-space-8); }
+  .hds-gap-48 { gap: var(--hds-space-12); }
 
-.hds-p-0 { padding: 0; }
-.hds-p-4 { padding: var(--hds-space-1); }
-.hds-p-8 { padding: var(--hds-space-2); }
-.hds-p-12 { padding: var(--hds-space-3); }
-.hds-p-16 { padding: var(--hds-space-4); }
-.hds-p-20 { padding: var(--hds-space-5); }
-.hds-p-24 { padding: var(--hds-space-6); }
-.hds-p-32 { padding: var(--hds-space-8); }
-.hds-p-48 { padding: var(--hds-space-12); }
+  .hds-p-0 { padding: 0; }
+  .hds-p-4 { padding: var(--hds-space-1); }
+  .hds-p-8 { padding: var(--hds-space-2); }
+  .hds-p-12 { padding: var(--hds-space-3); }
+  .hds-p-16 { padding: var(--hds-space-4); }
+  .hds-p-20 { padding: var(--hds-space-5); }
+  .hds-p-24 { padding: var(--hds-space-6); }
+  .hds-p-32 { padding: var(--hds-space-8); }
+  .hds-p-48 { padding: var(--hds-space-12); }
 
-.hds-px-4 { padding-inline: var(--hds-space-1); }
-.hds-px-8 { padding-inline: var(--hds-space-2); }
-.hds-px-12 { padding-inline: var(--hds-space-3); }
-.hds-px-16 { padding-inline: var(--hds-space-4); }
-.hds-px-20 { padding-inline: var(--hds-space-5); }
-.hds-px-24 { padding-inline: var(--hds-space-6); }
-.hds-px-32 { padding-inline: var(--hds-space-8); }
-.hds-px-48 { padding-inline: var(--hds-space-12); }
+  .hds-px-4 { padding-inline: var(--hds-space-1); }
+  .hds-px-8 { padding-inline: var(--hds-space-2); }
+  .hds-px-12 { padding-inline: var(--hds-space-3); }
+  .hds-px-16 { padding-inline: var(--hds-space-4); }
+  .hds-px-20 { padding-inline: var(--hds-space-5); }
+  .hds-px-24 { padding-inline: var(--hds-space-6); }
+  .hds-px-32 { padding-inline: var(--hds-space-8); }
+  .hds-px-48 { padding-inline: var(--hds-space-12); }
 
-.hds-py-4 { padding-block: var(--hds-space-1); }
-.hds-py-8 { padding-block: var(--hds-space-2); }
-.hds-py-12 { padding-block: var(--hds-space-3); }
-.hds-py-16 { padding-block: var(--hds-space-4); }
-.hds-py-20 { padding-block: var(--hds-space-5); }
-.hds-py-24 { padding-block: var(--hds-space-6); }
-.hds-py-32 { padding-block: var(--hds-space-8); }
-.hds-py-48 { padding-block: var(--hds-space-12); }
+  .hds-py-4 { padding-block: var(--hds-space-1); }
+  .hds-py-8 { padding-block: var(--hds-space-2); }
+  .hds-py-12 { padding-block: var(--hds-space-3); }
+  .hds-py-16 { padding-block: var(--hds-space-4); }
+  .hds-py-20 { padding-block: var(--hds-space-5); }
+  .hds-py-24 { padding-block: var(--hds-space-6); }
+  .hds-py-32 { padding-block: var(--hds-space-8); }
+  .hds-py-48 { padding-block: var(--hds-space-12); }
 
-.hds-m-0 { margin: 0; }
-.hds-m-4 { margin: var(--hds-space-1); }
-.hds-m-8 { margin: var(--hds-space-2); }
-.hds-m-12 { margin: var(--hds-space-3); }
-.hds-m-16 { margin: var(--hds-space-4); }
-.hds-m-20 { margin: var(--hds-space-5); }
-.hds-m-24 { margin: var(--hds-space-6); }
-.hds-m-32 { margin: var(--hds-space-8); }
-.hds-m-48 { margin: var(--hds-space-12); }
+  .hds-m-0 { margin: 0; }
+  .hds-m-4 { margin: var(--hds-space-1); }
+  .hds-m-8 { margin: var(--hds-space-2); }
+  .hds-m-12 { margin: var(--hds-space-3); }
+  .hds-m-16 { margin: var(--hds-space-4); }
+  .hds-m-20 { margin: var(--hds-space-5); }
+  .hds-m-24 { margin: var(--hds-space-6); }
+  .hds-m-32 { margin: var(--hds-space-8); }
+  .hds-m-48 { margin: var(--hds-space-12); }
 
-.hds-mt-4 { margin-top: var(--hds-space-1); }
-.hds-mt-8 { margin-top: var(--hds-space-2); }
-.hds-mt-12 { margin-top: var(--hds-space-3); }
-.hds-mt-16 { margin-top: var(--hds-space-4); }
-.hds-mt-20 { margin-top: var(--hds-space-5); }
-.hds-mt-24 { margin-top: var(--hds-space-6); }
-.hds-mt-32 { margin-top: var(--hds-space-8); }
-.hds-mt-48 { margin-top: var(--hds-space-12); }
+  .hds-mt-4 { margin-top: var(--hds-space-1); }
+  .hds-mt-8 { margin-top: var(--hds-space-2); }
+  .hds-mt-12 { margin-top: var(--hds-space-3); }
+  .hds-mt-16 { margin-top: var(--hds-space-4); }
+  .hds-mt-20 { margin-top: var(--hds-space-5); }
+  .hds-mt-24 { margin-top: var(--hds-space-6); }
+  .hds-mt-32 { margin-top: var(--hds-space-8); }
+  .hds-mt-48 { margin-top: var(--hds-space-12); }
 
-.hds-mb-4 { margin-bottom: var(--hds-space-1); }
-.hds-mb-8 { margin-bottom: var(--hds-space-2); }
-.hds-mb-12 { margin-bottom: var(--hds-space-3); }
-.hds-mb-16 { margin-bottom: var(--hds-space-4); }
-.hds-mb-20 { margin-bottom: var(--hds-space-5); }
-.hds-mb-24 { margin-bottom: var(--hds-space-6); }
-.hds-mb-32 { margin-bottom: var(--hds-space-8); }
-.hds-mb-48 { margin-bottom: var(--hds-space-12); }
+  .hds-mb-4 { margin-bottom: var(--hds-space-1); }
+  .hds-mb-8 { margin-bottom: var(--hds-space-2); }
+  .hds-mb-12 { margin-bottom: var(--hds-space-3); }
+  .hds-mb-16 { margin-bottom: var(--hds-space-4); }
+  .hds-mb-20 { margin-bottom: var(--hds-space-5); }
+  .hds-mb-24 { margin-bottom: var(--hds-space-6); }
+  .hds-mb-32 { margin-bottom: var(--hds-space-8); }
+  .hds-mb-48 { margin-bottom: var(--hds-space-12); }
+}

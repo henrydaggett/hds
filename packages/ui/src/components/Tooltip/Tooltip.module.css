@@ -1,24 +1,26 @@
-.positioner {
-  z-index: 30;
-}
+@layer hds.components {
+  .positioner {
+    z-index: 30;
+  }
 
-.popup {
-  max-width: 240px;
-  padding: var(--hds-space-1) var(--hds-space-2);
-  border-radius: var(--hds-radius-sm);
-  background: var(--hds-color-neutral-900);
-  color: var(--hds-color-neutral-0);
-  font-family: var(--hds-font-sans);
-  font-size: var(--hds-font-size-sm);
-  line-height: 1.4;
-  transform-origin: var(--transform-origin);
-  transition:
-    opacity var(--hds-duration-fast) var(--hds-ease-standard),
-    transform var(--hds-duration-fast) var(--hds-ease-standard);
-}
+  .popup {
+    max-width: 240px;
+    padding: var(--hds-space-1) var(--hds-space-2);
+    border-radius: var(--hds-radius-sm);
+    background: var(--hds-color-neutral-900);
+    color: var(--hds-color-neutral-0);
+    font-family: var(--hds-font-sans);
+    font-size: var(--hds-font-size-sm);
+    line-height: 1.4;
+    transform-origin: var(--transform-origin);
+    transition:
+      opacity var(--hds-duration-fast) var(--hds-ease-standard),
+      transform var(--hds-duration-fast) var(--hds-ease-standard);
+  }
 
-.popup[data-starting-style],
-.popup[data-ending-style] {
-  opacity: 0;
-  transform: scale(0.96);
+  .popup[data-starting-style],
+  .popup[data-ending-style] {
+    opacity: 0;
+    transform: scale(0.96);
+  }
 }

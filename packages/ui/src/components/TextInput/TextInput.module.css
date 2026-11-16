@@ -1,70 +1,72 @@
-.input {
-  width: 100%;
-  min-width: 0;
-  height: var(--input-height);
-  margin: 0;
-  padding: 0 var(--input-padding-x);
-  border: 1px solid var(--hds-color-border-strong);
-  border-radius: var(--input-radius);
-  background: var(--hds-color-surface);
-  color: var(--hds-color-text);
-  font-family: var(--hds-font-sans);
-  font-size: var(--input-font-size);
-  line-height: 1;
-  transition:
-    border-color var(--hds-duration-fast) var(--hds-ease-standard),
-    box-shadow var(--hds-duration-fast) var(--hds-ease-standard);
-}
+@layer hds.components {
+  .input {
+    width: 100%;
+    min-width: 0;
+    height: var(--input-height);
+    margin: 0;
+    padding: 0 var(--input-padding-x);
+    border: 1px solid var(--hds-color-border-strong);
+    border-radius: var(--input-radius);
+    background: var(--hds-color-surface);
+    color: var(--hds-color-text);
+    font-family: var(--hds-font-sans);
+    font-size: var(--input-font-size);
+    line-height: 1;
+    transition:
+      border-color var(--hds-duration-fast) var(--hds-ease-standard),
+      box-shadow var(--hds-duration-fast) var(--hds-ease-standard);
+  }
 
-/* Sizes (match HdsButton heights) */
-.input[data-size='small'] {
-  --input-height: 28px;
-  --input-padding-x: var(--hds-space-2);
-  --input-radius: var(--hds-radius-sm);
-  --input-font-size: var(--hds-font-size-sm);
-}
+  /* Sizes (match HdsButton heights) */
+  .input[data-size='small'] {
+    --input-height: 28px;
+    --input-padding-x: var(--hds-space-2);
+    --input-radius: var(--hds-radius-sm);
+    --input-font-size: var(--hds-font-size-sm);
+  }
 
-.input[data-size='medium'] {
-  --input-height: 36px;
-  --input-padding-x: var(--hds-space-3);
-  --input-radius: var(--hds-radius-md);
-  --input-font-size: var(--hds-font-size-md);
-}
+  .input[data-size='medium'] {
+    --input-height: 36px;
+    --input-padding-x: var(--hds-space-3);
+    --input-radius: var(--hds-radius-md);
+    --input-font-size: var(--hds-font-size-md);
+  }
 
-.input[data-size='large'] {
-  --input-height: 44px;
-  --input-padding-x: var(--hds-space-4);
-  --input-radius: var(--hds-radius-lg);
-  --input-font-size: var(--hds-font-size-lg);
-}
+  .input[data-size='large'] {
+    --input-height: 44px;
+    --input-padding-x: var(--hds-space-4);
+    --input-radius: var(--hds-radius-lg);
+    --input-font-size: var(--hds-font-size-lg);
+  }
 
-.input::placeholder {
-  color: var(--hds-color-text-muted);
-}
+  .input::placeholder {
+    color: var(--hds-color-text-muted);
+  }
 
-/* States */
-.input:hover:not([data-disabled], :focus) {
-  border-color: var(--hds-color-neutral-500);
-}
+  /* States */
+  .input:hover:not([data-disabled], :focus) {
+    border-color: var(--hds-color-neutral-500);
+  }
 
-.input:focus {
-  outline: none;
-  box-shadow: var(--hds-focus-ring);
-}
+  .input:focus {
+    outline: none;
+    box-shadow: var(--hds-focus-ring);
+  }
 
-.input[data-invalid] {
-  border-color: var(--hds-color-red);
-}
+  .input[data-invalid] {
+    border-color: var(--hds-color-red);
+  }
 
-.input[data-invalid]:focus {
-  box-shadow:
-    0 0 0 2px var(--hds-color-neutral-0),
-    0 0 0 4px var(--hds-color-red);
-}
+  .input[data-invalid]:focus {
+    box-shadow:
+      0 0 0 2px var(--hds-color-neutral-0),
+      0 0 0 4px var(--hds-color-red);
+  }
 
-.input[data-disabled] {
-  border-color: var(--hds-color-border);
-  background: var(--hds-color-disabled-bg);
-  color: var(--hds-color-disabled-text);
-  cursor: not-allowed;
+  .input[data-disabled] {
+    border-color: var(--hds-color-border);
+    background: var(--hds-color-disabled-bg);
+    color: var(--hds-color-disabled-text);
+    cursor: not-allowed;
+  }
 }

@@ -1,41 +1,46 @@
 /* Colour variables. Components use the semantic ones (surface, border, text…). */
-:root {
-  /* Neutrals */
-  --hds-color-neutral-0: #ffffff;
-  --hds-color-neutral-50: #f7f7f8;
-  --hds-color-neutral-100: #eeeef0;
-  --hds-color-neutral-200: #dcdce0;
-  --hds-color-neutral-300: #c4c4ca;
-  --hds-color-neutral-500: #7d7d86;
-  --hds-color-neutral-700: #3f3f46;
-  --hds-color-neutral-900: #18181b;
 
-  /* Primary (ink) */
-  --hds-color-primary: #18181b;
-  --hds-color-primary-hover: #2e2e33;
-  --hds-color-primary-active: #000000;
-  --hds-color-primary-contrast: #ffffff;
+@layer reset, hds.variables, hds.components, hds.typography, hds.spacing;
 
-  /* Blue */
-  --hds-color-blue: #2563eb;
-  --hds-color-blue-hover: #1d4ed8;
-  --hds-color-blue-active: #1e40af;
-  --hds-color-blue-contrast: #ffffff;
+@layer hds.variables {
+  :root {
+    /* Neutrals */
+    --hds-color-neutral-0: #ffffff;
+    --hds-color-neutral-50: #f7f7f8;
+    --hds-color-neutral-100: #eeeef0;
+    --hds-color-neutral-200: #dcdce0;
+    --hds-color-neutral-300: #c4c4ca;
+    --hds-color-neutral-500: #7d7d86;
+    --hds-color-neutral-700: #3f3f46;
+    --hds-color-neutral-900: #18181b;
 
-  /* Red */
-  --hds-color-red: #dc2626;
-  --hds-color-red-hover: #b91c1c;
-  --hds-color-red-active: #991b1b;
-  --hds-color-red-contrast: #ffffff;
+    /* Primary (ink) */
+    --hds-color-primary: #18181b;
+    --hds-color-primary-hover: #2e2e33;
+    --hds-color-primary-active: #000000;
+    --hds-color-primary-contrast: #ffffff;
 
-  /* Surfaces and text */
-  --hds-color-surface: var(--hds-color-neutral-0);
-  --hds-color-surface-hover: var(--hds-color-neutral-50);
-  --hds-color-surface-active: var(--hds-color-neutral-100);
-  --hds-color-border: var(--hds-color-neutral-200);
-  --hds-color-border-strong: var(--hds-color-neutral-300);
-  --hds-color-text: var(--hds-color-neutral-900);
-  --hds-color-text-muted: var(--hds-color-neutral-500);
-  --hds-color-disabled-bg: var(--hds-color-neutral-100);
-  --hds-color-disabled-text: var(--hds-color-neutral-500);
+    /* Blue */
+    --hds-color-blue: #2563eb;
+    --hds-color-blue-hover: #1d4ed8;
+    --hds-color-blue-active: #1e40af;
+    --hds-color-blue-contrast: #ffffff;
+
+    /* Red */
+    --hds-color-red: #dc2626;
+    --hds-color-red-hover: #b91c1c;
+    --hds-color-red-active: #991b1b;
+    --hds-color-red-contrast: #ffffff;
+
+    /* Surfaces and text */
+    --hds-color-surface: var(--hds-color-neutral-0);
+    --hds-color-surface-hover: var(--hds-color-neutral-50);
+    --hds-color-surface-active: var(--hds-color-neutral-100);
+    --hds-color-border: var(--hds-color-neutral-200);
+    --hds-color-border-strong: var(--hds-color-neutral-300);
+    --hds-color-text: var(--hds-color-neutral-900);
+    --hds-color-text-muted: var(--hds-color-neutral-500);
+    --hds-color-disabled-bg: var(--hds-color-neutral-100);
+    --hds-color-disabled-text: var(--hds-color-neutral-500);
+  }
 }

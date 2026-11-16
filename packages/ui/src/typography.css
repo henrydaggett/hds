@@ -1,50 +1,57 @@
 /* Font variables, and the text classes: hds-h1…hds-h6, hds-text-large/medium/small. */
-:root {
-  --hds-font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --hds-font-size-sm: 13px;
-  --hds-font-size-md: 14px;
-  --hds-font-size-lg: 16px;
-  --hds-font-weight-regular: 400;
-  --hds-font-weight-medium: 500;
-  --hds-font-weight-semibold: 600;
+
+@layer reset, hds.variables, hds.components, hds.typography, hds.spacing;
+
+@layer hds.variables {
+  :root {
+    --hds-font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --hds-font-size-sm: 13px;
+    --hds-font-size-md: 14px;
+    --hds-font-size-lg: 16px;
+    --hds-font-weight-regular: 400;
+    --hds-font-weight-medium: 500;
+    --hds-font-weight-semibold: 600;
+  }
 }
 
-.hds-h1,
-.hds-h2,
-.hds-h3,
-.hds-h4,
-.hds-h5,
-.hds-h6,
-.hds-text-large,
-.hds-text-medium,
-.hds-text-small {
-  margin: 0;
-  font-family: var(--hds-font-sans);
-  color: var(--hds-color-text);
+@layer hds.typography {
+  .hds-h1,
+  .hds-h2,
+  .hds-h3,
+  .hds-h4,
+  .hds-h5,
+  .hds-h6,
+  .hds-text-large,
+  .hds-text-medium,
+  .hds-text-small {
+    margin: 0;
+    font-family: var(--hds-font-sans);
+    color: var(--hds-color-text);
+  }
+
+  .hds-h1,
+  .hds-h2,
+  .hds-h3,
+  .hds-h4,
+  .hds-h5,
+  .hds-h6 {
+    font-weight: var(--hds-font-weight-semibold);
+  }
+
+  .hds-h1 { font-size: 32px; line-height: 40px; letter-spacing: -0.02em; }
+  .hds-h2 { font-size: 28px; line-height: 36px; letter-spacing: -0.015em; }
+  .hds-h3 { font-size: 24px; line-height: 32px; letter-spacing: -0.01em; }
+  .hds-h4 { font-size: 20px; line-height: 28px; }
+  .hds-h5 { font-size: 18px; line-height: 26px; }
+  .hds-h6 { font-size: var(--hds-font-size-lg); line-height: 24px; }
+
+  .hds-text-large,
+  .hds-text-medium,
+  .hds-text-small {
+    font-weight: var(--hds-font-weight-regular);
+  }
+
+  .hds-text-large { font-size: var(--hds-font-size-lg); line-height: 24px; }
+  .hds-text-medium { font-size: var(--hds-font-size-md); line-height: 20px; }
+  .hds-text-small { font-size: var(--hds-font-size-sm); line-height: 18px; }
 }
-
-.hds-h1,
-.hds-h2,
-.hds-h3,
-.hds-h4,
-.hds-h5,
-.hds-h6 {
-  font-weight: var(--hds-font-weight-semibold);
-}
-
-.hds-h1 { font-size: 32px; line-height: 40px; letter-spacing: -0.02em; }
-.hds-h2 { font-size: 28px; line-height: 36px; letter-spacing: -0.015em; }
-.hds-h3 { font-size: 24px; line-height: 32px; letter-spacing: -0.01em; }
-.hds-h4 { font-size: 20px; line-height: 28px; }
-.hds-h5 { font-size: 18px; line-height: 26px; }
-.hds-h6 { font-size: var(--hds-font-size-lg); line-height: 24px; }
-
-.hds-text-large,
-.hds-text-medium,
-.hds-text-small {
-  font-weight: var(--hds-font-weight-regular);
-}
-
-.hds-text-large { font-size: var(--hds-font-size-lg); line-height: 24px; }
-.hds-text-medium { font-size: var(--hds-font-size-md); line-height: 20px; }
-.hds-text-small { font-size: var(--hds-font-size-sm); line-height: 18px; }

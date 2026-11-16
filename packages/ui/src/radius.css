@@ -1,6 +1,11 @@
 /* Corner radius variables. */
-:root {
-  --hds-radius-sm: 6px;
-  --hds-radius-md: 8px;
-  --hds-radius-lg: 10px;
+
+@layer reset, hds.variables, hds.components, hds.typography, hds.spacing;
+
+@layer hds.variables {
+  :root {
+    --hds-radius-sm: 6px;
+    --hds-radius-md: 8px;
+    --hds-radius-lg: 10px;
+  }
 }

@@ -29,7 +29,7 @@ Everything about the system is in the docs root: `packages/ui/docs/` in this rep
 ## Rules
 
 1. **Use the system for everything it covers.** If `components.md` has a component for an element, use it. Never rebuild one with raw HTML.
-2. **Import from `@hds/ui` only**, never from sub-paths. The CSS (variables and classes) loads with any import from `@hds/ui`, so there's no stylesheet to add.
+2. **Import from `@hds/ui` only**, never from sub-paths. The CSS (variables and classes) loads with any import from `@hds/ui`, so there's no stylesheet to add. Global resets in the app (`* { … }`, `p { margin: 0 }`, `button { … }`) must be inside `@layer reset { … }`, or they override hds styles; move any that aren't (see "Cascade layers" in the docs README).
 3. **Only documented props.** Check the asset and the runtime README. Don't pass `className` or `style` to `Hds*` components; wrap them in a layout element instead.
 4. **Follow the guidelines**, not just the API: one primary button per section, red only for destructive actions, the right component for the number of options, sentence-case labels.
 5. **Gaps get built, not faked.** For UI the system doesn't have (see "Not in the system" in `components.md`), build it from plain elements styled only with `var(--hds-*)` variables and `hds-*` classes, and list it in your report. Never approximate a missing component by misusing another (e.g. a toggle group as tabs).
@@ -51,7 +51,7 @@ Copy this checklist and track progress:
 
 ### 1. Understand the task and the codebase
 
-Find where the change belongs, how similar features are built, and how the project runs, typechecks and tests. Check that `@hds/ui` is a dependency.
+Find where the change belongs, how similar features are built, and how the project runs, typechecks and tests. Check that `@hds/ui` is a dependency, and that the app's global resets are in `@layer reset`.
 
 ### 2. Map the UI to components
 

@@ -49,6 +49,7 @@ With no rule ids, a comment turns off every rule.
 | `hardcoded-spacing` | warning | Inline margin, padding or gap where a spacing class should be used. |
 | `hardcoded-typography` | warning | Inline font styles where a typography class should be used. |
 | `raw-element` | warning | A native element that a design system component replaces. |
+| `unlayered-reset` | warning | A global reset outside `@layer reset`, which would override hds styles. |
 | `no-custom-styling` | warning | `className` or `style` on a design system component. |
 
 ### Usage
@@ -71,7 +72,7 @@ With no rule ids, a comment turns off every rule.
 | `redundant-default` | info | A prop set to its default value. |
 | `button-label-case` | info | A button label in Title Case. |
 
-`unknown-variable`, `hardcoded-color` and `hardcoded-spacing` also run on CSS files.
+`unknown-variable`, `hardcoded-color` and `hardcoded-spacing` also run on CSS files. `unlayered-reset` runs only on CSS files.
 
 ## What it can't check
 

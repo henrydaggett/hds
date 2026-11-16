@@ -1,7 +1,39 @@
-// Checks plain CSS (including CSS modules) for raw values that a variable covers.
+// Checks plain CSS (including CSS modules) for raw values that a variable covers,
+// and for resets that would override hds because they're outside a cascade layer.
+
+// Selectors made only of elements, `*` and pseudo-elements: `p`, `*::before`, `html, body`.
+const ELEMENT_ONLY = /^(?:[a-z][a-z0-9-]*|\*)(?:::?[a-z-]+(?:\([^)]*\))?)*$/i;
+
+function findUnlayeredResets(clean, report) {
+  const stack = []; // preludes of the open blocks
+  let start = 0;
+  for (let i = 0; i < clean.length; i++) {
+    const ch = clean[i];
+    if (ch === ';') start = i + 1;
+    else if (ch === '}') {
+      stack.pop();
+      start = i + 1;
+    } else if (ch === '{') {
+      const raw = clean.slice(start, i);
+      const prelude = raw.trim();
+      const inLayer = stack.some((p) => p.startsWith('@layer'));
+      const selectors = prelude.split(',').map((s) => s.trim());
+      if (!prelude.startsWith('@') && !inLayer && !stack.some((p) => !p.startsWith('@')) && selectors.every((s) => ELEMENT_ONLY.test(s))) {
+        const offset = start + raw.indexOf(prelude);
+        const line = clean.slice(0, offset).split('\n').length;
+        const column = offset - clean.lastIndexOf('\n', offset - 1);
+        report('unlayered-reset', { line, column }, `Put '${selectors.join(', ')}' in @layer reset { … }. Outside a layer it overrides every hds style.`);
+      }
+      stack.push(prelude);
+      start = i + 1;
+    }
+  }
+}
+
 export function lintCss(text, system, report) {
   // Blank out comments but keep line numbers.
   const clean = text.replace(/\/\*[\s\S]*?\*\//g, (c) => c.replace(/[^\n]/g, ' '));
+  findUnlayeredResets(clean, report);
   clean.split('\n').forEach((line, i) => {
     const at = (index) => ({ line: i + 1, column: index + 1 });
 

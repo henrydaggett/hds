@@ -6,3 +6,23 @@
   border-color: var(--hds-color-bordr);
   gap: var(--hds-space-2);
 }
+
+p, h1 {
+  margin: 0;
+}
+
+*, *::before {
+  box-sizing: border-box;
+}
+
+@layer reset {
+  body {
+    margin: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .panel p {
+    margin: 0;
+  }
+}

@@ -1,16 +1,19 @@
 /* hds-lint-disable hardcoded-color hardcoded-spacing -- the code editor uses the One Dark theme, not hds. */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* Resets go in the reset layer, which hds declares below its own layers, so hds styles win over them. */
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html,
-body {
-  margin: 0;
-  color: var(--hds-color-text);
-  font-family: var(--hds-font-sans);
-  -webkit-font-smoothing: antialiased;
+  html,
+  body {
+    margin: 0;
+    color: var(--hds-color-text);
+    font-family: var(--hds-font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
 .generator {

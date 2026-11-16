@@ -1,91 +1,93 @@
-.tabs {
-  display: flex;
-  flex-direction: column;
-  font-family: var(--hds-font-sans);
-}
+@layer hds.components {
+  .tabs {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--hds-font-sans);
+  }
 
-.tabs[data-size='small'] {
-  --tabs-height: 28px;
-  --tabs-gap: var(--hds-space-4);
-  --tabs-font-size: var(--hds-font-size-sm);
-}
+  .tabs[data-size='small'] {
+    --tabs-height: 28px;
+    --tabs-gap: var(--hds-space-4);
+    --tabs-font-size: var(--hds-font-size-sm);
+  }
 
-.tabs[data-size='medium'] {
-  --tabs-height: 36px;
-  --tabs-gap: var(--hds-space-5);
-  --tabs-font-size: var(--hds-font-size-md);
-}
+  .tabs[data-size='medium'] {
+    --tabs-height: 36px;
+    --tabs-gap: var(--hds-space-5);
+    --tabs-font-size: var(--hds-font-size-md);
+  }
 
-.tabs[data-size='large'] {
-  --tabs-height: 44px;
-  --tabs-gap: var(--hds-space-6);
-  --tabs-font-size: var(--hds-font-size-lg);
-}
+  .tabs[data-size='large'] {
+    --tabs-height: 44px;
+    --tabs-gap: var(--hds-space-6);
+    --tabs-font-size: var(--hds-font-size-lg);
+  }
 
-.list {
-  position: relative;
-  display: flex;
-  gap: var(--tabs-gap);
-  box-shadow: inset 0 -1px 0 var(--hds-color-border);
-}
+  .list {
+    position: relative;
+    display: flex;
+    gap: var(--tabs-gap);
+    box-shadow: inset 0 -1px 0 var(--hds-color-border);
+  }
 
-.tab {
-  display: inline-flex;
-  align-items: center;
-  height: var(--tabs-height);
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: var(--hds-radius-sm);
-  background: none;
-  color: var(--hds-color-text-muted);
-  font-family: inherit;
-  font-size: var(--tabs-font-size);
-  font-weight: var(--hds-font-weight-medium);
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  user-select: none;
-  transition: color var(--hds-duration-fast) var(--hds-ease-standard);
-}
+  .tab {
+    display: inline-flex;
+    align-items: center;
+    height: var(--tabs-height);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: var(--hds-radius-sm);
+    background: none;
+    color: var(--hds-color-text-muted);
+    font-family: inherit;
+    font-size: var(--tabs-font-size);
+    font-weight: var(--hds-font-weight-medium);
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: color var(--hds-duration-fast) var(--hds-ease-standard);
+  }
 
-.tab:hover:not([data-disabled]),
-.tab[data-active] {
-  color: var(--hds-color-text);
-}
+  .tab:hover:not([data-disabled]),
+  .tab[data-active] {
+    color: var(--hds-color-text);
+  }
 
-.tab:focus-visible {
-  outline: none;
-  box-shadow: var(--hds-focus-ring);
-}
+  .tab:focus-visible {
+    outline: none;
+    box-shadow: var(--hds-focus-ring);
+  }
 
-.tab[data-disabled] {
-  color: var(--hds-color-disabled-text);
-  cursor: not-allowed;
-}
+  .tab[data-disabled] {
+    color: var(--hds-color-disabled-text);
+    cursor: not-allowed;
+  }
 
-.indicator {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: var(--active-tab-width);
-  height: 2px;
-  background: var(--hds-color-primary);
-  translate: var(--active-tab-left) 0;
-  transition:
-    translate var(--hds-duration-fast) var(--hds-ease-standard),
-    width var(--hds-duration-fast) var(--hds-ease-standard);
-}
+  .indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: var(--active-tab-width);
+    height: 2px;
+    background: var(--hds-color-primary);
+    translate: var(--active-tab-left) 0;
+    transition:
+      translate var(--hds-duration-fast) var(--hds-ease-standard),
+      width var(--hds-duration-fast) var(--hds-ease-standard);
+  }
 
-.panel {
-  padding-top: var(--hds-space-4);
-  color: var(--hds-color-text);
-  font-size: var(--hds-font-size-md);
-  line-height: 1.5;
-}
+  .panel {
+    padding-top: var(--hds-space-4);
+    color: var(--hds-color-text);
+    font-size: var(--hds-font-size-md);
+    line-height: 1.5;
+  }
 
-.panel:focus-visible {
-  outline: none;
-  box-shadow: var(--hds-focus-ring);
-  border-radius: var(--hds-radius-sm);
+  .panel:focus-visible {
+    outline: none;
+    box-shadow: var(--hds-focus-ring);
+    border-radius: var(--hds-radius-sm);
+  }
 }
