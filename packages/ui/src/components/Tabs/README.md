@@ -1,12 +1,12 @@
-# DsTabs
+# HdsTabs
 
-Tabs that switch between panels of content. Each `DsTab` is one tab button and its panel. Built on the [Base UI Tabs](https://base-ui.com/react/components/tabs).
+Tabs that switch between panels of content. Each `HdsTab` is one tab button and its panel. Built on the [Base UI Tabs](https://base-ui.com/react/components/tabs).
 
 ```tsx
-import { DsTabs, DsTab } from '@ds-build/ui';
+import { HdsTabs, HdsTab } from '@hds/ui';
 ```
 
-## DsTabs props
+## HdsTabs props
 
 | Prop            | Type                             | Default    | Notes                                               |
 | --------------- | -------------------------------- | ---------- | --------------------------------------------------- |
@@ -16,36 +16,36 @@ import { DsTabs, DsTab } from '@ds-build/ui';
 | `onValueChange` | `(value: string) => void`        | –          | Called when a tab is selected.                      |
 | `aria-label`    | `string`                         | –          | Names the tab list for assistive technology.        |
 
-## DsTab props
+## HdsTab props
 
 | Prop       | Type        | Default | Notes                                           |
 | ---------- | ----------- | ------- | ----------------------------------------------- |
-| `value`    | `string`    | –       | Required. Unique within the `DsTabs`.           |
+| `value`    | `string`    | –       | Required. Unique within the `HdsTabs`.           |
 | `label`    | `ReactNode` | –       | Required. Text of the tab button.               |
 | `disabled` | `boolean`   | `false` | The tab can't be selected.                      |
 | `children` | `ReactNode` | –       | The panel shown while the tab is selected.      |
 
 ## Rules
 
-- Children of `DsTabs` must be `DsTab` elements directly. Anything else isn't rendered.
+- Children of `HdsTabs` must be `HdsTab` elements directly. Anything else isn't rendered.
 - The tab list is always horizontal, above the panels, and as wide as the container.
 - Only the selected tab's panel is mounted.
 
 ## Examples
 
 ```tsx
-<DsTabs aria-label="Project">
-  <DsTab value="overview" label="Overview">
-    <p className="ds-text-medium">A summary of the project.</p>
-  </DsTab>
-  <DsTab value="activity" label="Activity">
-    <p className="ds-text-medium">Recent changes by the team.</p>
-  </DsTab>
-  <DsTab value="billing" label="Billing" disabled />
-</DsTabs>
+<HdsTabs aria-label="Project">
+  <HdsTab value="overview" label="Overview">
+    <p className="hds-text-medium">A summary of the project.</p>
+  </HdsTab>
+  <HdsTab value="activity" label="Activity">
+    <p className="hds-text-medium">Recent changes by the team.</p>
+  </HdsTab>
+  <HdsTab value="billing" label="Billing" disabled />
+</HdsTabs>
 
-<DsTabs size="small" defaultValue="members" aria-label="Team">
-  <DsTab value="members" label="Members">…</DsTab>
-  <DsTab value="invites" label="Invites">…</DsTab>
-</DsTabs>
+<HdsTabs size="small" defaultValue="members" aria-label="Team">
+  <HdsTab value="members" label="Members">…</HdsTab>
+  <HdsTab value="invites" label="Invites">…</HdsTab>
+</HdsTabs>
 ```

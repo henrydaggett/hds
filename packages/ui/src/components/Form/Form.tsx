@@ -7,7 +7,7 @@ export type FormProps = Omit<BaseForm.Props, 'className'> & {
 };
 
 /** Stacks fields and fieldsets vertically and collects their validation errors. */
-export const DsForm = forwardRef<HTMLFormElement, FormProps>(function DsForm(
+export const HdsForm = forwardRef<HTMLFormElement, FormProps>(function HdsForm(
   { className, ...rest },
   ref,
 ) {
@@ -28,7 +28,7 @@ export type FormActionsProps = {
 };
 
 /** A row of buttons at the end of a form. */
-export function DsFormActions({ align = 'start', className, children }: FormActionsProps) {
+export function HdsFormActions({ align = 'start', className, children }: FormActionsProps) {
   return (
     <div
       data-align={align}

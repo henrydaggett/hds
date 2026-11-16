@@ -8,20 +8,20 @@ export type RadioProps = Omit<
   BaseRadio.Root.Props,
   'children' | 'className' | 'render' | 'nativeButton' | 'value'
 > & {
-  /** Identifies the radio in its `DsRadioGroup`. */
+  /** Identifies the radio in its `HdsRadioGroup`. */
   value: string;
   label: ReactNode;
   className?: string;
 };
 
-/** One option of a `DsRadioGroup`. It must be rendered inside one. */
-export const DsRadio = forwardRef<HTMLElement, RadioProps>(function DsRadio(
+/** One option of a `HdsRadioGroup`. It must be rendered inside one. */
+export const HdsRadio = forwardRef<HTMLElement, RadioProps>(function HdsRadio(
   { label, disabled, className, ...rest },
   ref,
 ) {
   const group = useContext(RadioGroupContext);
   if (!group) {
-    throw new Error('DsRadio must be used inside a DsRadioGroup.');
+    throw new Error('HdsRadio must be used inside a HdsRadioGroup.');
   }
 
   return (

@@ -1,12 +1,12 @@
 import { forwardRef, isValidElement, type ReactNode } from 'react';
 import { Field as BaseField } from '@base-ui/react/field';
-import { DsCheckbox } from '../Checkbox/Checkbox';
-import { DsSelect } from '../Select/Select';
-import { DsSwitch } from '../Switch/Switch';
+import { HdsCheckbox } from '../Checkbox/Checkbox';
+import { HdsSelect } from '../Select/Select';
+import { HdsSwitch } from '../Switch/Switch';
 import styles from './Field.module.css';
 
 export type FieldProps = {
-  /** Not rendered for a `DsCheckbox` or `DsSwitch`, which are named by their own `label`. */
+  /** Not rendered for a `HdsCheckbox` or `HdsSwitch`, which are named by their own `label`. */
   label?: ReactNode;
   /** Helper text shown under the control. */
   description?: ReactNode;
@@ -17,19 +17,19 @@ export type FieldProps = {
   /** Form field name. Takes precedence over the control's own `name`. */
   name?: string;
   className?: string;
-  /** One control: `DsTextInput`, `DsSelect`, `DsCheckbox` or `DsSwitch`. */
+  /** One control: `HdsTextInput`, `HdsSelect`, `HdsCheckbox` or `HdsSwitch`. */
   children: ReactNode;
 };
 
-export const DsField = forwardRef<HTMLDivElement, FieldProps>(function DsField(
+export const HdsField = forwardRef<HTMLDivElement, FieldProps>(function HdsField(
   { label, description, error, invalid, disabled, name, className, children },
   ref,
 ) {
-  // A native <label> would open the DsSelect popup on click, so label buttons with a <div>.
-  const labelsButton = isValidElement(children) && children.type === DsSelect;
+  // A native <label> would open the HdsSelect popup on click, so label buttons with a <div>.
+  const labelsButton = isValidElement(children) && children.type === HdsSelect;
   // A Field.Label would replace the checkbox's or switch's own label as its accessible name.
   const labelsItself =
-    isValidElement(children) && (children.type === DsCheckbox || children.type === DsSwitch);
+    isValidElement(children) && (children.type === HdsCheckbox || children.type === HdsSwitch);
   const showLabel = label != null && !labelsItself;
 
   return (

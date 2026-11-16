@@ -1,7 +1,7 @@
 import type { ComponentType } from 'react';
 import * as React from 'react';
 import * as jsxRuntime from 'react/jsx-runtime';
-import * as ui from '@ds-build/ui';
+import * as ui from '@hds/ui';
 import { transform } from 'sucrase';
 
 export type CompileResult = { Component: ComponentType } | { error: string } | { hint: string };
@@ -9,7 +9,7 @@ export type CompileResult = { Component: ComponentType } | { error: string } | {
 const modules: Record<string, unknown> = {
   react: React,
   'react/jsx-runtime': jsxRuntime,
-  '@ds-build/ui': ui,
+  '@hds/ui': ui,
 };
 
 /** Uses the first ```tsx/jsx fenced block if the text has one, so a whole skill reply can be pasted. */
@@ -20,12 +20,12 @@ function extractCode(text: string): string {
 
 function require(name: string): unknown {
   if (name in modules) return modules[name];
-  throw new Error(`Unknown import "${name}". Only react and @ds-build/ui are available.`);
+  throw new Error(`Unknown import "${name}". Only react and @hds/ui are available.`);
 }
 
 export function compile(text: string): CompileResult {
   const source = extractCode(text);
-  if (!source.trim()) return { hint: 'Paste a ds-build snippet to see a preview.' };
+  if (!source.trim()) return { hint: 'Paste a hds snippet to see a preview.' };
 
   let code: string;
   try {

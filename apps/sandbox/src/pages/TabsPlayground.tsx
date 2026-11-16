@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsTab, DsTabs, type TabsSize } from '@ds-build/ui';
+import { HdsTab, HdsTabs, type TabsSize } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsx, str } from '../lib/jsx';
 
@@ -22,11 +22,11 @@ export function TabsPlayground() {
   const last = tabs.length - 1;
 
   const snippet = jsx(
-    'DsTabs',
+    'HdsTabs',
     [str('size', size, 'medium'), str('defaultValue', dial.selected, 'overview'), 'aria-label="Project"'],
     tabs.map((t, i) =>
       jsx(
-        'DsTab',
+        'HdsTab',
         [`value="${t.value}"`, `label="${t.label}"`, bool('disabled', dial.disableLast && i === last)],
         t.text,
       ),
@@ -35,13 +35,13 @@ export function TabsPlayground() {
 
   return (
     <Stage snippet={snippet} width={480}>
-      <DsTabs key={dial.selected} size={size} defaultValue={dial.selected} aria-label="Project">
+      <HdsTabs key={dial.selected} size={size} defaultValue={dial.selected} aria-label="Project">
         {tabs.map((t, i) => (
-          <DsTab key={t.value} value={t.value} label={t.label} disabled={dial.disableLast && i === last}>
+          <HdsTab key={t.value} value={t.value} label={t.label} disabled={dial.disableLast && i === last}>
             {t.text}
-          </DsTab>
+          </HdsTab>
         ))}
-      </DsTabs>
+      </HdsTabs>
     </Stage>
   );
 }

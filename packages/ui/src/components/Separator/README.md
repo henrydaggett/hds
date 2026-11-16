@@ -1,9 +1,9 @@
-# DsSeparator
+# HdsSeparator
 
 A thin line between groups of content. Built on the [Base UI Separator](https://base-ui.com/react/components/separator).
 
 ```tsx
-import { DsSeparator } from '@ds-build/ui';
+import { HdsSeparator } from '@hds/ui';
 ```
 
 ## Props
@@ -21,11 +21,11 @@ import { DsSeparator } from '@ds-build/ui';
 ## Examples
 
 ```tsx
-<DsSeparator />
+<HdsSeparator />
 
-<div className="ds-gap-12" style={{ display: 'flex' }}>
-  <DsButton appearance="outline">Undo</DsButton>
-  <DsSeparator orientation="vertical" />
-  <DsButton appearance="outline">Share</DsButton>
+<div className="hds-gap-12" style={{ display: 'flex' }}>
+  <HdsButton appearance="outline">Undo</HdsButton>
+  <HdsSeparator orientation="vertical" />
+  <HdsButton appearance="outline">Share</HdsButton>
 </div>
 ```

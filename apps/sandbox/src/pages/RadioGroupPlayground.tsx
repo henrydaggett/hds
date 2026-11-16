@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsRadio, DsRadioGroup, type RadioGroupSize } from '@ds-build/ui';
+import { HdsRadio, HdsRadioGroup, type RadioGroupSize } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsx, jsxStacked, str } from '../lib/jsx';
 
@@ -27,7 +27,7 @@ export function RadioGroupPlayground() {
   const orientation = dial.orientation as 'vertical' | 'horizontal';
 
   const snippet = jsxStacked(
-    'DsRadioGroup',
+    'HdsRadioGroup',
     [
       str('label', dial.label),
       str('description', dial.description),
@@ -38,12 +38,12 @@ export function RadioGroupPlayground() {
       dial.invalid && `error="${error}"`,
       bool('disabled', dial.disabled),
     ],
-    plans.map((p) => jsx('DsRadio', [`value="${p.value}"`, `label="${p.label}"`])),
+    plans.map((p) => jsx('HdsRadio', [`value="${p.value}"`, `label="${p.label}"`])),
   );
 
   return (
     <Stage snippet={snippet}>
-      <DsRadioGroup
+      <HdsRadioGroup
         label={dial.label || undefined}
         description={dial.description || undefined}
         size={size}
@@ -55,9 +55,9 @@ export function RadioGroupPlayground() {
         aria-label={dial.label ? undefined : 'Plan'}
       >
         {plans.map((p) => (
-          <DsRadio key={p.value} value={p.value} label={p.label} />
+          <HdsRadio key={p.value} value={p.value} label={p.label} />
         ))}
-      </DsRadioGroup>
+      </HdsRadioGroup>
     </Stage>
   );
 }

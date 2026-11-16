@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsField, DsFieldset, DsTextInput } from '@ds-build/ui';
+import { HdsField, HdsFieldset, HdsTextInput } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsx, jsxStacked, str } from '../lib/jsx';
 
@@ -11,28 +11,28 @@ export function FieldsetPlayground() {
   });
 
   const snippet = jsxStacked(
-    'DsFieldset',
+    'HdsFieldset',
     [str('legend', dial.legend), str('description', dial.description), bool('disabled', dial.disabled)],
     [
-      jsx('DsField', ['label="Company"'], [jsx('DsTextInput', ['placeholder="Acme Inc."'])]),
-      jsx('DsField', ['label="VAT number"'], [jsx('DsTextInput', ['placeholder="GB123456789"'])]),
+      jsx('HdsField', ['label="Company"'], [jsx('HdsTextInput', ['placeholder="Acme Inc."'])]),
+      jsx('HdsField', ['label="VAT number"'], [jsx('HdsTextInput', ['placeholder="GB123456789"'])]),
     ],
   );
 
   return (
     <Stage snippet={snippet} width={360}>
-      <DsFieldset
+      <HdsFieldset
         legend={dial.legend || undefined}
         description={dial.description || undefined}
         disabled={dial.disabled}
       >
-        <DsField label="Company">
-          <DsTextInput placeholder="Acme Inc." />
-        </DsField>
-        <DsField label="VAT number">
-          <DsTextInput placeholder="GB123456789" />
-        </DsField>
-      </DsFieldset>
+        <HdsField label="Company">
+          <HdsTextInput placeholder="Acme Inc." />
+        </HdsField>
+        <HdsField label="VAT number">
+          <HdsTextInput placeholder="GB123456789" />
+        </HdsField>
+      </HdsFieldset>
     </Stage>
   );
 }

@@ -24,7 +24,7 @@ type UnlabelledSwitchProps = SwitchBaseProps & {
 
 export type SwitchProps = LabelledSwitchProps | UnlabelledSwitchProps;
 
-export const DsSwitch = forwardRef<HTMLElement, SwitchProps>(function DsSwitch(
+export const HdsSwitch = forwardRef<HTMLElement, SwitchProps>(function HdsSwitch(
   { size = 'medium', label, disabled, className, ...rest },
   ref,
 ) {

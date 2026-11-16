@@ -12,7 +12,7 @@ export type FieldsetProps = Omit<BaseFieldset.Root.Props, 'className' | 'childre
   children: ReactNode;
 };
 
-export const DsFieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(function DsFieldset(
+export const HdsFieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(function HdsFieldset(
   { legend, description, className, children, ...rest },
   ref,
 ) {

@@ -7,7 +7,7 @@ export type SeparatorProps = Omit<BaseSeparator.Props, 'className' | 'render'> &
 };
 
 /** A thin line between groups of content. Vertical separators stretch to their flex row's height. */
-export const DsSeparator = forwardRef<HTMLDivElement, SeparatorProps>(function DsSeparator(
+export const HdsSeparator = forwardRef<HTMLDivElement, SeparatorProps>(function HdsSeparator(
   { orientation = 'horizontal', className, ...rest },
   ref,
 ) {

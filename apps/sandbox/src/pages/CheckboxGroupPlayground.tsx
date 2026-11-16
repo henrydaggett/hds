@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsCheckbox, DsCheckboxGroup, type CheckboxGroupSize } from '@ds-build/ui';
+import { HdsCheckbox, HdsCheckboxGroup, type CheckboxGroupSize } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsx, jsxStacked, str } from '../lib/jsx';
 
@@ -27,7 +27,7 @@ export function CheckboxGroupPlayground() {
   const orientation = dial.orientation as 'vertical' | 'horizontal';
 
   const snippet = jsxStacked(
-    'DsCheckboxGroup',
+    'HdsCheckboxGroup',
     [
       str('label', dial.label),
       str('description', dial.description),
@@ -38,12 +38,12 @@ export function CheckboxGroupPlayground() {
       dial.invalid && `error="${error}"`,
       bool('disabled', dial.disabled),
     ],
-    channels.map((c) => jsx('DsCheckbox', [`value="${c.value}"`, `label="${c.label}"`])),
+    channels.map((c) => jsx('HdsCheckbox', [`value="${c.value}"`, `label="${c.label}"`])),
   );
 
   return (
     <Stage snippet={snippet}>
-      <DsCheckboxGroup
+      <HdsCheckboxGroup
         label={dial.label || undefined}
         description={dial.description || undefined}
         size={size}
@@ -55,9 +55,9 @@ export function CheckboxGroupPlayground() {
         aria-label={dial.label ? undefined : 'Notifications'}
       >
         {channels.map((c) => (
-          <DsCheckbox key={c.value} value={c.value} label={c.label} />
+          <HdsCheckbox key={c.value} value={c.value} label={c.label} />
         ))}
-      </DsCheckboxGroup>
+      </HdsCheckboxGroup>
     </Stage>
   );
 }

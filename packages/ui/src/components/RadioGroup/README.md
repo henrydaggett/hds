@@ -1,9 +1,9 @@
-# DsRadioGroup
+# HdsRadioGroup
 
-A labelled set of `DsRadio`s where one can be selected. Built on the Base UI [Radio Group](https://base-ui.com/react/components/radio), [Fieldset](https://base-ui.com/react/components/fieldset) and [Field](https://base-ui.com/react/components/field).
+A labelled set of `HdsRadio`s where one can be selected. Built on the Base UI [Radio Group](https://base-ui.com/react/components/radio), [Fieldset](https://base-ui.com/react/components/fieldset) and [Field](https://base-ui.com/react/components/field).
 
 ```tsx
-import { DsRadioGroup, DsRadio } from '@ds-build/ui';
+import { HdsRadioGroup, HdsRadio } from '@hds/ui';
 ```
 
 ## Props
@@ -20,28 +20,28 @@ import { DsRadioGroup, DsRadio } from '@ds-build/ui';
 | `value`         | `string \| null`                 | –            | Controlled. Use with `onValueChange`.                    |
 | `onValueChange` | `(value: string) => void`        | –            | Called when a radio is selected.                         |
 | `name`          | `string`                         | –            | Form field name for the whole group.                     |
-| `required`      | `boolean`                        | `false`      | One radio must be selected to submit a `DsForm`.         |
+| `required`      | `boolean`                        | `false`      | One radio must be selected to submit a `HdsForm`.         |
 | `disabled`      | `boolean`                        | `false`      | Disables every radio.                                    |
 | `readOnly`      | `boolean`                        | `false`      |                                                          |
 | `aria-label`    | `string`                         | –            | Only when there's no `label`.                            |
 
 ## Rules
 
-- Children are `DsRadio`s, each with a `label` and a unique `value`.
-- Don't wrap a `DsRadioGroup` in a `DsField`; it already includes its own label, description and error.
-- Use a `DsCheckboxGroup` when more than one option can be chosen.
+- Children are `HdsRadio`s, each with a `label` and a unique `value`.
+- Don't wrap a `HdsRadioGroup` in a `HdsField`; it already includes its own label, description and error.
+- Use a `HdsCheckboxGroup` when more than one option can be chosen.
 
 ## Examples
 
 ```tsx
-<DsRadioGroup label="Plan" defaultValue="pro">
-  <DsRadio value="free" label="Free" />
-  <DsRadio value="pro" label="Pro" />
-  <DsRadio value="team" label="Team" />
-</DsRadioGroup>
+<HdsRadioGroup label="Plan" defaultValue="pro">
+  <HdsRadio value="free" label="Free" />
+  <HdsRadio value="pro" label="Pro" />
+  <HdsRadio value="team" label="Team" />
+</HdsRadioGroup>
 
-<DsRadioGroup label="Delivery" orientation="horizontal" invalid error="Choose a delivery option">
-  <DsRadio value="standard" label="Standard" />
-  <DsRadio value="express" label="Express" />
-</DsRadioGroup>
+<HdsRadioGroup label="Delivery" orientation="horizontal" invalid error="Choose a delivery option">
+  <HdsRadio value="standard" label="Standard" />
+  <HdsRadio value="express" label="Express" />
+</HdsRadioGroup>
 ```

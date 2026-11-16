@@ -28,7 +28,7 @@ importers:
       '@codemirror/view':
         specifier: ^6.43.13
         version: 6.43.13
-      '@ds-build/ui':
+      '@hds/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       dialkit:

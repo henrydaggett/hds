@@ -5,7 +5,7 @@ import styles from './Tabs.module.css';
 export type TabsSize = 'small' | 'medium' | 'large';
 
 export type TabProps = {
-  /** Identifies the tab. Unique within its `DsTabs`. */
+  /** Identifies the tab. Unique within its `HdsTabs`. */
   value: string;
   /** Text of the tab button. */
   label: ReactNode;
@@ -15,8 +15,8 @@ export type TabProps = {
   children?: ReactNode;
 };
 
-/** One tab and its panel. `DsTabs` reads `label` and `disabled` to build the tab list. */
-export const DsTab = forwardRef<HTMLDivElement, TabProps>(function DsTab(
+/** One tab and its panel. `HdsTabs` reads `label` and `disabled` to build the tab list. */
+export const HdsTab = forwardRef<HTMLDivElement, TabProps>(function HdsTab(
   { value, className, children },
   ref,
 ) {
@@ -40,16 +40,16 @@ export type TabsProps = {
   className?: string;
   /** Names the tab list for assistive technology. */
   'aria-label'?: string;
-  /** `DsTab` elements. */
+  /** `HdsTab` elements. */
   children: ReactNode;
 };
 
-export const DsTabs = forwardRef<HTMLDivElement, TabsProps>(function DsTabs(
+export const HdsTabs = forwardRef<HTMLDivElement, TabsProps>(function HdsTabs(
   { size = 'medium', defaultValue, value, onValueChange, className, 'aria-label': ariaLabel, children },
   ref,
 ) {
   const tabs = Children.toArray(children).filter(
-    (child): child is ReactElement<TabProps> => isValidElement(child) && child.type === DsTab,
+    (child): child is ReactElement<TabProps> => isValidElement(child) && child.type === HdsTab,
   );
 
   return (

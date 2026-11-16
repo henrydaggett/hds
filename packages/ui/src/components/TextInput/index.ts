@@ -1,2 +1,2 @@
-export { DsTextInput } from './TextInput';
+export { HdsTextInput } from './TextInput';
 export type { TextInputProps, TextInputSize } from './TextInput';

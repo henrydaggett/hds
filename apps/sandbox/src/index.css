@@ -7,9 +7,9 @@
 html,
 body {
   margin: 0;
-  background: var(--ds-color-neutral-50);
-  color: var(--ds-color-text);
-  font-family: var(--ds-font-sans);
+  background: var(--hds-color-neutral-50);
+  color: var(--hds-color-text);
+  font-family: var(--hds-font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -20,17 +20,17 @@ p {
 .tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ds-space-1);
-  padding: var(--ds-space-3) var(--ds-space-6);
-  border-bottom: 1px solid var(--ds-color-border);
-  background: var(--ds-color-surface);
+  gap: var(--hds-space-1);
+  padding: var(--hds-space-3) var(--hds-space-6);
+  border-bottom: 1px solid var(--hds-color-border);
+  background: var(--hds-color-surface);
 }
 
 .tab {
   padding: 6px 10px;
-  border-radius: var(--ds-radius-sm);
-  color: var(--ds-color-text-muted);
-  font-size: var(--ds-font-size-md);
+  border-radius: var(--hds-radius-sm);
+  color: var(--hds-color-text-muted);
+  font-size: var(--hds-font-size-md);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -46,34 +46,34 @@ p {
 }
 
 .tab:hover {
-  color: var(--ds-color-text);
+  color: var(--hds-color-text);
 }
 
 .tab[aria-current='page'] {
-  background: var(--ds-color-neutral-100);
-  color: var(--ds-color-text);
+  background: var(--hds-color-neutral-100);
+  color: var(--hds-color-text);
 }
 
 .content {
   max-width: 960px;
   margin: 0 auto;
-  padding: 40px var(--ds-space-6) 80px;
+  padding: 40px var(--hds-space-6) 80px;
 }
 
 .stage-card {
   overflow: hidden;
-  border: 1px solid var(--ds-color-border);
+  border: 1px solid var(--hds-color-border);
   border-radius: 12px;
-  background: var(--ds-color-surface);
+  background: var(--hds-color-surface);
 }
 
 .stage {
   display: grid;
   place-items: center;
   min-height: 320px;
-  padding: var(--ds-space-6);
-  background-color: var(--ds-color-surface);
-  background-image: radial-gradient(var(--ds-color-neutral-200) 1px, transparent 1px);
+  padding: var(--hds-space-6);
+  background-color: var(--hds-color-surface);
+  background-image: radial-gradient(var(--hds-color-neutral-200) 1px, transparent 1px);
   background-size: 16px 16px;
 }
 
@@ -84,7 +84,7 @@ p {
 
 .stage-footer {
   position: relative;
-  border-top: 1px solid var(--ds-color-border);
+  border-top: 1px solid var(--hds-color-border);
   background: #282c34;
   color-scheme: dark;
 }
@@ -107,18 +107,18 @@ p {
 }
 
 .stage-note {
-  padding: 0 var(--ds-space-4) var(--ds-space-3);
-  color: var(--ds-color-text-muted);
-  font-size: var(--ds-font-size-sm);
+  padding: 0 var(--hds-space-4) var(--hds-space-3);
+  color: var(--hds-color-text-muted);
+  font-size: var(--hds-font-size-sm);
 }
 
 @media (max-width: 640px) {
   .tabs {
-    padding-inline: var(--ds-space-4);
+    padding-inline: var(--hds-space-4);
   }
 
   .content {
-    padding: 24px var(--ds-space-4) 64px;
+    padding: 24px var(--hds-space-4) 64px;
   }
 
   .stage {

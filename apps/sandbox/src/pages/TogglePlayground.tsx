@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useDialKit } from 'dialkit';
-import { DsBoldIcon, DsItalicIcon, DsToggle, DsUnderlineIcon, type ToggleSize } from '@ds-build/ui';
+import { HdsBoldIcon, HdsItalicIcon, HdsToggle, HdsUnderlineIcon, type ToggleSize } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, expr, jsx, str } from '../lib/jsx';
 
@@ -8,9 +8,9 @@ const sizes: ToggleSize[] = ['small', 'medium', 'large'];
 
 const icons: Record<string, { node: ReactNode; name: string } | null> = {
   none: null,
-  bold: { node: <DsBoldIcon />, name: 'DsBoldIcon' },
-  italic: { node: <DsItalicIcon />, name: 'DsItalicIcon' },
-  underline: { node: <DsUnderlineIcon />, name: 'DsUnderlineIcon' },
+  bold: { node: <HdsBoldIcon />, name: 'HdsBoldIcon' },
+  italic: { node: <HdsItalicIcon />, name: 'HdsItalicIcon' },
+  underline: { node: <HdsUnderlineIcon />, name: 'HdsUnderlineIcon' },
 };
 
 export function TogglePlayground() {
@@ -30,7 +30,7 @@ export function TogglePlayground() {
   const common = { size, disabled: dial.disabled, defaultPressed: dial.pressed };
 
   const snippet = jsx(
-    'DsToggle',
+    'HdsToggle',
     [
       str('size', size, 'medium'),
       bool('defaultPressed', dial.pressed),
@@ -44,11 +44,11 @@ export function TogglePlayground() {
   return (
     <Stage snippet={snippet} note={dial.iconOnly && !icon ? 'Pick an icon to make it icon-only.' : undefined}>
       {iconOnly ? (
-        <DsToggle key={String(dial.pressed)} {...common} iconNode={icon.node} aria-label={label} />
+        <HdsToggle key={String(dial.pressed)} {...common} iconNode={icon.node} aria-label={label} />
       ) : (
-        <DsToggle key={String(dial.pressed)} {...common} iconNode={icon?.node}>
+        <HdsToggle key={String(dial.pressed)} {...common} iconNode={icon?.node}>
           {label}
-        </DsToggle>
+        </HdsToggle>
       )}
     </Stage>
   );

@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsTextInput, type TextInputSize } from '@ds-build/ui';
+import { HdsTextInput, type TextInputSize } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsx, str } from '../lib/jsx';
 
@@ -16,7 +16,7 @@ export function TextInputPlayground() {
   });
 
   const size = dial.size as TextInputSize;
-  const snippet = jsx('DsTextInput', [
+  const snippet = jsx('HdsTextInput', [
     str('size', size, 'medium'),
     str('type', dial.type, 'text'),
     str('placeholder', dial.placeholder),
@@ -27,7 +27,7 @@ export function TextInputPlayground() {
 
   return (
     <Stage snippet={snippet} width={320}>
-      <DsTextInput
+      <HdsTextInput
         key={dial.value}
         size={size}
         type={dial.type}

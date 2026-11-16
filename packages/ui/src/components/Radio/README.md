@@ -1,9 +1,9 @@
-# DsRadio
+# HdsRadio
 
-One option of a `DsRadioGroup`. Built on the [Base UI Radio](https://base-ui.com/react/components/radio).
+One option of a `HdsRadioGroup`. Built on the [Base UI Radio](https://base-ui.com/react/components/radio).
 
 ```tsx
-import { DsRadioGroup, DsRadio } from '@ds-build/ui';
+import { HdsRadioGroup, HdsRadio } from '@hds/ui';
 ```
 
 ## Props
@@ -16,16 +16,16 @@ import { DsRadioGroup, DsRadio } from '@ds-build/ui';
 
 ## Rules
 
-- A `DsRadio` only works inside a `DsRadioGroup`; it throws on its own.
+- A `HdsRadio` only works inside a `HdsRadioGroup`; it throws on its own.
 - Select a radio through the group's `defaultValue` or `value`. There's no `checked` prop.
 - The size comes from the group's `size`.
 
 ## Examples
 
 ```tsx
-<DsRadioGroup label="Plan" defaultValue="pro">
-  <DsRadio value="free" label="Free" />
-  <DsRadio value="pro" label="Pro" />
-  <DsRadio value="team" label="Team" disabled />
-</DsRadioGroup>
+<HdsRadioGroup label="Plan" defaultValue="pro">
+  <HdsRadio value="free" label="Free" />
+  <HdsRadio value="pro" label="Pro" />
+  <HdsRadio value="team" label="Team" disabled />
+</HdsRadioGroup>
 ```

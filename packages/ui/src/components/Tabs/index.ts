@@ -1,2 +1,2 @@
-export { DsTabs, DsTab } from './Tabs';
+export { HdsTabs, HdsTab } from './Tabs';
 export type { TabsProps, TabProps, TabsSize } from './Tabs';

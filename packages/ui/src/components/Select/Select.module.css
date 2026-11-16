@@ -1,19 +1,19 @@
-/* Trigger: matches DsTextInput */
+/* Trigger: matches HdsTextInput */
 .trigger {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ds-space-2);
+  gap: var(--hds-space-2);
   width: 100%;
   min-width: 0;
   height: var(--select-height);
   margin: 0;
   padding: 0 var(--select-padding-right) 0 var(--select-padding-left);
-  border: 1px solid var(--ds-color-border-strong);
+  border: 1px solid var(--hds-color-border-strong);
   border-radius: var(--select-radius);
-  background: var(--ds-color-surface);
-  color: var(--ds-color-text);
-  font-family: var(--ds-font-sans);
+  background: var(--hds-color-surface);
+  color: var(--hds-color-text);
+  font-family: var(--hds-font-sans);
   font-size: var(--select-font-size);
   line-height: 1;
   text-align: left;
@@ -21,61 +21,61 @@
   cursor: pointer;
   user-select: none;
   transition:
-    border-color var(--ds-duration-fast) var(--ds-ease-standard),
-    box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
+    border-color var(--hds-duration-fast) var(--hds-ease-standard),
+    box-shadow var(--hds-duration-fast) var(--hds-ease-standard);
 }
 
 .trigger[data-size='small'] {
   --select-height: 28px;
-  --select-padding-left: var(--ds-space-2);
+  --select-padding-left: var(--hds-space-2);
   --select-padding-right: 6px;
-  --select-radius: var(--ds-radius-sm);
-  --select-font-size: var(--ds-font-size-sm);
+  --select-radius: var(--hds-radius-sm);
+  --select-font-size: var(--hds-font-size-sm);
   --select-icon-size: 14px;
 }
 
 .trigger[data-size='medium'] {
   --select-height: 36px;
-  --select-padding-left: var(--ds-space-3);
-  --select-padding-right: var(--ds-space-2);
-  --select-radius: var(--ds-radius-md);
-  --select-font-size: var(--ds-font-size-md);
+  --select-padding-left: var(--hds-space-3);
+  --select-padding-right: var(--hds-space-2);
+  --select-radius: var(--hds-radius-md);
+  --select-font-size: var(--hds-font-size-md);
   --select-icon-size: 16px;
 }
 
 .trigger[data-size='large'] {
   --select-height: 44px;
-  --select-padding-left: var(--ds-space-4);
-  --select-padding-right: var(--ds-space-3);
-  --select-radius: var(--ds-radius-lg);
-  --select-font-size: var(--ds-font-size-lg);
+  --select-padding-left: var(--hds-space-4);
+  --select-padding-right: var(--hds-space-3);
+  --select-radius: var(--hds-radius-lg);
+  --select-font-size: var(--hds-font-size-lg);
   --select-icon-size: 18px;
 }
 
 .trigger:hover:not([data-disabled], [data-popup-open]) {
-  border-color: var(--ds-color-neutral-500);
+  border-color: var(--hds-color-neutral-500);
 }
 
 .trigger:focus-visible,
 .trigger[data-popup-open] {
   outline: none;
-  box-shadow: var(--ds-focus-ring);
+  box-shadow: var(--hds-focus-ring);
 }
 
 .trigger[data-invalid] {
-  border-color: var(--ds-color-red);
+  border-color: var(--hds-color-red);
 }
 
 .trigger[data-invalid]:focus-visible {
   box-shadow:
-    0 0 0 2px var(--ds-color-neutral-0),
-    0 0 0 4px var(--ds-color-red);
+    0 0 0 2px var(--hds-color-neutral-0),
+    0 0 0 4px var(--hds-color-red);
 }
 
 .trigger[data-disabled] {
-  border-color: var(--ds-color-border);
-  background: var(--ds-color-disabled-bg);
-  color: var(--ds-color-disabled-text);
+  border-color: var(--hds-color-border);
+  background: var(--hds-color-disabled-bg);
+  color: var(--hds-color-disabled-text);
   cursor: not-allowed;
 }
 
@@ -85,19 +85,19 @@
 }
 
 .value[data-placeholder] {
-  color: var(--ds-color-text-muted);
+  color: var(--hds-color-text-muted);
 }
 
 .trigger[data-disabled] .value[data-placeholder] {
-  color: var(--ds-color-disabled-text);
+  color: var(--hds-color-disabled-text);
 }
 
 .chevron {
   display: inline-flex;
   flex-shrink: 0;
-  color: var(--ds-color-text-muted);
+  color: var(--hds-color-text-muted);
   font-size: var(--select-icon-size);
-  transition: transform var(--ds-duration-fast) var(--ds-ease-standard);
+  transition: transform var(--hds-duration-fast) var(--hds-ease-standard);
 }
 
 .chevron[data-popup-open] {
@@ -115,17 +115,17 @@
   min-width: var(--anchor-width);
   max-height: var(--available-height);
   overflow-y: auto;
-  padding: var(--ds-space-1);
-  border: 1px solid var(--ds-color-border);
-  border-radius: var(--ds-radius-md);
-  background: var(--ds-color-surface);
+  padding: var(--hds-space-1);
+  border: 1px solid var(--hds-color-border);
+  border-radius: var(--hds-radius-md);
+  background: var(--hds-color-surface);
   box-shadow: 0 8px 24px rgb(24 24 27 / 0.12);
-  color: var(--ds-color-text);
-  font-family: var(--ds-font-sans);
+  color: var(--hds-color-text);
+  font-family: var(--hds-font-sans);
   transform-origin: var(--transform-origin);
   transition:
-    opacity var(--ds-duration-fast) var(--ds-ease-standard),
-    transform var(--ds-duration-fast) var(--ds-ease-standard);
+    opacity var(--hds-duration-fast) var(--hds-ease-standard),
+    transform var(--hds-duration-fast) var(--hds-ease-standard);
 }
 
 .popup[data-starting-style],
@@ -142,9 +142,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ds-space-3);
-  padding: var(--item-padding-y) var(--ds-space-2);
-  border-radius: var(--ds-radius-sm);
+  gap: var(--hds-space-3);
+  padding: var(--item-padding-y) var(--hds-space-2);
+  border-radius: var(--hds-radius-sm);
   font-size: var(--item-font-size);
   line-height: 1.25;
   cursor: default;
@@ -154,29 +154,29 @@
 
 .popup[data-size='small'] .item {
   --item-padding-y: 4px;
-  --item-font-size: var(--ds-font-size-sm);
+  --item-font-size: var(--hds-font-size-sm);
 }
 
 .popup[data-size='medium'] .item {
   --item-padding-y: 6px;
-  --item-font-size: var(--ds-font-size-md);
+  --item-font-size: var(--hds-font-size-md);
 }
 
 .popup[data-size='large'] .item {
   --item-padding-y: 8px;
-  --item-font-size: var(--ds-font-size-lg);
+  --item-font-size: var(--hds-font-size-lg);
 }
 
 .item[data-highlighted] {
-  background: var(--ds-color-surface-active);
+  background: var(--hds-color-surface-active);
 }
 
 .item[data-selected] {
-  font-weight: var(--ds-font-weight-medium);
+  font-weight: var(--hds-font-weight-medium);
 }
 
 .item[data-disabled] {
-  color: var(--ds-color-disabled-text);
+  color: var(--hds-color-disabled-text);
 }
 
 .check {

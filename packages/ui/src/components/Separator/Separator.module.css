@@ -1,6 +1,6 @@
 .separator {
   flex-shrink: 0;
-  background: var(--ds-color-border);
+  background: var(--hds-color-border);
 }
 
 .separator[data-orientation='horizontal'] {

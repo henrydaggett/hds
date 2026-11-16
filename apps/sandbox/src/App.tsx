@@ -1,4 +1,4 @@
-import { DsArrowRightIcon } from '@ds-build/ui';
+import { HdsArrowRightIcon } from '@hds/ui';
 import { useEffect, useState, type ComponentType } from 'react';
 import { AccordionPlayground } from './pages/AccordionPlayground';
 import { ButtonPlayground } from './pages/ButtonPlayground';
@@ -72,7 +72,7 @@ export default function App() {
         <div className="tab-external-row">
           <a className="tab tab-external" href="/generator/">
             UI generator
-            <DsArrowRightIcon />
+            <HdsArrowRightIcon />
           </a>
         </div>
       </nav>

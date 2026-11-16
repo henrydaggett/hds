@@ -1,9 +1,9 @@
-# DsTextInput
+# HdsTextInput
 
-A single-line text input. Built on the [Base UI Input](https://base-ui.com/react/components/input), so it picks up label, validation and invalid styling from `DsField`.
+A single-line text input. Built on the [Base UI Input](https://base-ui.com/react/components/input), so it picks up label, validation and invalid styling from `HdsField`.
 
 ```tsx
-import { DsTextInput } from '@ds-build/ui';
+import { HdsTextInput } from '@hds/ui';
 ```
 
 ## Props
@@ -16,26 +16,26 @@ import { DsTextInput } from '@ds-build/ui';
 | `defaultValue` | `string`                         | –          | Starting value (uncontrolled).                         |
 | `value`        | `string`                         | –          | Controlled. Use with `onValueChange`.                  |
 | `disabled`     | `boolean`                        | `false`    |                                                        |
-| `required`     | `boolean`                        | `false`    | Triggers the `DsField` error when empty on submit.       |
-| `name`         | `string`                         | –          | Prefer `name` on the wrapping `DsField`.                 |
+| `required`     | `boolean`                        | `false`    | Triggers the `HdsField` error when empty on submit.       |
+| `name`         | `string`                         | –          | Prefer `name` on the wrapping `HdsField`.                 |
 
 All other native input props (`autoComplete`, `maxLength`, `pattern`, …) are passed through.
 
 ## Rules
 
 - Fills the width of its container.
-- Always give it a label: wrap it in `<DsField label="…">`, or pass `aria-label` when there's no visible label.
-- Invalid styling comes from the wrapping `DsField` (`invalid` prop or failed validation), not from the input.
+- Always give it a label: wrap it in `<HdsField label="…">`, or pass `aria-label` when there's no visible label.
+- Invalid styling comes from the wrapping `HdsField` (`invalid` prop or failed validation), not from the input.
 - Not for dates or multi-line text.
 
 ## Examples
 
 ```tsx
-<DsField label="Email">
-  <DsTextInput type="email" placeholder="you@example.com" />
-</DsField>
+<HdsField label="Email">
+  <HdsTextInput type="email" placeholder="you@example.com" />
+</HdsField>
 
-<DsTextInput size="small" type="search" placeholder="Search" aria-label="Search" />
+<HdsTextInput size="small" type="search" placeholder="Search" aria-label="Search" />
 
-<DsTextInput defaultValue="Acme Inc." disabled aria-label="Company" />
+<HdsTextInput defaultValue="Acme Inc." disabled aria-label="Company" />
 ```

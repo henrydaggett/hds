@@ -14,7 +14,7 @@ export type CheckboxGroupProps = {
   /** Shown when the group fails validation, or always when `invalid` is set. */
   error?: ReactNode;
   invalid?: boolean;
-  /** Sets the size of every `DsCheckbox` in the group. */
+  /** Sets the size of every `HdsCheckbox` in the group. */
   size?: CheckboxGroupSize;
   orientation?: 'vertical' | 'horizontal';
   /** Values of the checkboxes that start ticked. */
@@ -28,7 +28,7 @@ export type CheckboxGroupProps = {
   children: ReactNode;
 };
 
-export const DsCheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(function DsCheckboxGroup(
+export const HdsCheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(function HdsCheckboxGroup(
   {
     label,
     description,

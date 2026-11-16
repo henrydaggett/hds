@@ -14,7 +14,7 @@ export type RadioGroupProps = {
   /** Shown when the group fails validation, or always when `invalid` is set. */
   error?: ReactNode;
   invalid?: boolean;
-  /** Sets the size of every `DsRadio` in the group. */
+  /** Sets the size of every `HdsRadio` in the group. */
   size?: RadioGroupSize;
   orientation?: 'vertical' | 'horizontal';
   /** `value` of the radio that starts selected. */
@@ -30,7 +30,7 @@ export type RadioGroupProps = {
   children: ReactNode;
 };
 
-export const DsRadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function DsRadioGroup(
+export const HdsRadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function HdsRadioGroup(
   {
     label,
     description,

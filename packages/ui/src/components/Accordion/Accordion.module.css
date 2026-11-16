@@ -1,12 +1,12 @@
 .accordion {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--ds-color-border);
-  font-family: var(--ds-font-sans);
+  border-top: 1px solid var(--hds-color-border);
+  font-family: var(--hds-font-sans);
 }
 
 .item {
-  border-bottom: 1px solid var(--ds-color-border);
+  border-bottom: 1px solid var(--hds-color-border);
 }
 
 .header {
@@ -17,17 +17,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ds-space-4);
+  gap: var(--hds-space-4);
   width: 100%;
   margin: 0;
-  padding: var(--ds-space-3) 0;
+  padding: var(--hds-space-3) 0;
   border: 0;
-  border-radius: var(--ds-radius-sm);
+  border-radius: var(--hds-radius-sm);
   background: none;
-  color: var(--ds-color-text);
+  color: var(--hds-color-text);
   font-family: inherit;
-  font-size: var(--ds-font-size-md);
-  font-weight: var(--ds-font-weight-medium);
+  font-size: var(--hds-font-size-md);
+  font-weight: var(--hds-font-weight-medium);
   line-height: 1.4;
   text-align: left;
   cursor: pointer;
@@ -35,19 +35,19 @@
 
 .trigger:focus-visible {
   outline: none;
-  box-shadow: var(--ds-focus-ring);
+  box-shadow: var(--hds-focus-ring);
 }
 
 .trigger[data-disabled] {
-  color: var(--ds-color-disabled-text);
+  color: var(--hds-color-disabled-text);
   cursor: not-allowed;
 }
 
 .chevron {
   flex-shrink: 0;
-  color: var(--ds-color-text-muted);
+  color: var(--hds-color-text-muted);
   font-size: 16px;
-  transition: transform var(--ds-duration-fast) var(--ds-ease-standard);
+  transition: transform var(--hds-duration-fast) var(--hds-ease-standard);
 }
 
 .trigger[data-panel-open] .chevron {
@@ -55,13 +55,13 @@
 }
 
 .trigger[data-disabled] .chevron {
-  color: var(--ds-color-disabled-text);
+  color: var(--hds-color-disabled-text);
 }
 
 .panel {
   height: var(--accordion-panel-height);
   overflow: hidden;
-  transition: height var(--ds-duration-fast) var(--ds-ease-standard);
+  transition: height var(--hds-duration-fast) var(--hds-ease-standard);
 }
 
 .panel[data-starting-style],
@@ -70,8 +70,8 @@
 }
 
 .content {
-  padding-bottom: var(--ds-space-4);
-  color: var(--ds-color-neutral-700);
-  font-size: var(--ds-font-size-md);
+  padding-bottom: var(--hds-space-4);
+  color: var(--hds-color-neutral-700);
+  font-size: var(--hds-font-size-md);
   line-height: 1.5;
 }

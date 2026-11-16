@@ -6,12 +6,12 @@ import styles from './ToggleGroup.module.css';
 export type ToggleGroupSize = 'small' | 'medium' | 'large';
 
 export type ToggleGroupProps = Omit<BaseToggleGroup.Props, 'className'> & {
-  /** Sets the size of every `DsToggle` in the group. */
+  /** Sets the size of every `HdsToggle` in the group. */
   size?: ToggleGroupSize;
   className?: string;
 };
 
-export const DsToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(function DsToggleGroup(
+export const HdsToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(function HdsToggleGroup(
   { size = 'medium', className, ...rest },
   ref,
 ) {

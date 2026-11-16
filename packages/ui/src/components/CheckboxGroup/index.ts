@@ -1,2 +1,2 @@
-export { DsCheckboxGroup } from './CheckboxGroup';
+export { HdsCheckboxGroup } from './CheckboxGroup';
 export type { CheckboxGroupProps, CheckboxGroupSize } from './CheckboxGroup';

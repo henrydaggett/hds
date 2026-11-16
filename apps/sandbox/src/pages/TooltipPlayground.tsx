@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsButton, DsTooltip, type TooltipSide } from '@ds-build/ui';
+import { HdsButton, HdsTooltip, type TooltipSide } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { jsx, str } from '../lib/jsx';
 
@@ -14,15 +14,15 @@ export function TooltipPlayground() {
   const side = dial.side as TooltipSide;
   const content = dial.content.trim() || 'Tooltip';
 
-  const snippet = jsx('DsTooltip', [`content="${content}"`, str('side', side, 'top')], [
-    jsx('DsButton', ['icon'], 'New project'),
+  const snippet = jsx('HdsTooltip', [`content="${content}"`, str('side', side, 'top')], [
+    jsx('HdsButton', ['icon'], 'New project'),
   ]);
 
   return (
     <Stage snippet={snippet}>
-      <DsTooltip content={content} side={side}>
-        <DsButton icon>New project</DsButton>
-      </DsTooltip>
+      <HdsTooltip content={content} side={side}>
+        <HdsButton icon>New project</HdsButton>
+      </HdsTooltip>
     </Stage>
   );
 }

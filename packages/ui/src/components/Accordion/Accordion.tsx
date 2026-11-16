@@ -1,6 +1,6 @@
 import { forwardRef, type ReactNode } from 'react';
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
-import { DsChevronDownIcon } from '../../icons';
+import { HdsChevronDownIcon } from '../../icons';
 import styles from './Accordion.module.css';
 
 export type AccordionProps = {
@@ -12,11 +12,11 @@ export type AccordionProps = {
   multiple?: boolean;
   disabled?: boolean;
   className?: string;
-  /** `DsAccordionItem` elements. */
+  /** `HdsAccordionItem` elements. */
   children: ReactNode;
 };
 
-export const DsAccordion = forwardRef<HTMLDivElement, AccordionProps>(function DsAccordion(
+export const HdsAccordion = forwardRef<HTMLDivElement, AccordionProps>(function HdsAccordion(
   { defaultValue, value, onValueChange, multiple = false, disabled, className, children },
   ref,
 ) {
@@ -36,7 +36,7 @@ export const DsAccordion = forwardRef<HTMLDivElement, AccordionProps>(function D
 });
 
 export type AccordionItemProps = {
-  /** Identifies the item. Unique within its `DsAccordion`. */
+  /** Identifies the item. Unique within its `HdsAccordion`. */
   value: string;
   /** Text of the header button. */
   title: ReactNode;
@@ -46,7 +46,7 @@ export type AccordionItemProps = {
   children: ReactNode;
 };
 
-export const DsAccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(function DsAccordionItem(
+export const HdsAccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(function HdsAccordionItem(
   { value, title, disabled, className, children },
   ref,
 ) {
@@ -60,7 +60,7 @@ export const DsAccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(fu
       <BaseAccordion.Header className={styles.header}>
         <BaseAccordion.Trigger className={styles.trigger}>
           <span className={styles.title}>{title}</span>
-          <DsChevronDownIcon className={styles.chevron} />
+          <HdsChevronDownIcon className={styles.chevron} />
         </BaseAccordion.Trigger>
       </BaseAccordion.Header>
       <BaseAccordion.Panel className={styles.panel}>

@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsCheckbox, type CheckboxSize } from '@ds-build/ui';
+import { HdsCheckbox, type CheckboxSize } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsx, str } from '../lib/jsx';
 
@@ -16,7 +16,7 @@ export function CheckboxPlayground() {
 
   const size = dial.size as CheckboxSize;
   const label = dial.label.trim() || 'Checkbox';
-  const snippet = jsx('DsCheckbox', [
+  const snippet = jsx('HdsCheckbox', [
     str('size', size, 'medium'),
     `label="${label}"`,
     bool('defaultChecked', dial.checked),
@@ -26,7 +26,7 @@ export function CheckboxPlayground() {
 
   return (
     <Stage snippet={snippet}>
-      <DsCheckbox
+      <HdsCheckbox
         key={String(dial.checked)}
         size={size}
         label={label}

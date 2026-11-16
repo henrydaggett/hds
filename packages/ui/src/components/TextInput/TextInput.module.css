@@ -4,67 +4,67 @@
   height: var(--input-height);
   margin: 0;
   padding: 0 var(--input-padding-x);
-  border: 1px solid var(--ds-color-border-strong);
+  border: 1px solid var(--hds-color-border-strong);
   border-radius: var(--input-radius);
-  background: var(--ds-color-surface);
-  color: var(--ds-color-text);
-  font-family: var(--ds-font-sans);
+  background: var(--hds-color-surface);
+  color: var(--hds-color-text);
+  font-family: var(--hds-font-sans);
   font-size: var(--input-font-size);
   line-height: 1;
   transition:
-    border-color var(--ds-duration-fast) var(--ds-ease-standard),
-    box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
+    border-color var(--hds-duration-fast) var(--hds-ease-standard),
+    box-shadow var(--hds-duration-fast) var(--hds-ease-standard);
 }
 
-/* Sizes (match DsButton heights) */
+/* Sizes (match HdsButton heights) */
 .input[data-size='small'] {
   --input-height: 28px;
-  --input-padding-x: var(--ds-space-2);
-  --input-radius: var(--ds-radius-sm);
-  --input-font-size: var(--ds-font-size-sm);
+  --input-padding-x: var(--hds-space-2);
+  --input-radius: var(--hds-radius-sm);
+  --input-font-size: var(--hds-font-size-sm);
 }
 
 .input[data-size='medium'] {
   --input-height: 36px;
-  --input-padding-x: var(--ds-space-3);
-  --input-radius: var(--ds-radius-md);
-  --input-font-size: var(--ds-font-size-md);
+  --input-padding-x: var(--hds-space-3);
+  --input-radius: var(--hds-radius-md);
+  --input-font-size: var(--hds-font-size-md);
 }
 
 .input[data-size='large'] {
   --input-height: 44px;
-  --input-padding-x: var(--ds-space-4);
-  --input-radius: var(--ds-radius-lg);
-  --input-font-size: var(--ds-font-size-lg);
+  --input-padding-x: var(--hds-space-4);
+  --input-radius: var(--hds-radius-lg);
+  --input-font-size: var(--hds-font-size-lg);
 }
 
 .input::placeholder {
-  color: var(--ds-color-text-muted);
+  color: var(--hds-color-text-muted);
 }
 
 /* States */
 .input:hover:not([data-disabled], :focus) {
-  border-color: var(--ds-color-neutral-500);
+  border-color: var(--hds-color-neutral-500);
 }
 
 .input:focus {
   outline: none;
-  box-shadow: var(--ds-focus-ring);
+  box-shadow: var(--hds-focus-ring);
 }
 
 .input[data-invalid] {
-  border-color: var(--ds-color-red);
+  border-color: var(--hds-color-red);
 }
 
 .input[data-invalid]:focus {
   box-shadow:
-    0 0 0 2px var(--ds-color-neutral-0),
-    0 0 0 4px var(--ds-color-red);
+    0 0 0 2px var(--hds-color-neutral-0),
+    0 0 0 4px var(--hds-color-red);
 }
 
 .input[data-disabled] {
-  border-color: var(--ds-color-border);
-  background: var(--ds-color-disabled-bg);
-  color: var(--ds-color-disabled-text);
+  border-color: var(--hds-color-border);
+  background: var(--hds-color-disabled-bg);
+  color: var(--hds-color-disabled-text);
   cursor: not-allowed;
 }

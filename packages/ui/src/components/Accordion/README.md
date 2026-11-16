@@ -1,12 +1,12 @@
-# DsAccordion
+# HdsAccordion
 
 A stack of headings that each expand to show content. Built on the [Base UI Accordion](https://base-ui.com/react/components/accordion).
 
 ```tsx
-import { DsAccordion, DsAccordionItem } from '@ds-build/ui';
+import { HdsAccordion, HdsAccordionItem } from '@hds/ui';
 ```
 
-## DsAccordion props
+## HdsAccordion props
 
 | Prop            | Type                        | Default | Notes                                               |
 | --------------- | --------------------------- | ------- | --------------------------------------------------- |
@@ -16,35 +16,35 @@ import { DsAccordion, DsAccordionItem } from '@ds-build/ui';
 | `multiple`      | `boolean`                   | `false` | Lets several items stay open. Otherwise opening one closes the others. |
 | `disabled`      | `boolean`                   | `false` | Disables every item.                                |
 
-## DsAccordionItem props
+## HdsAccordionItem props
 
 | Prop       | Type        | Default | Notes                                           |
 | ---------- | ----------- | ------- | ----------------------------------------------- |
-| `value`    | `string`    | –       | Required. Unique within the `DsAccordion`.      |
+| `value`    | `string`    | –       | Required. Unique within the `HdsAccordion`.      |
 | `title`    | `ReactNode` | –       | Required. Text of the header button.            |
 | `disabled` | `boolean`   | `false` | The item can't be opened or closed.             |
 | `children` | `ReactNode` | –       | Required. Content shown when the item is open.  |
 
 ## Rules
 
-- Children of `DsAccordion` are `DsAccordionItem`s.
+- Children of `HdsAccordion` are `HdsAccordionItem`s.
 - All items start closed unless listed in `defaultValue`.
 - The accordion fills the width of its container, with a line above, between and below the items.
 
 ## Examples
 
 ```tsx
-<DsAccordion defaultValue={['shipping']}>
-  <DsAccordionItem value="shipping" title="How long does shipping take?">
+<HdsAccordion defaultValue={['shipping']}>
+  <HdsAccordionItem value="shipping" title="How long does shipping take?">
     Orders arrive in 3 to 5 working days.
-  </DsAccordionItem>
-  <DsAccordionItem value="returns" title="Can I return an item?">
+  </HdsAccordionItem>
+  <HdsAccordionItem value="returns" title="Can I return an item?">
     Yes, within 30 days of delivery.
-  </DsAccordionItem>
-</DsAccordion>
+  </HdsAccordionItem>
+</HdsAccordion>
 
-<DsAccordion multiple>
-  <DsAccordionItem value="a" title="Section A">…</DsAccordionItem>
-  <DsAccordionItem value="b" title="Section B" disabled>…</DsAccordionItem>
-</DsAccordion>
+<HdsAccordion multiple>
+  <HdsAccordionItem value="a" title="Section A">…</HdsAccordionItem>
+  <HdsAccordionItem value="b" title="Section B" disabled>…</HdsAccordionItem>
+</HdsAccordion>
 ```

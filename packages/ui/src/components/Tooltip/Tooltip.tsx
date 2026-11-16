@@ -14,12 +14,12 @@ export type TooltipProps = {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   disabled?: boolean;
-  /** One focusable design system element, e.g. a `DsButton` or `DsToggle`. */
+  /** One focusable design system element, e.g. a `HdsButton` or `HdsToggle`. */
   children: ReactElement<Record<string, unknown>>;
 };
 
 /** A short text hint shown when its child is hovered or focused. */
-export function DsTooltip({
+export function HdsTooltip({
   content,
   side = 'top',
   delay,

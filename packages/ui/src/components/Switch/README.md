@@ -1,9 +1,9 @@
-# DsSwitch
+# HdsSwitch
 
 An on/off switch with its label. Built on the [Base UI Switch](https://base-ui.com/react/components/switch).
 
 ```tsx
-import { DsSwitch } from '@ds-build/ui';
+import { HdsSwitch } from '@hds/ui';
 ```
 
 ## Props
@@ -17,28 +17,28 @@ import { DsSwitch } from '@ds-build/ui';
 | `checked`         | `boolean`                        | –          | Controlled. Use with `onCheckedChange`.                      |
 | `onCheckedChange` | `(checked: boolean) => void`     | –          | Called when the switch is flipped.                           |
 | `disabled`        | `boolean`                        | `false`    |                                                              |
-| `required`        | `boolean`                        | `false`    | Must be on to submit a `DsForm`.                             |
+| `required`        | `boolean`                        | `false`    | Must be on to submit a `HdsForm`.                             |
 | `readOnly`        | `boolean`                        | `false`    |                                                              |
 | `name`            | `string`                         | –          | Form field name when used on its own.                        |
 
 ## Rules
 
 - Use `label` for the text. Don't wrap the switch in your own `<label>`.
-- A switch doesn't need a `DsField` unless it shows helper text or an error. Inside a `DsField`, the text stays on the switch's `label`.
-- Use a switch for a setting that applies immediately, and a `DsCheckbox` for a choice that's submitted with a form.
+- A switch doesn't need a `HdsField` unless it shows helper text or an error. Inside a `HdsField`, the text stays on the switch's `label`.
+- Use a switch for a setting that applies immediately, and a `HdsCheckbox` for a choice that's submitted with a form.
 
 ## Examples
 
 ```tsx
-<DsSwitch label="Email notifications" />
+<HdsSwitch label="Email notifications" />
 
-<DsSwitch label="Dark mode" defaultChecked />
+<HdsSwitch label="Dark mode" defaultChecked />
 
-<DsSwitch size="small" label="Beta features" disabled />
+<HdsSwitch size="small" label="Beta features" disabled />
 
-<DsField description="We'll only email you about your account.">
-  <DsSwitch label="Product updates" />
-</DsField>
+<HdsField description="We'll only email you about your account.">
+  <HdsSwitch label="Product updates" />
+</HdsField>
 
-<DsSwitch aria-label="Enable sync" checked={sync} onCheckedChange={setSync} />
+<HdsSwitch aria-label="Enable sync" checked={sync} onCheckedChange={setSync} />
 ```

@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsSwitch, type SwitchSize } from '@ds-build/ui';
+import { HdsSwitch, type SwitchSize } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsx, str } from '../lib/jsx';
 
@@ -15,7 +15,7 @@ export function SwitchPlayground() {
 
   const size = dial.size as SwitchSize;
   const label = dial.label.trim() || 'Switch';
-  const snippet = jsx('DsSwitch', [
+  const snippet = jsx('HdsSwitch', [
     str('size', size, 'medium'),
     `label="${label}"`,
     bool('defaultChecked', dial.checked),
@@ -24,7 +24,7 @@ export function SwitchPlayground() {
 
   return (
     <Stage snippet={snippet}>
-      <DsSwitch
+      <HdsSwitch
         key={String(dial.checked)}
         size={size}
         label={label}

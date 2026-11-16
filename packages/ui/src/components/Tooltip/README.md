@@ -1,9 +1,9 @@
-# DsTooltip
+# HdsTooltip
 
 A short text hint shown when its child is hovered or focused. Built on the [Base UI Tooltip](https://base-ui.com/react/components/tooltip).
 
 ```tsx
-import { DsTooltip } from '@ds-build/ui';
+import { HdsTooltip } from '@hds/ui';
 ```
 
 ## Props
@@ -11,7 +11,7 @@ import { DsTooltip } from '@ds-build/ui';
 | Prop           | Type                                     | Default | Notes                                              |
 | -------------- | ---------------------------------------- | ------- | -------------------------------------------------- |
 | `content`      | `ReactNode`                              | –       | Required. The tooltip text.                        |
-| `children`     | `ReactElement`                           | –       | Required. One focusable element, e.g. a `DsButton`. |
+| `children`     | `ReactElement`                           | –       | Required. One focusable element, e.g. a `HdsButton`. |
 | `side`         | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Flips automatically when there's no room.          |
 | `delay`        | `number`                                 | `600`   | Milliseconds of hover before it opens.             |
 | `defaultOpen`  | `boolean`                                | `false` | Starts open (uncontrolled).                        |
@@ -21,18 +21,18 @@ import { DsTooltip } from '@ds-build/ui';
 
 ## Rules
 
-- The child must be a single element that accepts a `ref` and props and can take focus: `DsButton`, `DsToggle`. Not plain text.
+- The child must be a single element that accepts a `ref` and props and can take focus: `HdsButton`, `HdsToggle`. Not plain text.
 - A tooltip is a hint, not the element's name. Icon-only controls still need their `aria-label`.
 - Keep the text to a few words. It wraps at 240px.
 
 ## Examples
 
 ```tsx
-<DsTooltip content="Creates an empty project">
-  <DsButton icon>New project</DsButton>
-</DsTooltip>
+<HdsTooltip content="Creates an empty project">
+  <HdsButton icon>New project</HdsButton>
+</HdsTooltip>
 
-<DsTooltip content="Bold" side="bottom">
-  <DsToggle iconNode={<DsBoldIcon />} aria-label="Bold" />
-</DsTooltip>
+<HdsTooltip content="Bold" side="bottom">
+  <HdsToggle iconNode={<HdsBoldIcon />} aria-label="Bold" />
+</HdsTooltip>
 ```

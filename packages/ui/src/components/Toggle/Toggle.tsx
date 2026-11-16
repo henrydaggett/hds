@@ -6,7 +6,7 @@ import styles from './Toggle.module.css';
 export type ToggleSize = 'small' | 'medium' | 'large';
 
 type ToggleBaseProps = Omit<BaseToggle.Props, 'children' | 'className'> & {
-  /** Ignored inside a `DsToggleGroup`, which sets the size for all its toggles. */
+  /** Ignored inside a `HdsToggleGroup`, which sets the size for all its toggles. */
   size?: ToggleSize;
   /** Leading icon. Without `children` the toggle is icon-only and square. */
   iconNode?: ReactNode;
@@ -26,7 +26,7 @@ type IconOnlyToggleProps = ToggleBaseProps & {
 
 export type ToggleProps = LabelledToggleProps | IconOnlyToggleProps;
 
-export const DsToggle = forwardRef<HTMLButtonElement, ToggleProps>(function DsToggle(
+export const HdsToggle = forwardRef<HTMLButtonElement, ToggleProps>(function HdsToggle(
   { size, iconNode, className, children, ...rest },
   ref,
 ) {

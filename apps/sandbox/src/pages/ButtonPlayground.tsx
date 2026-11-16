@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsButton, type ButtonAppearance, type ButtonColor, type ButtonSize } from '@ds-build/ui';
+import { HdsButton, type ButtonAppearance, type ButtonColor, type ButtonSize } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsx, str } from '../lib/jsx';
 
@@ -24,7 +24,7 @@ export function ButtonPlayground() {
   const outline = appearance === 'outline';
 
   const snippet = jsx(
-    'DsButton',
+    'HdsButton',
     [
       str('appearance', appearance, 'default'),
       str('size', size, 'medium'),
@@ -42,7 +42,7 @@ export function ButtonPlayground() {
       snippet={snippet}
       note={outline ? 'Outline buttons have a fixed style, so the color setting is ignored.' : undefined}
     >
-      {outline ? <DsButton {...common} appearance="outline" /> : <DsButton {...common} color={color} />}
+      {outline ? <HdsButton {...common} appearance="outline" /> : <HdsButton {...common} color={color} />}
     </Stage>
   );
 }

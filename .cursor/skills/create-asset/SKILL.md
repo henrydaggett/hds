@@ -1,14 +1,14 @@
 ---
 name: create-asset
-description: Creates or updates a component asset file in the shared ds-build reference (.cursor/skills/ds-reference/assets/<component>.md) from the component's source in packages/ui. Use when the user asks to create, add, document, or update an asset for a design system component, or invokes /create-asset.
+description: Creates or updates a component asset file in the shared hds reference (.cursor/skills/hds-reference/assets/<component>.md) from the component's source in packages/ui. Use when the user asks to create, add, document, or update an asset for a design system component, or invokes /create-asset.
 disable-model-invocation: true
 ---
 
 # Create Asset
 
-Writes `.cursor/skills/ds-reference/assets/<component>.md` for one design system component, so the ds-build skills (prototype now; build, lint and ask later) can use it without guessing.
+Writes `.cursor/skills/hds-reference/assets/<component>.md` for one design system component, so the hds skills (prototype now; build, lint and ask later) can use it without guessing.
 
-The finished DsButton asset is the reference example: [../ds-reference/assets/button.md](../ds-reference/assets/button.md). The section template is in [template.md](template.md).
+The finished HdsButton asset is the reference example: [../hds-reference/assets/button.md](../hds-reference/assets/button.md). The section template is in [template.md](template.md).
 
 ## Rules
 
@@ -32,13 +32,13 @@ Copy this checklist and track progress:
 
 ### 1. Gather sources
 
-Read all that exist for the component (`<Name>` = the PascalCase folder name without the prefix, e.g. `Button`; the component is exported as `Ds<Name>`, e.g. `DsButton`):
+Read all that exist for the component (`<Name>` = the PascalCase folder name without the prefix, e.g. `Button`; the component is exported as `Ds<Name>`, e.g. `HdsButton`):
 
 - `packages/ui/src/components/<Name>/<Name>.tsx`: props, types, defaults, constraints
 - `packages/ui/src/components/<Name>/index.ts` and `packages/ui/src/index.ts`: public exports and import path
 - `packages/ui/src/components/<Name>/<Name>.module.css`: sizes, colours, states (via `data-*` attributes)
 - `packages/ui/src/components/<Name>/README.md`: documented usage, rules, examples
-- `packages/ui/src/tokens.css`: resolve every `var(--ds-*)` to a real value
+- `packages/ui/src/tokens.css`: resolve every `var(--hds-*)` to a real value
 - `packages/ui/src/icons/index.tsx`: if the component accepts icons
 - `apps/sandbox/src/pages/<Name>Playground.tsx`: how the team composes and serialises it
 - `packages/ui/package.json`: package name and `exports`
@@ -50,7 +50,7 @@ If the component isn't exported from `packages/ui/src/index.ts`, stop and tell t
 From the `.tsx`, record for each prop: name, allowed values, default, and constraints. Look closely for:
 
 - **Destructured defaults** (`size = 'medium'`): these values get omitted in output.
-- **Type unions / `never`**: props that can't combine (e.g. DsButton's `color` is `never` with `appearance="outline"`).
+- **Type unions / `never`**: props that can't combine (e.g. HdsButton's `color` is `never` with `appearance="outline"`).
 - **Props that depend on another** (e.g. `iconNode` only renders when `icon` is true).
 - **Pass-through props** (`...rest`, Base UI props): leave these out of the asset. The generator produces static output, so handlers, `className`, `style`, `type` and `aria-*` are excluded.
 - **`children`**: plain text, specific subcomponents, or free content?
@@ -67,7 +67,7 @@ For image input, resolve the CSS through `tokens.css` to concrete values for eac
 
 ### 4. Write the asset
 
-Write `.cursor/skills/ds-reference/assets/<name>.md` (lowercase file name) using [template.md](template.md). Drop sections that don't apply (e.g. no "Icon" table if there are no icons); don't leave empty headings.
+Write `.cursor/skills/hds-reference/assets/<name>.md` (lowercase file name) using [template.md](template.md). Drop sections that don't apply (e.g. no "Icon" table if there are no icons); don't leave empty headings.
 
 Key requirements:
 
@@ -90,8 +90,8 @@ Key requirements:
 
 ### 6. Hand off
 
-- If `.cursor/skills/ds-reference/guidelines/<name>.md` doesn't exist, create it empty.
-- Add or update the component's row in `.cursor/skills/ds-reference/components.md` (exports, use for, what it replaces, Base UI part, links).
+- If `.cursor/skills/hds-reference/guidelines/<name>.md` doesn't exist, create it empty.
+- Add or update the component's row in `.cursor/skills/hds-reference/components.md` (exports, use for, what it replaces, Base UI part, links).
 - Search the other assets for the component's name and for what it does (e.g. "switch", "radio"). Update any "Not supported", mapping or translation entry that sends users elsewhere for it.
 - In your response, list usage rules you found (e.g. in the README) that belong in the guideline, and any source inconsistencies (README vs `.tsx`). Don't silently pick one.
-- No change to any skill's `SKILL.md` is needed; they discover assets by globbing `ds-reference/assets/*.md`.
+- No change to any skill's `SKILL.md` is needed; they discover assets by globbing `hds-reference/assets/*.md`.

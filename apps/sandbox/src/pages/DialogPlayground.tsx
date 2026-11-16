@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsButton, DsDialog, DsDialogClose, type DialogSize } from '@ds-build/ui';
+import { HdsButton, HdsDialog, HdsDialogClose, type DialogSize } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { expr, jsx, jsxStacked, str } from '../lib/jsx';
 
@@ -22,13 +22,13 @@ export function DialogPlayground() {
 
   const footerSnippet = [
     '<>',
-    `  ${jsx('DsDialogClose', [], [jsx('DsButton', ['appearance="outline"'], 'Cancel')]).replace(/\n/g, '\n  ')}`,
-    `  ${jsx('DsButton', ['color="red"'], 'Delete')}`,
+    `  ${jsx('HdsDialogClose', [], [jsx('HdsButton', ['appearance="outline"'], 'Cancel')]).replace(/\n/g, '\n  ')}`,
+    `  ${jsx('HdsButton', ['color="red"'], 'Delete')}`,
     '</>',
   ].join('\n');
 
-  const snippet = jsxStacked('DsDialog', [
-    expr('trigger', jsx('DsButton', ['color="red"'], 'Delete project')),
+  const snippet = jsxStacked('HdsDialog', [
+    expr('trigger', jsx('HdsButton', ['color="red"'], 'Delete project')),
     `title="${title}"`,
     str('description', dial.description),
     str('size', size, 'medium'),
@@ -37,18 +37,18 @@ export function DialogPlayground() {
 
   return (
     <Stage snippet={snippet}>
-      <DsDialog
-        trigger={<DsButton color="red">Delete project</DsButton>}
+      <HdsDialog
+        trigger={<HdsButton color="red">Delete project</HdsButton>}
         title={title}
         description={dial.description || undefined}
         size={size}
         footer={
           dial.footer ? (
             <>
-              <DsDialogClose>
-                <DsButton appearance="outline">Cancel</DsButton>
-              </DsDialogClose>
-              <DsButton color="red">Delete</DsButton>
+              <HdsDialogClose>
+                <HdsButton appearance="outline">Cancel</HdsButton>
+              </HdsDialogClose>
+              <HdsButton color="red">Delete</HdsButton>
             </>
           ) : undefined
         }

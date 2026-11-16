@@ -1,6 +1,6 @@
 import { forwardRef, type ReactNode } from 'react';
 import { Button as BaseButton } from '@base-ui/react/button';
-import { DsPlusIcon } from '../../icons';
+import { HdsPlusIcon } from '../../icons';
 import styles from './Button.module.css';
 
 export type ButtonAppearance = 'default' | 'outline';
@@ -30,7 +30,7 @@ type OutlineAppearanceProps = ButtonBaseProps & {
 
 export type ButtonProps = DefaultAppearanceProps | OutlineAppearanceProps;
 
-export const DsButton = forwardRef<HTMLButtonElement, ButtonProps>(function DsButton(
+export const HdsButton = forwardRef<HTMLButtonElement, ButtonProps>(function HdsButton(
   {
     appearance = 'default',
     size = 'medium',
@@ -56,7 +56,7 @@ export const DsButton = forwardRef<HTMLButtonElement, ButtonProps>(function DsBu
       className={className ? `${styles.button} ${className}` : styles.button}
       {...rest}
     >
-      {icon && <span className={styles.icon}>{iconNode ?? <DsPlusIcon />}</span>}
+      {icon && <span className={styles.icon}>{iconNode ?? <HdsPlusIcon />}</span>}
       <span className={styles.label}>{children}</span>
     </BaseButton>
   );

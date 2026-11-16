@@ -1,17 +1,17 @@
-# ds-build
+# hds
 
 A small React design system built on [Base UI](https://base-ui.com), plus a Vite sandbox with [DialKit](https://www.dialkit.dev) for tweaking components live.
 
-Agent skills in `.cursor/skills` generate and check UI built from these components. `ds-prototype` turns text, images or code into a static single-page snippet; `ds-build`, `ds-lint` and `ds-ask` are planned. They all read the shared docs in `.cursor/skills/ds-reference`. See [.cursor/skills/README.md](.cursor/skills/README.md).
+Agent skills in `.cursor/skills` generate and check UI built from these components. `hds-prototype` turns text, images or code into a static single-page snippet; `hds-build`, `hds-lint` and `hds-ask` are planned. They all read the shared docs in `.cursor/skills/hds-reference`. See [.cursor/skills/README.md](.cursor/skills/README.md).
 
 ## Layout
 
 ```
-packages/ui        @ds-build/ui: tokens, icons, components
+packages/ui        @hds/ui: tokens, icons, components
   src/tokens.css   CSS variables (color, radius, spacing, type, motion)
   src/components/  one folder per component (tsx, CSS module, README)
 apps/sandbox       Vite + React app for testing components with DialKit
-.cursor/skills     agent skills; ds-reference holds the docs they share
+.cursor/skills     agent skills; hds-reference holds the docs they share
 ```
 
 ## Run locally
@@ -34,34 +34,34 @@ pnpm build        # typecheck the UI package and build the sandbox
 
 | Component | Docs |
 | --- | --- |
-| DsButton | [packages/ui/src/components/Button/README.md](packages/ui/src/components/Button/README.md) |
-| DsToggle | [packages/ui/src/components/Toggle/README.md](packages/ui/src/components/Toggle/README.md) |
-| DsToggleGroup | [packages/ui/src/components/ToggleGroup/README.md](packages/ui/src/components/ToggleGroup/README.md) |
-| DsTextInput | [packages/ui/src/components/TextInput/README.md](packages/ui/src/components/TextInput/README.md) |
-| DsSelect | [packages/ui/src/components/Select/README.md](packages/ui/src/components/Select/README.md) |
-| DsCheckbox | [packages/ui/src/components/Checkbox/README.md](packages/ui/src/components/Checkbox/README.md) |
-| DsCheckboxGroup | [packages/ui/src/components/CheckboxGroup/README.md](packages/ui/src/components/CheckboxGroup/README.md) |
-| DsField | [packages/ui/src/components/Field/README.md](packages/ui/src/components/Field/README.md) |
-| DsFieldset | [packages/ui/src/components/Fieldset/README.md](packages/ui/src/components/Fieldset/README.md) |
-| DsForm | [packages/ui/src/components/Form/README.md](packages/ui/src/components/Form/README.md) |
-| DsRadioGroup, DsRadio | [packages/ui/src/components/RadioGroup/README.md](packages/ui/src/components/RadioGroup/README.md) |
-| DsSwitch | [packages/ui/src/components/Switch/README.md](packages/ui/src/components/Switch/README.md) |
-| DsTabs, DsTab | [packages/ui/src/components/Tabs/README.md](packages/ui/src/components/Tabs/README.md) |
-| DsAccordion, DsAccordionItem | [packages/ui/src/components/Accordion/README.md](packages/ui/src/components/Accordion/README.md) |
-| DsDialog, DsDialogClose | [packages/ui/src/components/Dialog/README.md](packages/ui/src/components/Dialog/README.md) |
-| DsMenu, DsMenuItem, DsMenuSeparator | [packages/ui/src/components/Menu/README.md](packages/ui/src/components/Menu/README.md) |
-| DsTooltip | [packages/ui/src/components/Tooltip/README.md](packages/ui/src/components/Tooltip/README.md) |
-| DsSeparator | [packages/ui/src/components/Separator/README.md](packages/ui/src/components/Separator/README.md) |
+| HdsButton | [packages/ui/src/components/Button/README.md](packages/ui/src/components/Button/README.md) |
+| HdsToggle | [packages/ui/src/components/Toggle/README.md](packages/ui/src/components/Toggle/README.md) |
+| HdsToggleGroup | [packages/ui/src/components/ToggleGroup/README.md](packages/ui/src/components/ToggleGroup/README.md) |
+| HdsTextInput | [packages/ui/src/components/TextInput/README.md](packages/ui/src/components/TextInput/README.md) |
+| HdsSelect | [packages/ui/src/components/Select/README.md](packages/ui/src/components/Select/README.md) |
+| HdsCheckbox | [packages/ui/src/components/Checkbox/README.md](packages/ui/src/components/Checkbox/README.md) |
+| HdsCheckboxGroup | [packages/ui/src/components/CheckboxGroup/README.md](packages/ui/src/components/CheckboxGroup/README.md) |
+| HdsField | [packages/ui/src/components/Field/README.md](packages/ui/src/components/Field/README.md) |
+| HdsFieldset | [packages/ui/src/components/Fieldset/README.md](packages/ui/src/components/Fieldset/README.md) |
+| HdsForm | [packages/ui/src/components/Form/README.md](packages/ui/src/components/Form/README.md) |
+| HdsRadioGroup, HdsRadio | [packages/ui/src/components/RadioGroup/README.md](packages/ui/src/components/RadioGroup/README.md) |
+| HdsSwitch | [packages/ui/src/components/Switch/README.md](packages/ui/src/components/Switch/README.md) |
+| HdsTabs, HdsTab | [packages/ui/src/components/Tabs/README.md](packages/ui/src/components/Tabs/README.md) |
+| HdsAccordion, HdsAccordionItem | [packages/ui/src/components/Accordion/README.md](packages/ui/src/components/Accordion/README.md) |
+| HdsDialog, HdsDialogClose | [packages/ui/src/components/Dialog/README.md](packages/ui/src/components/Dialog/README.md) |
+| HdsMenu, HdsMenuItem, HdsMenuSeparator | [packages/ui/src/components/Menu/README.md](packages/ui/src/components/Menu/README.md) |
+| HdsTooltip | [packages/ui/src/components/Tooltip/README.md](packages/ui/src/components/Tooltip/README.md) |
+| HdsSeparator | [packages/ui/src/components/Separator/README.md](packages/ui/src/components/Separator/README.md) |
 
 ## Using the package
 
-The sandbox consumes `@ds-build/ui` from source through the pnpm workspace. Import the tokens once at the app root:
+The sandbox consumes `@hds/ui` from source through the pnpm workspace. Import the tokens once at the app root:
 
 ```tsx
-import '@ds-build/ui/tokens.css';
-import { DsButton } from '@ds-build/ui';
+import '@hds/ui/tokens.css';
+import { HdsButton } from '@hds/ui';
 
-<DsButton color="blue" icon>New project</DsButton>
+<HdsButton color="blue" icon>New project</HdsButton>
 ```
 
 ## Adding a component
@@ -70,4 +70,4 @@ import { DsButton } from '@ds-build/ui';
 2. Build on the matching Base UI primitive when there is one, and style it with tokens from `tokens.css`.
 3. Export it from `packages/ui/src/index.ts`.
 4. Add a playground page in `apps/sandbox/src/pages/` that uses `useDialKit` for its props, and list it in `apps/sandbox/src/App.tsx`.
-5. Run the `create-asset` skill to write its asset, then fill in its guideline and its row in `.cursor/skills/ds-reference/components.md`.
+5. Run the `create-asset` skill to write its asset, then fill in its guideline and its row in `.cursor/skills/hds-reference/components.md`.

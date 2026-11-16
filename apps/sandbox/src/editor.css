@@ -14,15 +14,15 @@
   height: 28px;
   padding: 0 12px;
   border: 1px solid rgb(255 255 255 / 0.12);
-  border-radius: var(--ds-radius-sm);
+  border-radius: var(--hds-radius-sm);
   background: transparent;
   color: #abb2bf;
   font: inherit;
-  font-size: var(--ds-font-size-sm);
+  font-size: var(--hds-font-size-sm);
   text-decoration: none;
   cursor: pointer;
-  transition: background-color var(--ds-duration-fast) var(--ds-ease-standard),
-    color var(--ds-duration-fast) var(--ds-ease-standard);
+  transition: background-color var(--hds-duration-fast) var(--hds-ease-standard),
+    color var(--hds-duration-fast) var(--hds-ease-standard);
 }
 
 .toolbar-button:hover {

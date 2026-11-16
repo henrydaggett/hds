@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsAccordion, DsAccordionItem } from '@ds-build/ui';
+import { HdsAccordion, HdsAccordionItem } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsx } from '../lib/jsx';
 
@@ -17,25 +17,25 @@ export function AccordionPlayground() {
   });
 
   const snippet = jsx(
-    'DsAccordion',
+    'HdsAccordion',
     [dial.firstOpen && "defaultValue={['shipping']}", bool('multiple', dial.multiple), bool('disabled', dial.disabled)],
-    items.map((item) => jsx('DsAccordionItem', [`value="${item.value}"`, `title="${item.title}"`], item.text)),
+    items.map((item) => jsx('HdsAccordionItem', [`value="${item.value}"`, `title="${item.title}"`], item.text)),
   );
 
   return (
     <Stage snippet={snippet} width={480}>
-      <DsAccordion
+      <HdsAccordion
         key={String(dial.firstOpen)}
         defaultValue={dial.firstOpen ? ['shipping'] : undefined}
         multiple={dial.multiple}
         disabled={dial.disabled}
       >
         {items.map((item) => (
-          <DsAccordionItem key={item.value} value={item.value} title={item.title}>
+          <HdsAccordionItem key={item.value} value={item.value} title={item.title}>
             {item.text}
-          </DsAccordionItem>
+          </HdsAccordionItem>
         ))}
-      </DsAccordion>
+      </HdsAccordion>
     </Stage>
   );
 }

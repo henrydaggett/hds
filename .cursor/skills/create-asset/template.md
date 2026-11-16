@@ -1,6 +1,6 @@
 # Asset template
 
-Section order for `.cursor/skills/ds-reference/assets/<name>.md`. Replace `<...>` placeholders. Drop sections that don't apply. See [../ds-reference/assets/button.md](../ds-reference/assets/button.md) for a complete example.
+Section order for `.cursor/skills/hds-reference/assets/<name>.md`. Replace `<...>` placeholders. Drop sections that don't apply. See [../hds-reference/assets/button.md](../hds-reference/assets/button.md) for a complete example.
 
 ````markdown
 # <Name>
@@ -10,7 +10,7 @@ Section order for `.cursor/skills/ds-reference/assets/<name>.md`. Replace `<...>
 ## Quick reference
 
 ```tsx
-import { <Name> } from '@ds-build/ui';
+import { <Name> } from '@hds/ui';
 
 <minimal valid usage>
 ```
@@ -19,10 +19,10 @@ Allowed props: <comma-separated list>. Nothing else.
 
 ## Import
 
-Use one import line from `@ds-build/ui`. Include `<Name>` and only the <icons/subcomponents> the snippet actually uses:
+Use one import line from `@hds/ui`. Include `<Name>` and only the <icons/subcomponents> the snippet actually uses:
 
 ```tsx
-import { <Name>, <...> } from '@ds-build/ui';
+import { <Name>, <...> } from '@hds/ui';
 ```
 
 Never import from sub-paths. No CSS import is needed: the design tokens load with the package.

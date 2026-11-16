@@ -1,11 +1,12 @@
-import { forwardRef, type ReactElement, type ReactNode } from 'react';
+import { cloneElement, forwardRef, isValidElement, useState, type ReactElement, type ReactNode } from 'react';
 import { Menu as BaseMenu } from '@base-ui/react/menu';
+import { HdsToggle } from '../Toggle/Toggle';
 import styles from './Menu.module.css';
 
 export type MenuAlign = 'start' | 'end';
 
 export type MenuProps = {
-  /** The element that opens the menu, usually a `DsButton`. */
+  /** The element that opens the menu, usually a `HdsButton`. */
   trigger: ReactElement<Record<string, unknown>>;
   /** Which edge of the trigger the menu lines up with. */
   align?: MenuAlign;
@@ -13,12 +14,12 @@ export type MenuProps = {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   className?: string;
-  /** `DsMenuItem` and `DsMenuSeparator` elements. */
+  /** `HdsMenuItem` and `HdsMenuSeparator` elements. */
   children: ReactNode;
 };
 
 /** A list of actions that opens from a button. */
-export function DsMenu({
+export function HdsMenu({
   trigger,
   align = 'start',
   defaultOpen,
@@ -27,13 +28,25 @@ export function DsMenu({
   className,
   children,
 }: MenuProps) {
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen ?? false);
+  const isOpen = open ?? uncontrolledOpen;
+
+  // A toggle trigger would flip its own pressed state on every click and stay
+  // pressed after the menu closes, so it shows the menu's open state instead.
+  const triggerElement =
+    isValidElement(trigger) && trigger.type === HdsToggle
+      ? cloneElement(trigger, { pressed: isOpen })
+      : trigger;
+
   return (
     <BaseMenu.Root
-      defaultOpen={defaultOpen}
-      open={open}
-      onOpenChange={onOpenChange ? (next) => onOpenChange(next) : undefined}
+      open={isOpen}
+      onOpenChange={(next) => {
+        if (open === undefined) setUncontrolledOpen(next);
+        onOpenChange?.(next);
+      }}
     >
-      <BaseMenu.Trigger render={trigger} />
+      <BaseMenu.Trigger render={triggerElement} />
       <BaseMenu.Portal>
         <BaseMenu.Positioner align={align} sideOffset={4} className={styles.positioner}>
           <BaseMenu.Popup className={className ? `${styles.popup} ${className}` : styles.popup}>
@@ -56,7 +69,7 @@ export type MenuItemProps = Omit<BaseMenu.Item.Props, 'children' | 'className' |
   children: ReactNode;
 };
 
-export const DsMenuItem = forwardRef<HTMLDivElement, MenuItemProps>(function DsMenuItem(
+export const HdsMenuItem = forwardRef<HTMLDivElement, MenuItemProps>(function HdsMenuItem(
   { color = 'default', iconNode, className, children, ...rest },
   ref,
 ) {
@@ -74,6 +87,6 @@ export const DsMenuItem = forwardRef<HTMLDivElement, MenuItemProps>(function DsM
 });
 
 /** A line between groups of menu items. */
-export function DsMenuSeparator() {
+export function HdsMenuSeparator() {
   return <BaseMenu.Separator className={styles.separator} />;
 }

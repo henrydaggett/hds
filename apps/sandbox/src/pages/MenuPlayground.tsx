@@ -1,13 +1,13 @@
 import { useDialKit } from 'dialkit';
 import {
-  DsButton,
-  DsEditIcon,
-  DsMenu,
-  DsMenuItem,
-  DsMenuSeparator,
-  DsTrashIcon,
+  HdsButton,
+  HdsEditIcon,
+  HdsMenu,
+  HdsMenuItem,
+  HdsMenuSeparator,
+  HdsTrashIcon,
   type MenuAlign,
-} from '@ds-build/ui';
+} from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, expr, jsx, jsxStacked, str } from '../lib/jsx';
 
@@ -21,26 +21,26 @@ export function MenuPlayground() {
   const align = dial.align as MenuAlign;
 
   const snippet = jsxStacked(
-    'DsMenu',
-    [expr('trigger', jsx('DsButton', ['appearance="outline"'], 'Actions')), str('align', align, 'start')],
+    'HdsMenu',
+    [expr('trigger', jsx('HdsButton', ['appearance="outline"'], 'Actions')), str('align', align, 'start')],
     [
-      jsx('DsMenuItem', [dial.icons && 'iconNode={<DsEditIcon />}'], 'Edit'),
-      jsx('DsMenuItem', [bool('disabled', dial.disableDuplicate)], 'Duplicate'),
-      '<DsMenuSeparator />',
-      jsx('DsMenuItem', ['color="red"', dial.icons && 'iconNode={<DsTrashIcon />}'], 'Delete'),
+      jsx('HdsMenuItem', [dial.icons && 'iconNode={<HdsEditIcon />}'], 'Edit'),
+      jsx('HdsMenuItem', [bool('disabled', dial.disableDuplicate)], 'Duplicate'),
+      '<HdsMenuSeparator />',
+      jsx('HdsMenuItem', ['color="red"', dial.icons && 'iconNode={<HdsTrashIcon />}'], 'Delete'),
     ],
   );
 
   return (
     <Stage snippet={snippet}>
-      <DsMenu trigger={<DsButton appearance="outline">Actions</DsButton>} align={align}>
-        <DsMenuItem iconNode={dial.icons ? <DsEditIcon /> : undefined}>Edit</DsMenuItem>
-        <DsMenuItem disabled={dial.disableDuplicate}>Duplicate</DsMenuItem>
-        <DsMenuSeparator />
-        <DsMenuItem color="red" iconNode={dial.icons ? <DsTrashIcon /> : undefined}>
+      <HdsMenu trigger={<HdsButton appearance="outline">Actions</HdsButton>} align={align}>
+        <HdsMenuItem iconNode={dial.icons ? <HdsEditIcon /> : undefined}>Edit</HdsMenuItem>
+        <HdsMenuItem disabled={dial.disableDuplicate}>Duplicate</HdsMenuItem>
+        <HdsMenuSeparator />
+        <HdsMenuItem color="red" iconNode={dial.icons ? <HdsTrashIcon /> : undefined}>
           Delete
-        </DsMenuItem>
-      </DsMenu>
+        </HdsMenuItem>
+      </HdsMenu>
     </Stage>
   );
 }

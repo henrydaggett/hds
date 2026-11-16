@@ -1,9 +1,9 @@
-# DsCheckboxGroup
+# HdsCheckboxGroup
 
-A labelled set of `DsCheckbox`es that share one value (an array of the ticked checkboxes' `value`s). Built on the Base UI [DsCheckbox Group](https://base-ui.com/react/components/checkbox-group), [DsFieldset](https://base-ui.com/react/components/fieldset) and [DsField](https://base-ui.com/react/components/field).
+A labelled set of `HdsCheckbox`es that share one value (an array of the ticked checkboxes' `value`s). Built on the Base UI [HdsCheckbox Group](https://base-ui.com/react/components/checkbox-group), [HdsFieldset](https://base-ui.com/react/components/fieldset) and [HdsField](https://base-ui.com/react/components/field).
 
 ```tsx
-import { DsCheckboxGroup, DsCheckbox } from '@ds-build/ui';
+import { HdsCheckboxGroup, HdsCheckbox } from '@hds/ui';
 ```
 
 ## Props
@@ -24,26 +24,26 @@ import { DsCheckboxGroup, DsCheckbox } from '@ds-build/ui';
 
 ## Rules
 
-- Children are `DsCheckbox`es, each with a `label` and a unique `value`.
+- Children are `HdsCheckbox`es, each with a `label` and a unique `value`.
 - Tick checkboxes through the group's `defaultValue`, not `defaultChecked` on each checkbox.
-- Don't wrap a `DsCheckboxGroup` in a `DsField`; it already includes its own label, description and error.
+- Don't wrap a `HdsCheckboxGroup` in a `HdsField`; it already includes its own label, description and error.
 
 ## Examples
 
 ```tsx
-<DsCheckboxGroup label="Notifications" defaultValue={['email']}>
-  <DsCheckbox value="email" label="Email" />
-  <DsCheckbox value="sms" label="SMS" />
-  <DsCheckbox value="push" label="Push notifications" />
-</DsCheckboxGroup>
+<HdsCheckboxGroup label="Notifications" defaultValue={['email']}>
+  <HdsCheckbox value="email" label="Email" />
+  <HdsCheckbox value="sms" label="SMS" />
+  <HdsCheckbox value="push" label="Push notifications" />
+</HdsCheckboxGroup>
 
-<DsCheckboxGroup
+<HdsCheckboxGroup
   label="Interests"
   orientation="horizontal"
   invalid
   error="Choose at least one interest"
 >
-  <DsCheckbox value="design" label="Design" />
-  <DsCheckbox value="code" label="Code" />
-</DsCheckboxGroup>
+  <HdsCheckbox value="design" label="Design" />
+  <HdsCheckbox value="code" label="Code" />
+</HdsCheckboxGroup>
 ```

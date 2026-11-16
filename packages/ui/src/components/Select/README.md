@@ -1,9 +1,9 @@
-# DsSelect
+# HdsSelect
 
 A single-choice dropdown. Built on the [Base UI Select](https://base-ui.com/react/components/select), wrapped into one component that takes an `items` array.
 
 ```tsx
-import { DsSelect } from '@ds-build/ui';
+import { HdsSelect } from '@hds/ui';
 ```
 
 ## Props
@@ -18,21 +18,21 @@ import { DsSelect } from '@ds-build/ui';
 | `disabled`     | `boolean`                                            | `false`    |                                                       |
 | `required`     | `boolean`                                            | `false`    |                                                       |
 | `readOnly`     | `boolean`                                            | `false`    |                                                       |
-| `name`         | `string`                                             | –          | Prefer `name` on the wrapping `DsField`.                |
-| `aria-label`   | `string`                                             | –          | Required when not inside a `DsField` with a `label`.    |
+| `name`         | `string`                                             | –          | Prefer `name` on the wrapping `HdsField`.                |
+| `aria-label`   | `string`                                             | –          | Required when not inside a `HdsField` with a `label`.    |
 
 ## Rules
 
-- Fills the width of its container, like `DsTextInput`.
-- Wrap it in `<DsField label="…">` for a visible label. `DsField` renders the label as a `<div>` for DsSelect so clicking it doesn't open the popup.
+- Fills the width of its container, like `HdsTextInput`.
+- Wrap it in `<HdsField label="…">` for a visible label. `HdsField` renders the label as a `<div>` for HdsSelect so clicking it doesn't open the popup.
 - `defaultValue` must match one of the items' `value`s.
 - Single choice only. No groups, search or multi-select.
 
 ## Examples
 
 ```tsx
-<DsField label="Country">
-  <DsSelect
+<HdsField label="Country">
+  <HdsSelect
     placeholder="Select a country"
     items={[
       { value: 'uk', label: 'United Kingdom' },
@@ -40,9 +40,9 @@ import { DsSelect } from '@ds-build/ui';
       { value: 'fr', label: 'France' },
     ]}
   />
-</DsField>
+</HdsField>
 
-<DsSelect
+<HdsSelect
   size="small"
   aria-label="Sort by"
   defaultValue="newest"

@@ -3,21 +3,21 @@ import { compile } from './compile';
 import { Editor } from './Editor';
 import { Preview } from './Preview';
 
-const storageKey = 'ds-build:generator';
+const storageKey = 'hds:generator';
 
-const starter = `import { DsButton, DsField, DsForm, DsFormActions, DsTextInput } from '@ds-build/ui';
+const starter = `import { HdsButton, HdsField, HdsForm, HdsFormActions, HdsTextInput } from '@hds/ui';
 
 export default function App() {
   return (
     <>
-      <DsForm>
-        <DsField label="Email" name="email">
-          <DsTextInput type="email" placeholder="you@example.com" />
-        </DsField>
-        <DsFormActions>
-          <DsButton type="submit">Subscribe</DsButton>
-        </DsFormActions>
-      </DsForm>
+      <HdsForm>
+        <HdsField label="Email" name="email">
+          <HdsTextInput type="email" placeholder="you@example.com" />
+        </HdsField>
+        <HdsFormActions>
+          <HdsButton type="submit">Subscribe</HdsButton>
+        </HdsFormActions>
+      </HdsForm>
     </>
   );
 }

@@ -1,9 +1,9 @@
-# DsToggleGroup
+# HdsToggleGroup
 
-Shares pressed state across a set of `DsToggle`s, styled as a segmented control. Built on the [Base UI Toggle Group](https://base-ui.com/react/components/toggle-group).
+Shares pressed state across a set of `HdsToggle`s, styled as a segmented control. Built on the [Base UI Toggle Group](https://base-ui.com/react/components/toggle-group).
 
 ```tsx
-import { DsToggleGroup, DsToggle } from '@ds-build/ui';
+import { HdsToggleGroup, HdsToggle } from '@hds/ui';
 ```
 
 ## Props
@@ -20,7 +20,7 @@ import { DsToggleGroup, DsToggle } from '@ds-build/ui';
 
 ## Rules
 
-- Children are `DsToggle`s, each with a unique `value`.
+- Children are `HdsToggle`s, each with a unique `value`.
 - `defaultValue` is always an array, even when `multiple` is off: `defaultValue={['left']}`.
 - Without `multiple`, pressing one toggle unpresses the others (single choice).
 - Give the group an `aria-label` describing the choice (e.g. "Text alignment").
@@ -28,20 +28,20 @@ import { DsToggleGroup, DsToggle } from '@ds-build/ui';
 ## Examples
 
 ```tsx
-<DsToggleGroup aria-label="Text alignment" defaultValue={['left']}>
-  <DsToggle value="left" iconNode={<DsAlignLeftIcon />} aria-label="Align left" />
-  <DsToggle value="center" iconNode={<DsAlignCenterIcon />} aria-label="Align center" />
-  <DsToggle value="right" iconNode={<DsAlignRightIcon />} aria-label="Align right" />
-</DsToggleGroup>
+<HdsToggleGroup aria-label="Text alignment" defaultValue={['left']}>
+  <HdsToggle value="left" iconNode={<HdsAlignLeftIcon />} aria-label="Align left" />
+  <HdsToggle value="center" iconNode={<HdsAlignCenterIcon />} aria-label="Align center" />
+  <HdsToggle value="right" iconNode={<HdsAlignRightIcon />} aria-label="Align right" />
+</HdsToggleGroup>
 
-<DsToggleGroup multiple aria-label="Text formatting" defaultValue={['bold']}>
-  <DsToggle value="bold" iconNode={<DsBoldIcon />} aria-label="Bold" />
-  <DsToggle value="italic" iconNode={<DsItalicIcon />} aria-label="Italic" />
-  <DsToggle value="underline" iconNode={<DsUnderlineIcon />} aria-label="Underline" />
-</DsToggleGroup>
+<HdsToggleGroup multiple aria-label="Text formatting" defaultValue={['bold']}>
+  <HdsToggle value="bold" iconNode={<HdsBoldIcon />} aria-label="Bold" />
+  <HdsToggle value="italic" iconNode={<HdsItalicIcon />} aria-label="Italic" />
+  <HdsToggle value="underline" iconNode={<HdsUnderlineIcon />} aria-label="Underline" />
+</HdsToggleGroup>
 
-<DsToggleGroup size="small" aria-label="View" defaultValue={['list']}>
-  <DsToggle value="list">List</DsToggle>
-  <DsToggle value="board">Board</DsToggle>
-</DsToggleGroup>
+<HdsToggleGroup size="small" aria-label="View" defaultValue={['list']}>
+  <HdsToggle value="list">List</HdsToggle>
+  <HdsToggle value="board">Board</HdsToggle>
+</HdsToggleGroup>
 ```

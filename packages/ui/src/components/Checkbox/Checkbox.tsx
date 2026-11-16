@@ -1,7 +1,7 @@
 import { forwardRef, useContext, type ReactNode } from 'react';
 import { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox';
 import { Field as BaseField } from '@base-ui/react/field';
-import { DsCheckIcon, DsMinusIcon } from '../../icons';
+import { HdsCheckIcon, HdsMinusIcon } from '../../icons';
 import { CheckboxGroupContext } from '../CheckboxGroup/CheckboxGroupContext';
 import styles from './Checkbox.module.css';
 
@@ -11,7 +11,7 @@ type CheckboxBaseProps = Omit<
   BaseCheckbox.Root.Props,
   'children' | 'className' | 'render' | 'nativeButton'
 > & {
-  /** Ignored inside a `DsCheckboxGroup`, which sets the size for all its checkboxes. */
+  /** Ignored inside a `HdsCheckboxGroup`, which sets the size for all its checkboxes. */
   size?: CheckboxSize;
   className?: string;
 };
@@ -29,11 +29,11 @@ type UnlabelledCheckboxProps = CheckboxBaseProps & {
 export type CheckboxProps = LabelledCheckboxProps | UnlabelledCheckboxProps;
 
 /**
- * Inside a `DsCheckboxGroup` each checkbox is wrapped in `Field.Item` so it gets
+ * Inside a `HdsCheckboxGroup` each checkbox is wrapped in `Field.Item` so it gets
  * its own label association. `Field.Item` throws outside a `Field.Root`, so a
  * standalone checkbox uses a native `<label>` instead.
  */
-export const DsCheckbox = forwardRef<HTMLElement, CheckboxProps>(function DsCheckbox(
+export const HdsCheckbox = forwardRef<HTMLElement, CheckboxProps>(function HdsCheckbox(
   { size, label, disabled, className, ...rest },
   ref,
 ) {
@@ -43,8 +43,8 @@ export const DsCheckbox = forwardRef<HTMLElement, CheckboxProps>(function DsChec
   const box = (
     <BaseCheckbox.Root ref={ref} disabled={disabled} className={styles.box} {...rest}>
       <BaseCheckbox.Indicator keepMounted className={styles.indicator}>
-        <DsCheckIcon className={styles.check} />
-        <DsMinusIcon className={styles.minus} />
+        <HdsCheckIcon className={styles.check} />
+        <HdsMinusIcon className={styles.minus} />
       </BaseCheckbox.Indicator>
     </BaseCheckbox.Root>
   );

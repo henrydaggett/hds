@@ -10,7 +10,7 @@ export type TextInputProps = Omit<BaseInput.Props, 'className' | 'size'> & {
   className?: string;
 };
 
-export const DsTextInput = forwardRef<HTMLInputElement, TextInputProps>(function DsTextInput(
+export const HdsTextInput = forwardRef<HTMLInputElement, TextInputProps>(function HdsTextInput(
   { size = 'medium', className, ...rest },
   ref,
 ) {

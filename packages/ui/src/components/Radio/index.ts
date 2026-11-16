@@ -1,2 +1,2 @@
-export { DsRadio } from './Radio';
+export { HdsRadio } from './Radio';
 export type { RadioProps } from './Radio';

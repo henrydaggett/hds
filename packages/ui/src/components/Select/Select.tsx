@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Select as BaseSelect } from '@base-ui/react/select';
-import { DsCheckIcon, DsChevronDownIcon } from '../../icons';
+import { HdsCheckIcon, HdsChevronDownIcon } from '../../icons';
 import styles from './Select.module.css';
 
 export type SelectSize = 'small' | 'medium' | 'large';
@@ -25,7 +25,7 @@ export type SelectProps = {
   readOnly?: boolean;
   id?: string;
   className?: string;
-  /** Required when the select isn't inside a `DsField` with a `label`. */
+  /** Required when the select isn't inside a `HdsField` with a `label`. */
   'aria-label'?: string;
 };
 
@@ -33,7 +33,7 @@ export type SelectProps = {
  * A single-choice dropdown built from Base UI Select parts.
  * The popup is a dropdown below the trigger rather than overlapping it.
  */
-export const DsSelect = forwardRef<HTMLButtonElement, SelectProps>(function DsSelect(
+export const HdsSelect = forwardRef<HTMLButtonElement, SelectProps>(function HdsSelect(
   {
     items,
     placeholder,
@@ -71,7 +71,7 @@ export const DsSelect = forwardRef<HTMLButtonElement, SelectProps>(function DsSe
       >
         <BaseSelect.Value className={styles.value} placeholder={placeholder} />
         <BaseSelect.Icon className={styles.chevron}>
-          <DsChevronDownIcon />
+          <HdsChevronDownIcon />
         </BaseSelect.Icon>
       </BaseSelect.Trigger>
       <BaseSelect.Portal>
@@ -91,7 +91,7 @@ export const DsSelect = forwardRef<HTMLButtonElement, SelectProps>(function DsSe
                 >
                   <BaseSelect.ItemText>{item.label}</BaseSelect.ItemText>
                   <BaseSelect.ItemIndicator className={styles.check}>
-                    <DsCheckIcon />
+                    <HdsCheckIcon />
                   </BaseSelect.ItemIndicator>
                 </BaseSelect.Item>
               ))}

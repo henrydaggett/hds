@@ -1,2 +1,2 @@
-export { DsTooltip } from './Tooltip';
+export { HdsTooltip } from './Tooltip';
 export type { TooltipProps, TooltipSide } from './Tooltip';

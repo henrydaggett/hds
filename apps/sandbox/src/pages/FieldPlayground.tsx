@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsCheckbox, DsField, DsSelect, DsTextInput } from '@ds-build/ui';
+import { HdsCheckbox, HdsField, HdsSelect, HdsTextInput } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsx, jsxStacked, str } from '../lib/jsx';
 
@@ -9,21 +9,21 @@ const roles = [
   { value: 'pm', label: 'Product manager' },
 ];
 
-const controls = ['DsTextInput', 'DsSelect', 'DsCheckbox'] as const;
+const controls = ['HdsTextInput', 'HdsSelect', 'HdsCheckbox'] as const;
 type Control = (typeof controls)[number];
 
 const controlSnippets: Record<Control, string> = {
-  DsTextInput: jsx('DsTextInput', ['type="email"', 'placeholder="you@example.com"']),
-  DsSelect: jsx('DsSelect', [
+  HdsTextInput: jsx('HdsTextInput', ['type="email"', 'placeholder="you@example.com"']),
+  HdsSelect: jsx('HdsSelect', [
     'placeholder="Select a role"',
     `items={[${roles.map((r) => `{ value: '${r.value}', label: '${r.label}' }`).join(', ')}]}`,
   ]),
-  DsCheckbox: jsx('DsCheckbox', ['label="I agree to the terms"']),
+  HdsCheckbox: jsx('HdsCheckbox', ['label="I agree to the terms"']),
 };
 
 export function FieldPlayground() {
   const dial = useDialKit('Field', {
-    control: { type: 'select', options: [...controls], default: 'DsTextInput' },
+    control: { type: 'select', options: [...controls], default: 'HdsTextInput' },
     label: { type: 'text', default: 'Email', placeholder: 'Label' },
     description: { type: 'text', default: "We'll never share your email.", placeholder: 'Helper text' },
     error: { type: 'text', default: 'Enter a valid email address.', placeholder: 'Error text' },
@@ -32,10 +32,10 @@ export function FieldPlayground() {
   });
 
   const control = dial.control as Control;
-  const label = control === 'DsCheckbox' ? undefined : dial.label || undefined;
+  const label = control === 'HdsCheckbox' ? undefined : dial.label || undefined;
 
   const snippet = jsxStacked(
-    'DsField',
+    'HdsField',
     [
       str('label', label),
       str('description', dial.description),
@@ -48,7 +48,7 @@ export function FieldPlayground() {
 
   return (
     <Stage snippet={snippet} width={320}>
-      <DsField
+      <HdsField
         key={control}
         label={label}
         description={dial.description || undefined}
@@ -56,14 +56,14 @@ export function FieldPlayground() {
         invalid={dial.invalid}
         disabled={dial.disabled}
       >
-        {control === 'DsTextInput' ? (
-          <DsTextInput type="email" placeholder="you@example.com" />
-        ) : control === 'DsSelect' ? (
-          <DsSelect placeholder="Select a role" items={roles} />
+        {control === 'HdsTextInput' ? (
+          <HdsTextInput type="email" placeholder="you@example.com" />
+        ) : control === 'HdsSelect' ? (
+          <HdsSelect placeholder="Select a role" items={roles} />
         ) : (
-          <DsCheckbox label="I agree to the terms" />
+          <HdsCheckbox label="I agree to the terms" />
         )}
-      </DsField>
+      </HdsField>
     </Stage>
   );
 }

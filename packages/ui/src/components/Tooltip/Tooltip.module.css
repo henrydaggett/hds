@@ -4,17 +4,17 @@
 
 .popup {
   max-width: 240px;
-  padding: var(--ds-space-1) var(--ds-space-2);
-  border-radius: var(--ds-radius-sm);
-  background: var(--ds-color-neutral-900);
-  color: var(--ds-color-neutral-0);
-  font-family: var(--ds-font-sans);
-  font-size: var(--ds-font-size-sm);
+  padding: var(--hds-space-1) var(--hds-space-2);
+  border-radius: var(--hds-radius-sm);
+  background: var(--hds-color-neutral-900);
+  color: var(--hds-color-neutral-0);
+  font-family: var(--hds-font-sans);
+  font-size: var(--hds-font-size-sm);
   line-height: 1.4;
   transform-origin: var(--transform-origin);
   transition:
-    opacity var(--ds-duration-fast) var(--ds-ease-standard),
-    transform var(--ds-duration-fast) var(--ds-ease-standard);
+    opacity var(--hds-duration-fast) var(--hds-ease-standard),
+    transform var(--hds-duration-fast) var(--hds-ease-standard);
 }
 
 .popup[data-starting-style],

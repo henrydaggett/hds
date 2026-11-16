@@ -1,15 +1,15 @@
 import { useDialKit } from 'dialkit';
 import {
-  DsAlignCenterIcon,
-  DsAlignLeftIcon,
-  DsAlignRightIcon,
-  DsBoldIcon,
-  DsItalicIcon,
-  DsToggle,
-  DsToggleGroup,
-  DsUnderlineIcon,
+  HdsAlignCenterIcon,
+  HdsAlignLeftIcon,
+  HdsAlignRightIcon,
+  HdsBoldIcon,
+  HdsItalicIcon,
+  HdsToggle,
+  HdsToggleGroup,
+  HdsUnderlineIcon,
   type ToggleGroupSize,
-} from '@ds-build/ui';
+} from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsx, str } from '../lib/jsx';
 
@@ -17,14 +17,14 @@ const sizes: ToggleGroupSize[] = ['small', 'medium', 'large'];
 
 const groupContent = {
   alignment: [
-    { value: 'left', label: 'Align left', icon: <DsAlignLeftIcon />, iconName: 'DsAlignLeftIcon' },
-    { value: 'center', label: 'Align center', icon: <DsAlignCenterIcon />, iconName: 'DsAlignCenterIcon' },
-    { value: 'right', label: 'Align right', icon: <DsAlignRightIcon />, iconName: 'DsAlignRightIcon' },
+    { value: 'left', label: 'Align left', icon: <HdsAlignLeftIcon />, iconName: 'HdsAlignLeftIcon' },
+    { value: 'center', label: 'Align center', icon: <HdsAlignCenterIcon />, iconName: 'HdsAlignCenterIcon' },
+    { value: 'right', label: 'Align right', icon: <HdsAlignRightIcon />, iconName: 'HdsAlignRightIcon' },
   ],
   formatting: [
-    { value: 'bold', label: 'Bold', icon: <DsBoldIcon />, iconName: 'DsBoldIcon' },
-    { value: 'italic', label: 'Italic', icon: <DsItalicIcon />, iconName: 'DsItalicIcon' },
-    { value: 'underline', label: 'Underline', icon: <DsUnderlineIcon />, iconName: 'DsUnderlineIcon' },
+    { value: 'bold', label: 'Bold', icon: <HdsBoldIcon />, iconName: 'HdsBoldIcon' },
+    { value: 'italic', label: 'Italic', icon: <HdsItalicIcon />, iconName: 'HdsItalicIcon' },
+    { value: 'underline', label: 'Underline', icon: <HdsUnderlineIcon />, iconName: 'HdsUnderlineIcon' },
   ],
   text: [
     { value: 'list', label: 'List', icon: null, iconName: '' },
@@ -56,7 +56,7 @@ export function ToggleGroupPlayground() {
   const defaultValue = [content[0].value];
 
   const snippet = jsx(
-    'DsToggleGroup',
+    'HdsToggleGroup',
     [
       str('size', size, 'medium'),
       bool('multiple', dial.multiple),
@@ -67,14 +67,14 @@ export function ToggleGroupPlayground() {
     ],
     content.map((item) =>
       item.icon
-        ? jsx('DsToggle', [`value="${item.value}"`, `iconNode={<${item.iconName} />}`, `aria-label="${item.label}"`])
-        : jsx('DsToggle', [`value="${item.value}"`], item.label),
+        ? jsx('HdsToggle', [`value="${item.value}"`, `iconNode={<${item.iconName} />}`, `aria-label="${item.label}"`])
+        : jsx('HdsToggle', [`value="${item.value}"`], item.label),
     ),
   );
 
   return (
     <Stage snippet={snippet}>
-      <DsToggleGroup
+      <HdsToggleGroup
         key={`${dial.content}-${dial.multiple}`}
         size={size}
         multiple={dial.multiple}
@@ -85,14 +85,14 @@ export function ToggleGroupPlayground() {
       >
         {content.map((item) =>
           item.icon ? (
-            <DsToggle key={item.value} value={item.value} iconNode={item.icon} aria-label={item.label} />
+            <HdsToggle key={item.value} value={item.value} iconNode={item.icon} aria-label={item.label} />
           ) : (
-            <DsToggle key={item.value} value={item.value}>
+            <HdsToggle key={item.value} value={item.value}>
               {item.label}
-            </DsToggle>
+            </HdsToggle>
           ),
         )}
-      </DsToggleGroup>
+      </HdsToggleGroup>
     </Stage>
   );
 }

@@ -1,2 +1,2 @@
-export { DsField } from './Field';
+export { HdsField } from './Field';
 export type { FieldProps } from './Field';

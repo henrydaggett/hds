@@ -3,30 +3,30 @@
   flex-direction: column;
   align-items: stretch;
   gap: 6px;
-  font-family: var(--ds-font-sans);
+  font-family: var(--hds-font-sans);
 }
 
 .label {
   align-self: flex-start;
-  color: var(--ds-color-text);
-  font-size: var(--ds-font-size-md);
-  font-weight: var(--ds-font-weight-medium);
+  color: var(--hds-color-text);
+  font-size: var(--hds-font-size-md);
+  font-weight: var(--hds-font-weight-medium);
   line-height: 1.3;
 }
 
 .label[data-disabled] {
-  color: var(--ds-color-disabled-text);
+  color: var(--hds-color-disabled-text);
 }
 
 .description {
   margin: 0;
-  color: var(--ds-color-text-muted);
-  font-size: var(--ds-font-size-sm);
+  color: var(--hds-color-text-muted);
+  font-size: var(--hds-font-size-sm);
   line-height: 1.4;
 }
 
 .error {
-  color: var(--ds-color-red);
-  font-size: var(--ds-font-size-sm);
+  color: var(--hds-color-red);
+  font-size: var(--hds-font-size-sm);
   line-height: 1.4;
 }

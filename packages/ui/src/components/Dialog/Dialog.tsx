@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
 import { Dialog as BaseDialog } from '@base-ui/react/dialog';
-import { DsCloseIcon } from '../../icons';
+import { HdsCloseIcon } from '../../icons';
 import styles from './Dialog.module.css';
 
 export type DialogSize = 'small' | 'medium' | 'large';
@@ -8,12 +8,12 @@ export type DialogSize = 'small' | 'medium' | 'large';
 type TriggerElement = ReactElement<Record<string, unknown>>;
 
 export type DialogProps = {
-  /** The element that opens the dialog, usually a `DsButton`. */
+  /** The element that opens the dialog, usually a `HdsButton`. */
   trigger?: TriggerElement;
   title: ReactNode;
   /** Supporting text under the title. */
   description?: ReactNode;
-  /** Buttons at the bottom right. Wrap a button in `DsDialogClose` to make it close the dialog. */
+  /** Buttons at the bottom right. Wrap a button in `HdsDialogClose` to make it close the dialog. */
   footer?: ReactNode;
   /** Popup width: 400, 480 or 640px. */
   size?: DialogSize;
@@ -26,7 +26,7 @@ export type DialogProps = {
 };
 
 /** A modal window over the page. Closes with its ✕ button, Escape or a click outside. */
-export function DsDialog({
+export function HdsDialog({
   trigger,
   title,
   description,
@@ -54,7 +54,7 @@ export function DsDialog({
           <div className={styles.header}>
             <BaseDialog.Title className={styles.title}>{title}</BaseDialog.Title>
             <BaseDialog.Close className={styles.close} aria-label="Close">
-              <DsCloseIcon />
+              <HdsCloseIcon />
             </BaseDialog.Close>
           </div>
           {description != null && (
@@ -69,10 +69,10 @@ export function DsDialog({
 }
 
 export type DialogCloseProps = {
-  /** One button, e.g. a `DsButton`. Clicking it closes the dialog. */
+  /** One button, e.g. a `HdsButton`. Clicking it closes the dialog. */
   children: TriggerElement;
 };
 
-export function DsDialogClose({ children }: DialogCloseProps) {
+export function HdsDialogClose({ children }: DialogCloseProps) {
   return <BaseDialog.Close render={children} />;
 }

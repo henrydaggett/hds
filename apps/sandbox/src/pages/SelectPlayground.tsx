@@ -1,5 +1,5 @@
 import { useDialKit } from 'dialkit';
-import { DsSelect, type SelectSize } from '@ds-build/ui';
+import { HdsSelect, type SelectSize } from '@hds/ui';
 import { Stage } from '../components/Playground';
 import { bool, jsxStacked, str } from '../lib/jsx';
 
@@ -28,7 +28,7 @@ export function SelectPlayground() {
   const size = dial.size as SelectSize;
   const defaultValue = dial.selected === 'none' ? undefined : dial.selected;
 
-  const snippet = jsxStacked('DsSelect', [
+  const snippet = jsxStacked('HdsSelect', [
     str('size', size, 'medium'),
     str('placeholder', dial.placeholder),
     str('defaultValue', defaultValue),
@@ -39,7 +39,7 @@ export function SelectPlayground() {
 
   return (
     <Stage snippet={snippet} width={320}>
-      <DsSelect
+      <HdsSelect
         key={dial.selected}
         size={size}
         placeholder={dial.placeholder}
