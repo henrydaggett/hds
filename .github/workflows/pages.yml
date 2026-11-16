@@ -30,11 +30,14 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
       - run: pnpm lint:hds
+      # Pages reports the path it serves the site from (e.g. /hds), so renames,
+      # re-runs and custom domains all get the right base path.
+      - id: pages
+        uses: actions/configure-pages@v5
       - name: Build the sandbox
         run: pnpm --filter sandbox build
         env:
-          BASE_PATH: /${{ github.event.repository.name }}/
-      - uses: actions/configure-pages@v5
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: apps/sandbox/dist
