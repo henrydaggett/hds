@@ -1,6 +1,7 @@
 /*
  * The hds reset. It loads with the package, in the lowest cascade layer, so
- * anything an app writes overrides it. Components rely on it: every size in
+ * anything an app writes overrides it. It's global on purpose, like Tailwind's
+ * Preflight in shadcn/ui: it applies to the whole page, third-party UI included. Components rely on it: every size in
  * the docs assumes border-box sizing and no browser margins.
  *
  * Built from modern-normalize, Tailwind's Preflight, and Josh Comeau's and

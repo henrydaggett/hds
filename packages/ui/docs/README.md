@@ -37,6 +37,8 @@ The `@hds/lint` package (`packages/lint`) is the script behind `hds-lint`. It re
 
 hds ships a reset ([`reset.css`](../src/styles/reset.css)) that loads with the package. It sets border-box sizing everywhere, removes browser margins, makes form controls use the page font, fits media to its container, strips button chrome, sets the body font and colours, and respects reduced motion. Content lists, links and native inputs keep their browser look. Every component size in these docs assumes it.
 
+**The reset is global, on purpose.** hds owns the page the way Tailwind's Preflight does for shadcn/ui, Chakra and Mantine do with their resets, and Primer and Carbon do with theirs. It applies to everything on the page, including third-party UI that doesn't set its own base styles (for example, a widget that inherits the reset's `line-height: 1.5`). Don't scope it to hds components or make it opt-in: components rely on it being there.
+
 All hds CSS sits in cascade layers, declared at the top of every file in `src/styles/`:
 
 ```css
