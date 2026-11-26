@@ -9,6 +9,7 @@ import App from './App.tsx';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
-    <DialRoot position="top-right" defaultOpen />
+    {/* DialKit hides itself in production builds; the deployed sandbox needs it. */}
+    <DialRoot position="top-right" defaultOpen productionEnabled />
   </StrictMode>,
 );

@@ -147,7 +147,7 @@ export default function App() {
   assert.ok(settled, `app CSS outside a layer should win: got ${JSON.stringify(overridden)}`);
 });
 
-test('a production build loads the reset and variables on every page', async () => {
+test('a production build loads the reset, variables and DialKit controls', async () => {
   // Pages that import named components let the bundler skip @hds/ui's entry
   // file; its CSS must still ship (package.json "sideEffects" keeps it).
   const outDir = fs.mkdtempSync(path.join(os.tmpdir(), 'hds-sandbox-'));
@@ -161,6 +161,7 @@ test('a production build loads the reset and variables on every page', async () 
       await tab.goto(url + page);
       await tab.waitForLoadState('networkidle');
       const got = await tab.evaluate(() => ({
+        dialkit: document.querySelectorAll('.dialkit-root').length,
         primary: getComputedStyle(document.documentElement).getPropertyValue('--hds-color-primary').trim(),
         boxSizing: getComputedStyle(document.body).boxSizing,
         margin: getComputedStyle(document.body).marginTop,
@@ -169,6 +170,8 @@ test('a production build loads the reset and variables on every page', async () 
       if (got.primary !== '#18181b') problems.push(`/${page}: --hds-color-primary is '${got.primary}'`);
       if (got.boxSizing !== 'border-box') problems.push(`/${page}: body box-sizing is ${got.boxSizing}`);
       if (got.margin !== '0px') problems.push(`/${page}: body margin is ${got.margin}`);
+      // The playgrounds' DialKit controls must survive the production build too.
+      if (page === '' && got.dialkit === 0) problems.push('/: DialKit controls are missing');
     }
   } finally {
     await new Promise((resolve) => server.httpServer.close(resolve));
