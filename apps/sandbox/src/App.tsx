@@ -57,20 +57,23 @@ export default function App() {
   const active = pages.find((page) => page.id === hash) ?? pages[0];
 
   return (
-    <>
-      <nav className="tabs" aria-label="Components">
-        {pages.map((page) => (
-          <a
-            key={page.id}
-            className="tab"
-            aria-current={page.id === active.id ? 'page' : undefined}
-            href={`#${page.id}`}
-          >
-            {page.label}
-          </a>
-        ))}
-        <div className="tab-external-row">
-          <a className="tab tab-external" href={`${import.meta.env.BASE_URL}generator/`}>
+    <div className="layout">
+      <nav className="sidebar" aria-label="Components">
+        <ul className="sidebar-links" role="list">
+          {pages.map((page) => (
+            <li key={page.id}>
+              <a
+                className="sidebar-link"
+                aria-current={page.id === active.id ? 'page' : undefined}
+                href={`#${page.id}`}
+              >
+                {page.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div className="sidebar-footer">
+          <a className="sidebar-link" href={`${import.meta.env.BASE_URL}generator/`}>
             UI generator
             <HdsArrowRightIcon />
           </a>
@@ -79,6 +82,6 @@ export default function App() {
       <main className="content">
         <active.Page key={active.id} />
       </main>
-    </>
+    </div>
   );
 }

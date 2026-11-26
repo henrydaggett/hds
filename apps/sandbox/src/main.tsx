@@ -6,10 +6,14 @@ import './editor.css';
 import './index.css';
 import App from './App.tsx';
 
+// Matches the sandbox's phone breakpoint in index.css.
+const narrow = window.matchMedia('(max-width: 640px)').matches;
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
-    {/* DialKit hides itself in production builds; the deployed sandbox needs it. */}
-    <DialRoot position="top-right" defaultOpen productionEnabled />
+    {/* DialKit hides itself in production builds; the deployed sandbox needs it.
+        On phones the open panel would cover the page, so it starts closed there. */}
+    <DialRoot position="top-right" defaultOpen={!narrow} productionEnabled />
   </StrictMode>,
 );
