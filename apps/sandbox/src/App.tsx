@@ -1,5 +1,6 @@
-import { HdsArrowRightIcon } from '@hds/ui';
-import { useEffect, useState, type ComponentType } from 'react';
+import { HdsArrowRightIcon, HdsCloseIcon, HdsMenuIcon, HdsToggle } from '@hds/ui';
+import { DialRoot } from 'dialkit';
+import { useEffect, useRef, useState, type ComponentType } from 'react';
 import { AccordionPlayground } from './pages/AccordionPlayground';
 import { ButtonPlayground } from './pages/ButtonPlayground';
 import { CheckboxGroupPlayground } from './pages/CheckboxGroupPlayground';
@@ -52,20 +53,76 @@ function useHash() {
   return hash;
 }
 
+/** Tracks a CSS media query. Matches the phone breakpoint in index.css. */
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
+
+  useEffect(() => {
+    const list = window.matchMedia(query);
+    const onChange = () => setMatches(list.matches);
+    onChange();
+    list.addEventListener('change', onChange);
+    return () => list.removeEventListener('change', onChange);
+  }, [query]);
+
+  return matches;
+}
+
 export default function App() {
   const hash = useHash();
   const active = pages.find((page) => page.id === hash) ?? pages[0];
+  const narrow = useMediaQuery('(max-width: 640px)');
+  // The page the menu was opened on. Going to another page (a link, the back
+  // button) closes it, and it only shows on phones.
+  const [menuOpenOn, setMenuOpenOn] = useState<string | null>(null);
+  const menuShown = narrow && menuOpenOn === active.id;
+  const setMenuOpen = (open: boolean) => setMenuOpenOn(open ? active.id : null);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const firstLink = useRef<HTMLAnchorElement>(null);
+
+  // While the full-screen menu is open: the page behind it doesn't scroll, Escape
+  // closes it, and focus moves into it (and back to the button when it closes).
+  useEffect(() => {
+    if (!menuShown) return;
+    const button = menuButton.current;
+    const { overflow } = document.body.style;
+    document.body.style.overflow = 'hidden';
+    firstLink.current?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpenOn(null);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = overflow;
+      window.removeEventListener('keydown', onKeyDown);
+      button?.focus();
+    };
+  }, [menuShown]);
 
   return (
-    <div className="layout">
-      <nav className="sidebar" aria-label="Components">
+    <div className="layout" data-menu-open={menuShown ? '' : undefined}>
+      <header className="topbar">
+        <HdsToggle
+          ref={menuButton}
+          iconNode={menuShown ? <HdsCloseIcon /> : <HdsMenuIcon />}
+          aria-label={menuShown ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuShown}
+          aria-controls="sidebar"
+          pressed={menuShown}
+          onPressedChange={setMenuOpen}
+        />
+        <span className="topbar-title">{active.label}</span>
+      </header>
+      <nav id="sidebar" className="sidebar" aria-label="Components">
         <ul className="sidebar-links" role="list">
-          {pages.map((page) => (
+          {pages.map((page, index) => (
             <li key={page.id}>
               <a
+                ref={index === 0 ? firstLink : undefined}
                 className="sidebar-link"
                 aria-current={page.id === active.id ? 'page' : undefined}
                 href={`#${page.id}`}
+                onClick={() => setMenuOpen(false)}
               >
                 {page.label}
               </a>
@@ -82,6 +139,16 @@ export default function App() {
       <main className="content">
         <active.Page key={active.id} />
       </main>
+      {/* DialKit hides itself in production builds; the deployed sandbox needs it.
+          Desktop: a permanent panel on the right. Phones: DialKit's floating icon.
+          Light theme to match the sandbox, whatever the system setting. */}
+      {narrow ? (
+        <DialRoot key="popover" position="top-right" defaultOpen={false} theme="light" productionEnabled />
+      ) : (
+        <aside className="controls" aria-label="Props">
+          <DialRoot key="inline" mode="inline" theme="light" productionEnabled />
+        </aside>
+      )}
     </div>
   );
 }

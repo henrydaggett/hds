@@ -27,7 +27,7 @@ Every component in `@hds/ui`. If it isn't listed here, it doesn't exist.
 
 Exported from `@hds/ui`, 1em square, `currentColor` stroke. Pass them to `iconNode` props.
 
-`HdsPlusIcon`, `HdsArrowRightIcon`, `HdsTrashIcon`, `HdsCheckIcon`, `HdsMinusIcon`, `HdsChevronDownIcon`, `HdsBoldIcon`, `HdsItalicIcon`, `HdsUnderlineIcon`, `HdsAlignLeftIcon`, `HdsAlignCenterIcon`, `HdsAlignRightIcon`, `HdsCloseIcon`, `HdsMoreIcon`, `HdsEditIcon`.
+`HdsPlusIcon`, `HdsArrowRightIcon`, `HdsTrashIcon`, `HdsCheckIcon`, `HdsMinusIcon`, `HdsChevronDownIcon`, `HdsBoldIcon`, `HdsItalicIcon`, `HdsUnderlineIcon`, `HdsAlignLeftIcon`, `HdsAlignCenterIcon`, `HdsAlignRightIcon`, `HdsCloseIcon`, `HdsMoreIcon`, `HdsEditIcon`, `HdsMenuIcon`.
 
 ## Styles
 

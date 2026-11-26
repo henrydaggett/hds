@@ -51,7 +51,7 @@ import { HdsMenu, HdsMenuItem, HdsMenuSeparator, HdsButton, HdsEditIcon, HdsTras
 | Prop       | Write as                     | Default (omit) | Notes                                 |
 | ---------- | ---------------------------- | -------------- | ------------------------------------- |
 | `color`    | `color="red"`                | `default`      | Destructive action.                   |
-| `iconNode` | `iconNode={<HdsTrashIcon />}` | no icon        | Leading 16px icon. Icons: `HdsPlusIcon`, `HdsArrowRightIcon`, `HdsTrashIcon`, `HdsCheckIcon`, `HdsEditIcon`, `HdsCloseIcon`, `HdsMoreIcon`. |
+| `iconNode` | `iconNode={<HdsTrashIcon />}` | no icon        | Leading 16px icon. Icons: `HdsPlusIcon`, `HdsArrowRightIcon`, `HdsTrashIcon`, `HdsCheckIcon`, `HdsEditIcon`, `HdsCloseIcon`, `HdsMoreIcon`, `HdsMenuIcon`. |
 | `disabled` | `disabled`                   | off            | Greyed out, can't be chosen.          |
 
 No `open`, `onOpenChange`, `onClick`, `className`, `style` or event handlers.

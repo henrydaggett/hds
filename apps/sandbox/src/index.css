@@ -3,10 +3,16 @@ body {
   background: var(--hds-color-neutral-50);
 }
 
+/* Desktop: links on the left, the playground in the middle, props on the right. */
 .layout {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-columns: 220px minmax(0, 1fr) 300px;
   min-height: 100dvh;
+}
+
+/* The phone-only bar with the menu button; hidden on wider screens. */
+.topbar {
+  display: none;
 }
 
 /* Sticks to the left edge and scrolls on its own if the list outgrows the window. */
@@ -65,7 +71,25 @@ body {
   border-top: 1px solid var(--hds-color-border);
 }
 
+/* DialKit's props panel, permanently open on the right. */
+.controls {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow-y: auto;
+  border-left: 1px solid var(--hds-color-border);
+  /* hds-lint-disable-next-line hardcoded-color -- DialKit's light panel colour, so the panel has no visible edge */
+  background: #fafafa;
+}
+
+/*
+ * As a grid item with auto margins, .content would size to its widest child (a
+ * long code line) and widen the page. width: 100% holds it to its column, so
+ * long lines scroll instead; max-width and the auto margins centre it.
+ */
 .content {
+  width: 100%;
+  min-width: 0;
   max-width: 960px;
   margin: 0 auto;
   padding: 40px var(--hds-space-6) 80px;
@@ -126,26 +150,54 @@ body {
 }
 
 @media (max-width: 640px) {
-  /* The sidebar stacks above the content, with the links in two columns. */
+  /*
+   * Phones: a top bar with a menu button. The links open as a full-screen menu
+   * above everything, DialKit's floating icon (z-index 9999) included.
+   */
   .layout {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .sidebar {
-    position: static;
-    height: auto;
+  /* Below DialKit's floating icon (z-index 9999), unless the menu is open. */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: var(--hds-space-3);
+    height: 56px;
     padding-inline: var(--hds-space-4);
-    border-right: 0;
     border-bottom: 1px solid var(--hds-color-border);
+    background: var(--hds-color-surface);
   }
 
-  .sidebar-links {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .topbar-title {
+    font-size: var(--hds-font-size-lg);
+    font-weight: var(--hds-font-weight-medium);
   }
 
-  .sidebar-footer {
-    margin-top: 0;
+  .sidebar {
+    display: none;
+  }
+
+  .layout[data-menu-open] .topbar {
+    z-index: 10001;
+  }
+
+  .layout[data-menu-open] .sidebar {
+    position: fixed;
+    inset: 56px 0 0;
+    z-index: 10000;
+    display: flex;
+    height: auto;
+    padding: var(--hds-space-4);
+    border-right: 0;
+  }
+
+  .layout[data-menu-open] .sidebar-link {
+    padding: 10px var(--hds-space-3);
+    font-size: var(--hds-font-size-lg);
   }
 
   .content {

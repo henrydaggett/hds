@@ -128,6 +128,7 @@ Icon-only toggles are square (width = height). Text is medium weight (500). If u
 | Three dots `⋯`              | `iconNode={<HdsMoreIcon />}`       |
 | Pencil                      | `iconNode={<HdsEditIcon />}`       |
 | Cross `✕`                   | `iconNode={<HdsCloseIcon />}`      |
+| Three lines `☰` (menu)      | `iconNode={<HdsMenuIcon />}`       |
 | Any other icon              | Leave the icon out (keep the label; for icon-only, leave the toggle out) and report it |
 
 ## Input-to-prop mapping

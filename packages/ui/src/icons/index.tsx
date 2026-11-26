@@ -141,3 +141,11 @@ export function HdsEditIcon(props: IconProps) {
     </BaseIcon>
   );
 }
+
+export function HdsMenuIcon(props: IconProps) {
+  return (
+    <BaseIcon {...props}>
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </BaseIcon>
+  );
+}
