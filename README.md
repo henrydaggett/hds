@@ -4,7 +4,7 @@ A small React design system built on [Base UI](https://base-ui.com), plus a Vite
 
 **Live sandbox:** https://henrydaggett.github.io/hds/ (playgrounds) and https://henrydaggett.github.io/hds/generator/ (UI generator). It redeploys on every push to `main` once the tests and `hds-lint` pass; see [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
 
-Agent skills in `.cursor/skills` prototype, build, lint and answer questions about UI built from these components. They all read one knowledge base, the docs in [`packages/ui/docs`](packages/ui/docs/README.md), which ship with the package. See [.cursor/skills/README.md](.cursor/skills/README.md).
+Agent skills in `.claude/skills` prototype, build, lint and answer questions about UI built from these components. They all read one knowledge base, the docs in [`packages/ui/docs`](packages/ui/docs/README.md), which ship with the package. See [.claude/skills/README.md](.claude/skills/README.md).
 
 ## Layout
 
@@ -15,7 +15,7 @@ packages/ui        @hds/ui: variables, icons, components
   src/components/  one folder per component (tsx, CSS module, README)
 packages/lint      @hds/lint: the hds-lint command (technical and usage rules)
 apps/sandbox       Vite + React app for testing components with DialKit
-.cursor/skills     agent skills: hds-prototype, hds-build, hds-lint, hds-ask, create-asset
+.claude/skills     agent skills: hds-prototype, hds-build, hds-lint, hds-ask, create-asset
 ```
 
 ## Run locally

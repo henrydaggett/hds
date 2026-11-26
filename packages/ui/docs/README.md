@@ -21,7 +21,7 @@ File names are the lowercase component name without the `Ds` prefix: `HdsCheckbo
 
 ## Which skill reads what
 
-The skills live in `.cursor/skills/`. Each reads from here and keeps no copy of its own.
+The skills live in `.claude/skills/`. Each reads from here and keeps no copy of its own.
 
 | Skill | Does | Reads |
 | ----- | ---- | ----- |
