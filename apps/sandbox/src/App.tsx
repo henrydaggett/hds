@@ -1,5 +1,5 @@
 import { HdsArrowRightIcon, HdsCloseIcon, HdsMenuIcon, HdsToggle } from '@hds/ui';
-import { DialRoot } from 'dialkit';
+import { DialRoot, DialStore } from 'dialkit';
 import { useEffect, useRef, useState, type ComponentType } from 'react';
 import { AccordionPlayground } from './pages/AccordionPlayground';
 import { ButtonPlayground } from './pages/ButtonPlayground';
@@ -53,7 +53,7 @@ function useHash() {
   return hash;
 }
 
-/** Tracks a CSS media query. Matches the phone breakpoint in index.css. */
+/** Tracks a CSS media query. The queries below match the breakpoints in index.css. */
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
 
@@ -72,6 +72,15 @@ export default function App() {
   const hash = useHash();
   const active = pages.find((page) => page.id === hash) ?? pages[0];
   const narrow = useMediaQuery('(max-width: 640px)');
+  // Below 1000px there's no room for the props panel, so DialKit collapses to its icon.
+  const compact = useMediaQuery('(max-width: 999px)');
+
+  // DialKit remembers each panel's open state when it switches between the inline
+  // panel and the icon, so set it when crossing 1000px: collapsed into the icon
+  // below, open in the side panel above.
+  useEffect(() => {
+    for (const panel of DialStore.getPanels('panel')) DialStore.setPanelOpen(panel.id, !compact);
+  }, [compact]);
   // The page the menu was opened on. Going to another page (a link, the back
   // button) closes it, and it only shows on phones.
   const [menuOpenOn, setMenuOpenOn] = useState<string | null>(null);
@@ -140,9 +149,9 @@ export default function App() {
         <active.Page key={active.id} />
       </main>
       {/* DialKit hides itself in production builds; the deployed sandbox needs it.
-          Desktop: a permanent panel on the right. Phones: DialKit's floating icon.
+          1000px and wider: a permanent panel on the right. Narrower: DialKit's floating icon.
           Light theme to match the sandbox, whatever the system setting. */}
-      {narrow ? (
+      {compact ? (
         <DialRoot key="popover" position="top-right" defaultOpen={false} theme="light" productionEnabled />
       ) : (
         <aside className="controls" aria-label="Props">

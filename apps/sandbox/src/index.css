@@ -3,7 +3,7 @@ body {
   background: var(--hds-color-neutral-50);
 }
 
-/* Desktop: links on the left, the playground in the middle, props on the right. */
+/* 1000px and wider: links on the left, the playground in the middle, props on the right. */
 .layout {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr) 300px;
@@ -147,6 +147,13 @@ body {
   padding: 0 var(--hds-space-4) var(--hds-space-3);
   color: var(--hds-color-text-muted);
   font-size: var(--hds-font-size-sm);
+}
+
+/* Under 1000px the props panel collapses into DialKit's floating icon. */
+@media (max-width: 999px) {
+  .layout {
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
